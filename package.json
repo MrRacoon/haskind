@@ -1,0 +1,23 @@
+{
+  "name": "haskind",
+  "version": "0.1.0",
+  "description": "Haskell bindings",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrRacoon/haskind.git"
+  },
+  "keywords": [
+    "haskell",
+    "functions"
+  ],
+  "author": "Erik Sutherland <erik.misu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrRacoon/haskind/issues"
+  },
+  "homepage": "https://github.com/MrRacoon/haskind#readme"
+}
