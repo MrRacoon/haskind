@@ -1,14 +1,38 @@
 
-export const lengthArray : Function = (ls: any[]) => ls.length
-export const lengthObject: Function = (ls: {}) => Object.keys(ls).length
+const error = str => () => {
+  throw new Error(`haskind.${str}`);
+};
+
+const notUndefined = (x, fn) => {
+  console.log('x', x);
+  return typeof x === 'undefined' ? fn() : x;
+}
+
+export const head: Function =
+  ls => notUndefined(ls[0], error('List.head: empty list'));
+
+export const last: Function =
+  ls => notUndefined(ls.slice(-1)[0], error('List.last: empty list'));
+
+export const tail: Function =
+  ([, ...xs]) => xs;
+
+export const init: Function =
+  (ls) => ls.slice(0, -1);
+
+const _lengthArray : Function =
+  (ls: any[]) => ls.length
+
+const _lengthObject: Function =
+  (ls: {}) => Object.keys(ls).length
 
 export const length: Function = (ls: any) => {
 
   if (Array.isArray(ls))
-    return lengthArray(ls)
+    return _lengthArray(ls)
 
   if (typeof ls === 'object')
-    return lengthObject(ls)
+    return _lengthObject(ls)
 }
 
 export const map: any[] = (fn: Function, ls: any[]) =>

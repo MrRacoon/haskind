@@ -4,6 +4,63 @@ import should from 'should';
 const id = a => a
 
 describe('List', () => {
+  describe('head', () => {
+    it('head([1,2,3])', () => {
+      L.head([1, 2, 3]).should.be.eql(1);
+    });
+    it('head([1,2])', () => {
+      L.head([1, 2]).should.be.eql(1);
+    });
+    it('head([1])', () => {
+      L.head([1]).should.be.eql(1);
+    });
+    it('head([])', () => {
+      (() => { L.head([]) }).should.throw('haskind.List.head: empty list');
+    });
+  });
+  describe('last', () => {
+    it('([1,2,3])', () => {
+      L.last([1, 2, 3]).should.be.eql(3);
+    });
+    it('([1,2])', () => {
+      L.last([1, 2]).should.be.eql(2);
+    });
+    it('([1])', () => {
+      L.last([1]).should.be.eql(1);
+    });
+    it('([])', () => {
+      (() => { L.last([]) }).should.throw('haskind.List.last: empty list');
+    });
+  });
+  describe('tail', () => {
+    it('([1,2,3])', () => {
+      L.tail([1,2,3]).should.be.eql([2,3]);
+    });
+    it('([1,2])', () => {
+      L.tail([1,2]).should.be.eql([2]);
+    });
+    it('([1])', () => {
+      L.tail([1]).should.be.eql([]);
+    });
+    it('([])', () => {
+      L.tail([]).should.be.eql([]);
+    });
+  });
+  describe('init', () => {
+    it('([1,2,3])', () => {
+      L.init([1, 2, 3]).should.be.eql([1,2]);
+    });
+    it('([1,2])', () => {
+      L.init([1, 2]).should.be.eql([1]);
+    });
+    it('([1])', () => {
+      L.init([1]).should.be.eql([]);
+    });
+    it('([])', () => {
+      (() => { L.init([]) }).should.throw('haskind.List.init: empty list');
+    });
+  });
+  
   describe('length', () => {
     it('works', () => {
       should(L.length([])).be.eql(0);
