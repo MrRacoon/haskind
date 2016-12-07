@@ -1,4 +1,4 @@
 haskind
 =======
 
-Haskell functions, but in javascript.
+Good ol' Haskell functions for use in Javascript
