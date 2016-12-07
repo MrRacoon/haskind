@@ -4,4 +4,4 @@ export const List = _List;
 
 export default {
   List: _List
-}
+};

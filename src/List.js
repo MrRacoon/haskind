@@ -4,9 +4,8 @@ const error = str => () => {
 };
 
 const notUndefined = (x, fn) => {
-  console.log('x', x);
   return typeof x === 'undefined' ? fn() : x;
-}
+};
 
 export const head: Function =
   ls => notUndefined(ls[0], error('List.head: empty list'));
@@ -21,25 +20,25 @@ export const init: Function =
   (ls) => ls.slice(0, -1);
 
 const _lengthArray : Function =
-  (ls: any[]) => ls.length
+  (ls: any[]) => ls.length;
 
 const _lengthObject: Function =
-  (ls: {}) => Object.keys(ls).length
+  (ls: {}) => Object.keys(ls).length;
 
 export const length: Function = (ls: any) => {
 
   if (Array.isArray(ls))
-    return _lengthArray(ls)
+    return _lengthArray(ls);
 
   if (typeof ls === 'object')
-    return _lengthObject(ls)
-}
+    return _lengthObject(ls);
+};
 
 export const map: any[] = (fn: Function, ls: any[]) =>
-  ls.map(fn)
+  ls.map(fn);
 
 export const filter: any[] = (fn: Function, ls: any[]) =>
-  ls.filter(fn)
+  ls.filter(fn);
 
 export const foldl: any[] = (fn: Function, init: any, ls: any[]) =>
-  ls.reduce(fn, init)
+  ls.reduce(fn, init);

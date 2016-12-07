@@ -1,7 +1,7 @@
 import * as L from '../src/List';
 import should from 'should';
 
-const id = a => a
+const id = a => a;
 
 describe('List', () => {
   describe('head', () => {
@@ -15,7 +15,7 @@ describe('List', () => {
       L.head([1]).should.be.eql(1);
     });
     it('head([])', () => {
-      (() => { L.head([]) }).should.throw('haskind.List.head: empty list');
+      (() => { L.head([]); }).should.throw('haskind.List.head: empty list');
     });
   });
   describe('last', () => {
@@ -29,7 +29,7 @@ describe('List', () => {
       L.last([1]).should.be.eql(1);
     });
     it('([])', () => {
-      (() => { L.last([]) }).should.throw('haskind.List.last: empty list');
+      (() => { L.last([]); }).should.throw('haskind.List.last: empty list');
     });
   });
   describe('tail', () => {
@@ -57,7 +57,7 @@ describe('List', () => {
       L.init([1]).should.be.eql([]);
     });
     it('([])', () => {
-      (() => { L.init([]) }).should.throw('haskind.List.init: empty list');
+      (() => { L.init([]); }).should.throw('haskind.List.init: empty list');
     });
   });
 
@@ -76,7 +76,7 @@ describe('List', () => {
       L.map(id, [1,2,3]).should.eql([1,2,3]);
     });
     it('(succ, [1,2,3])', () => {
-      const fn = x => x + 1
+      const fn = x => x + 1;
       L.map(fn, [1,2,3]).should.eql([2,3,4]);
     });
   });
