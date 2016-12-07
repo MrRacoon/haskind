@@ -1,0 +1,4 @@
+--require babel-core/register
+--require should
+--reporter dot
+--ui bdd

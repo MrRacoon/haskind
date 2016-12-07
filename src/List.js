@@ -8,7 +8,7 @@ export const length: Function = (ls: any) => {
     return lengthArray(ls)
 
   if (typeof ls === 'object')
-    return lengthArray(ls)
+    return lengthObject(ls)
 }
 
 export const map: any[] = (fn: Function, ls: any[]) =>
