@@ -60,7 +60,7 @@ describe('List', () => {
       (() => { L.init([]) }).should.throw('haskind.List.init: empty list');
     });
   });
-  
+
   describe('length', () => {
     it('works', () => {
       should(L.length([])).be.eql(0);
@@ -72,26 +72,29 @@ describe('List', () => {
     });
   });
   describe('map', () => {
-    it('works', () => {
-      const fn = x => x + 1
-
+    it('(id, [1,2,3])', () => {
       L.map(id, [1,2,3]).should.eql([1,2,3]);
+    });
+    it('(succ, [1,2,3])', () => {
+      const fn = x => x + 1
       L.map(fn, [1,2,3]).should.eql([2,3,4]);
     });
   });
   describe('filter', () => {
-    it('works', () => {
-      const fn = x => x % 2 === 0;
-
+    it('(id, [1,2,3])', () => {
       L.filter(id, [1,2,3]).should.eql([1,2,3]);
+    });
+    it('(isEven, [1,2,3])', () => {
+      const fn = x => x % 2 === 0;
       L.filter(fn, [1,2,3]).should.eql([2]);
     });
   });
   describe('foldl', () => {
-    it('works', () => {
-      const fn = (acc, x) => acc + x;
-
+    it('(id, 0, [1,2,3])', () => {
       L.foldl(id, 0, [1,2,3]).should.eql(0);
+    });
+    it('(add, 0, [1,2,3])', () => {
+      const fn = (acc, x) => acc + x;
       L.foldl(fn, 0, [1,2,3]).should.eql(6);
     });
   });
