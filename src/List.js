@@ -51,7 +51,7 @@ export const reverse: Function =
 export type strOrList = (string | any[])
 
 export const intersperse: Function =
-  (ch: strOrList, ls: strOrList): strOrList => {
+  (ch: any, ls: strOrList): strOrList => {
     switch (type(ls)) {
 
     case 'array':
