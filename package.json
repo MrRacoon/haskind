@@ -11,7 +11,7 @@
     "compile": "babel --out-dir=dist src",
     "deps": "npm install",
     "full": "run-s build test",
-    "lint": "eslint ./**/*.js --fix",
+    "lint": "eslint ./{src,test}/**/*.js --fix",
     "mocha": "mocha test/**/*.js",
     "test": "run-s lint mocha"
   },
