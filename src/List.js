@@ -1,56 +1,61 @@
-
-const error = str => () => {
-  throw new Error(`haskind.${str}`)
-}
-
-const notUndefined = (x, fn) => {
-  return typeof x === 'undefined' ? fn() : x
-}
-
+import { notUndefined, error, lazy } from './util'
 // Basic functions
 
 export const head: Function =
-  ls => notUndefined(ls[0], error('List.head: empty list'))
+  (ls: any[]): any =>
+    notUndefined(ls[0], lazy(error, ['List.head: empty list']))
 
 export const last: Function =
-  ls => notUndefined(ls.slice(-1)[0], error('List.last: empty list'))
+  (ls: any[]): any =>
+    notUndefined(ls.slice(-1)[0], lazy(error, ['List.last: empty list']))
 
 export const tail: Function =
-  ([, ...xs]) => xs
+  ([, ...xs]): any[] =>
+    xs
 
 export const init: Function =
-  (ls) => ls.slice(0, -1)
+  (ls: any[]): any[] => {
+    if (!ls.length) error('List.init: empty list')
+    return ls.slice(0, -1)
+  }
 
 const _lengthArray : Function =
-  (ls: any[]) => ls.length
+  (ls: any[]) =>
+    ls.length
 
 const _lengthObject: Function =
-  (ls: {}) => Object.keys(ls).length
+  (ls: {}): number =>
+    Object.keys(ls).length
 
-export const length: Function = function _length(ls: any) {
+export const length: Function =
+  function _length(ls: any): number {
 
-  if (Array.isArray(ls))
-    return _lengthArray(ls)
+    if (Array.isArray(ls))
+      return _lengthArray(ls)
 
-  if (typeof ls === 'object')
-    return _lengthObject(ls)
-}
+    if (typeof ls === 'object')
+      return _lengthObject(ls)
+  }
 
 // List transformations
 
-export const map: any[] = (fn: Function, ls: any[]) =>
-  ls.map(fn)
+export const map: Function =
+  (fn: Function, ls: any[]): any[] =>
+    ls.map(fn)
 
-export const reverse: any[] = (ls: any[]) =>
-  ls.reduce((acc, x) => x + acc, [])
+export const reverse: Function =
+  (ls: any[]): any[] =>
+    ls.reduce((acc, x) => [x].concat(acc), [])
 
-export const intersperse: any[] = (ch: String, ls: any[]) =>
-  ls.reduce((acc, x) => acc.list ? acc + x : acc + ch + x, '')
+export const intersperse: Function =
+  (ch: String, ls: any[]): any[] =>
+    ls.reduce((acc, x) => acc.list ? acc + x : acc + ch + x, '')
 
 // Reducing lists (folds)
 
-export const foldl: any[] = (fn: Function, init: any, ls: any[]) =>
-  ls.reduce(fn, init)
+export const foldl: Function =
+  (fn: Function, init: any, ls: any[]): any =>
+    ls.reduce(fn, init)
 
 // Special folds
 
@@ -68,8 +73,9 @@ export const foldl: any[] = (fn: Function, init: any, ls: any[]) =>
 
 // Searching with a predicate
 
-export const filter: any[] = (fn: Function, ls: any[]) =>
-  ls.filter(fn)
+export const filter: Function =
+  (fn: Function, ls: any[]): any[] =>
+    ls.filter(fn)
 
 // Indexing lists
 

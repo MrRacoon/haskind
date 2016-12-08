@@ -287,10 +287,26 @@ describe('List', () => {
   })
   describe('Searching by equality', () => {
     describe('elem', () => {
-
+      it('(2, [])', () => {
+        L.elem(2, []).should.be.false
+      })
+      it('(2, [1])', () => {
+        L.elem(2, [1]).should.be.false
+      })
+      it('(2, [1,2])', () => {
+        L.elem(2, [1,2]).should.be.true
+      })
     })
     describe('notElem', () => {
-
+      it('(2, [])', () => {
+        L.notElem(2, []).should.be.true
+      })
+      it('(2, [1])', () => {
+        L.notElem(2, [1]).should.be.true
+      })
+      it('(2, [1,2])', () => {
+        L.notElem(2, [1,2]).should.be.false
+      })
     })
     describe('lookup', () => {
 
