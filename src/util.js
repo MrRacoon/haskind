@@ -9,3 +9,5 @@ export const error = (str: string): void => {
 export const notUndefined = (x: ?any, fn: Function): any => {
   return typeof x === 'undefined' ? fn() : x
 }
+
+export const id = a => a

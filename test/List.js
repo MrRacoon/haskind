@@ -1,7 +1,7 @@
-import * as L from '../src/List'
 import should from 'should'
+import * as L from '../src/List'
+import { id } from '../src/util'
 
-const id = a => a
 
 describe('List', () => {
   describe('Basic Functions', () => {
