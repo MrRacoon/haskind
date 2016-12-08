@@ -111,7 +111,7 @@ describe('List', () => {
     })
     describe('intersperse', () => {
       it('(",", "000")', () => {
-        L.intersperse(',', '000').should.be.eql('01010')
+        L.intersperse(',', '000').should.be.eql('0,0,0')
       })
       it('("1", ["0", "0", "0"])', () => {
         L.intersperse('1', ['0', '0', '0']).should.be.eql(['0', '1', '0', '1', '0'])

@@ -51,11 +51,17 @@
     ],
     "plugins": [
       "transform-flow-strip-types",
-      ["typecheck", {
-        "disable": {
-          "production": true
+      [
+        "typecheck",
+        {
+          "disable": {
+            "production": true
+          }
         }
-      }]
+      ]
     ]
+  },
+  "dependencies": {
+    "type-of": "^2.0.1"
   }
 }

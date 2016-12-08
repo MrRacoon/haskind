@@ -1,4 +1,5 @@
 import { notUndefined, error, lazy } from './util'
+import type from 'type-of'
 // Basic functions
 
 export const head: Function =
@@ -47,9 +48,26 @@ export const reverse: Function =
   (ls: any[]): any[] =>
     ls.reduce((acc, x) => [x].concat(acc), [])
 
+export type strOrList = (string | any[])
+
 export const intersperse: Function =
-  (ch: String, ls: any[]): any[] =>
-    ls.reduce((acc, x) => acc.list ? acc + x : acc + ch + x, '')
+  (ch: strOrList, ls: strOrList): strOrList => {
+    switch (type(ls)) {
+
+    case 'array':
+      return ls.reduce((acc, x) => {
+        return acc.length ? acc.concat([ch, x]) : [x]
+      }, [] )
+
+    case 'string':
+      return ls.split('').reduce((acc, x) => {
+        return acc.length ? acc + ch + x : acc + x
+      }, '' )
+
+    default:
+      error('List.interpserse: requires array or string, got: ' + type(ls))
+    }
+  }
 
 // Reducing lists (folds)
 
