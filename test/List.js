@@ -200,7 +200,7 @@ describe('List', () => {
     })
     describe('all', () => {
       it('(id, [])', () => {
-        L.all([]).should.be.eql(false)
+        L.all(id, []).should.be.eql(true)
       })
       it('(id, [true])', () => {
         L.all(id, [true]).should.be.eql(true)
@@ -209,10 +209,10 @@ describe('List', () => {
         L.all(id, [true, true]).should.be.eql(true)
       })
       it('(id, [false, true])', () => {
-        L.all(id, [false, true]).should.be.eql(true)
+        L.all(id, [false, true]).should.be.eql(false)
       })
       it('(id, [true, false])', () => {
-        L.all(id, [true, false]).should.be.eql(true)
+        L.all(id, [true, false]).should.be.eql(false)
       })
       it('(id, [false, false])', () => {
         L.all(id, [false, false]).should.be.eql(false)
@@ -309,7 +309,12 @@ describe('List', () => {
       })
     })
     describe('lookup', () => {
+      it('()', () => {
 
+      });
+      it('()', () => {
+
+      });
     })
   })
   describe('Searching with a predicate ', () => {

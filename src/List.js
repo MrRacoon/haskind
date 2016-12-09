@@ -77,6 +77,14 @@ export const foldl: Function =
 
 // Special folds
 
+export const all: Function =
+  (fn: Function, ls: any[]): boolean =>
+    ls.reduce((acc, x) => acc && !!fn(x), true)
+
+export const any: Function =
+  (fn: Function, ls: any[]): boolean =>
+    ls.reduce((acc, x) => acc || !!fn(x), false)
+
 // Building lists
 
 // Accumulating maps
@@ -88,6 +96,14 @@ export const foldl: Function =
 // Predicates
 
 // Searching by equality
+
+export const elem: Function =
+  (x: any, xs: any[]): boolean =>
+    xs.indexOf(x) !== -1
+
+export const notElem: Function =
+  (x: any, xs: any[]): boolean =>
+    xs.indexOf(x) === -1
 
 // Searching with a predicate
 
