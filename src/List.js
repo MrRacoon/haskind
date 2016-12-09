@@ -1,14 +1,14 @@
-import { notUndefined, error, lazy } from './util'
+import { _notUndefined, error, _lazy } from './util'
 import type from 'type-of'
 // Basic functions
 
 export const head: Function =
   (ls: any[]): any =>
-    notUndefined(ls[0], lazy(error, ['List.head: empty list']))
+    _notUndefined(ls[0], _lazy(error, ['List.head: empty list']))
 
 export const last: Function =
   (ls: any[]): any =>
-    notUndefined(ls.slice(-1)[0], lazy(error, ['List.last: empty list']))
+    _notUndefined(ls.slice(-1)[0], _lazy(error, ['List.last: empty list']))
 
 export const tail: Function =
   ([, ...xs]): any[] =>
