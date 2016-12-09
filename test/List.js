@@ -94,6 +94,10 @@ describe('List', () => {
         const fn = x => x + 1
         L.map(fn, [1,2,3]).should.eql([2,3,4])
       })
+      it('(succ)([1,2,3])', () => {
+        const fn = x => x + 1
+        L.map(fn)([1,2,3]).should.eql([2,3,4])
+      })
     })
     describe('reverse', () => {
       it('([])', () => {
@@ -113,11 +117,14 @@ describe('List', () => {
       it('(",", "000")', () => {
         L.intersperse(',', '000').should.be.eql('0,0,0')
       })
-      it('("1", ["0", "0", "0"])', () => {
-        L.intersperse('1', ['0', '0', '0']).should.be.eql(['0', '1', '0', '1', '0'])
+      it('(",")("000")', () => {
+        L.intersperse(',')('000').should.be.eql('0,0,0')
       })
       it('(",", ["0", "0", "0"])', () => {
         L.intersperse(',', ['0', '0', '0']).should.be.eql(['0', ',', '0', ',', '0'])
+      })
+      it('(",")(["0", "0", "0"])', () => {
+        L.intersperse(',')(['0', '0', '0']).should.be.eql(['0', ',', '0', ',', '0'])
       })
     })
   })
@@ -129,6 +136,18 @@ describe('List', () => {
       it('(add, 0, [1,2,3])', () => {
         const fn = (acc, x) => acc + x
         L.foldl(fn, 0, [1,2,3]).should.eql(6)
+      })
+      it('(add, 0)([1,2,3])', () => {
+        const fn = (acc, x) => acc + x
+        L.foldl(fn, 0)([1,2,3]).should.eql(6)
+      })
+      it('(add)(0, [1,2,3])', () => {
+        const fn = (acc, x) => acc + x
+        L.foldl(fn)(0, [1,2,3]).should.eql(6)
+      })
+      it('(add)(0)([1,2,3])', () => {
+        const fn = (acc, x) => acc + x
+        L.foldl(fn)(0)([1,2,3]).should.eql(6)
       })
     })
   })
@@ -197,6 +216,9 @@ describe('List', () => {
       it('(id, [false, false])', () => {
         L.any(id, [false, false]).should.be.eql(false)
       })
+      it('(id)([true])', () => {
+        L.any(id)([true]).should.be.eql(true)
+      })
     })
     describe('all', () => {
       it('(id, [])', () => {
@@ -216,6 +238,9 @@ describe('List', () => {
       })
       it('(id, [false, false])', () => {
         L.all(id, [false, false]).should.be.eql(false)
+      })
+      it('(id)([true])', () => {
+        L.all(id)([true]).should.be.eql(true)
       })
     })
     describe('sum', () => {
@@ -296,6 +321,9 @@ describe('List', () => {
       it('(2, [1,2])', () => {
         L.elem(2, [1,2]).should.be.true
       })
+      it('(2)([1,2])', () => {
+        L.elem(2)([1,2]).should.be.true
+      })
     })
     describe('notElem', () => {
       it('(2, [])', () => {
@@ -306,6 +334,9 @@ describe('List', () => {
       })
       it('(2, [1,2])', () => {
         L.notElem(2, [1,2]).should.be.false
+      })
+      it('(2)([1,2])', () => {
+        L.notElem(2)([1,2]).should.be.false
       })
     })
     describe('lookup', () => {
@@ -328,6 +359,10 @@ describe('List', () => {
       it('(isEven, [1,2,3])', () => {
         const fn = x => x % 2 === 0
         L.filter(fn, [1,2,3]).should.eql([2])
+      })
+      it('(isEven)([1,2,3])', () => {
+        const fn = x => x % 2 === 0
+        L.filter(fn)([1,2,3]).should.eql([2])
       })
     })
     describe('partition', () => {
