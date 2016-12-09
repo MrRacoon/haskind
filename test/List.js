@@ -311,10 +311,10 @@ describe('List', () => {
     describe('lookup', () => {
       it('()', () => {
 
-      });
+      })
       it('()', () => {
 
-      });
+      })
     })
   })
   describe('Searching with a predicate ', () => {

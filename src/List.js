@@ -77,13 +77,41 @@ export const foldl: Function =
 
 // Special folds
 
-export const all: Function =
-  (fn: Function, ls: any[]): boolean =>
-    ls.reduce((acc, x) => acc && !!fn(x), true)
+export const concat: Function =
+  (ls: any[][]): any[] =>
+    ls.reduce((acc, x) => acc.concat(x), [])
+
+export const and: Function =
+  (ls: any[]): boolean =>
+    ls.reduce((acc, x) => acc && x, true)
+
+export const or: Function =
+  (ls: any[]): boolean =>
+    ls.reduce((acc, x) => acc || x, false)
 
 export const any: Function =
   (fn: Function, ls: any[]): boolean =>
     ls.reduce((acc, x) => acc || !!fn(x), false)
+
+export const all: Function =
+  (fn: Function, ls: any[]): boolean =>
+    ls.reduce((acc, x) => acc && !!fn(x), true)
+
+export const sum: Function =
+  (ls: number[]): number =>
+    ls.reduce((acc, x) => acc + x, 0)
+
+export const product: Function =
+  (ls: number[]): number =>
+    ls.reduce((acc, x) => acc * x, 1)
+
+export const maximum: Function =
+  (ls: number[]): number =>
+    ls.reduce((acc, x) => acc <= x ? x : acc, -Infinity)
+
+export const minimum: Function =
+  (ls: number[]): number =>
+    ls.reduce((acc, x) => x <= acc ? x : acc, Infinity)
 
 // Building lists
 
