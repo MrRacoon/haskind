@@ -1,4 +1,4 @@
-import { _notUndefined, error, _lazy } from './util'
+import { _notUndefined, error, _lazy, _curry } from './util'
 import type from 'type-of'
 // Basic functions
 
@@ -40,17 +40,17 @@ export const length: Function =
 
 // List transformations
 
-export const map: Function =
+export const map: Function = _curry(
   (fn: Function, ls: any[]): any[] =>
     ls.map(fn)
+)
 
 export const reverse: Function =
-  (ls: any[]): any[] =>
-    ls.reduce((acc, x) => [x].concat(acc), [])
+  (ls: any[]): any[] => ls.reduce((acc, x) => [x].concat(acc), [])
 
 export type strOrList = (string | any[])
 
-export const intersperse: Function =
+export const intersperse: Function = _curry(
   (ch: any, ls: strOrList): strOrList => {
     switch (type(ls)) {
 
@@ -68,12 +68,14 @@ export const intersperse: Function =
       error('List.interpserse: requires array or string, got: ' + type(ls))
     }
   }
+)
 
 // Reducing lists (folds)
 
-export const foldl: Function =
+export const foldl: Function = _curry(
   (fn: Function, init: any, ls: any[]): any =>
     ls.reduce(fn, init)
+)
 
 // Special folds
 
@@ -89,13 +91,15 @@ export const or: Function =
   (ls: any[]): boolean =>
     ls.reduce((acc, x) => acc || x, false)
 
-export const any: Function =
+export const any: Function = _curry(
   (fn: Function, ls: any[]): boolean =>
     ls.reduce((acc, x) => acc || !!fn(x), false)
+)
 
-export const all: Function =
+export const all: Function = _curry(
   (fn: Function, ls: any[]): boolean =>
     ls.reduce((acc, x) => acc && !!fn(x), true)
+)
 
 export const sum: Function =
   (ls: number[]): number =>
@@ -125,19 +129,22 @@ export const minimum: Function =
 
 // Searching by equality
 
-export const elem: Function =
+export const elem: Function = _curry(
   (x: any, xs: any[]): boolean =>
     xs.indexOf(x) !== -1
+)
 
-export const notElem: Function =
+export const notElem: Function = _curry(
   (x: any, xs: any[]): boolean =>
     xs.indexOf(x) === -1
+)
 
 // Searching with a predicate
 
-export const filter: Function =
+export const filter: Function = _curry(
   (fn: Function, ls: any[]): any[] =>
     ls.filter(fn)
+)
 
 // Indexing lists
 
