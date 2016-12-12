@@ -1,8 +1,10 @@
 import type from 'type-of'
 import { error } from './util'
 
-export type A = any;
-export type Maybe<A> = { just?: A, nothing?: void }
+export type A = any
+export type Maybe<A> = _Just<A> | Nothing
+export type _Just<A> = { just: A }
+export type _Nothing = { nothing: void }
 
 export const Just: Maybe = (x) => ({ just: x })
 export const Nothing: Maybe = () => ({ nothing: null })
