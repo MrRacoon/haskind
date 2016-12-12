@@ -19,4 +19,28 @@ describe('Maybe', () => {
       M.maybe(1, x => x+1, Nothing()).should.eql(1)
     })
   })
+  describe('isJust', () => {
+
+  })
+  describe('isNothing', () => {
+
+  })
+  describe('fromJust', () => {
+
+  })
+  describe('fromMaybe', () => {
+
+  })
+  describe('listToMaybe', () => {
+
+  })
+  describe('maybeToList', () => {
+
+  })
+  describe('catMaybes', () => {
+
+  })
+  describe('mapMaybe', () => {
+
+  })
 })
