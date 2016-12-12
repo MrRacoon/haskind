@@ -62,7 +62,6 @@
     ]
   },
   "dependencies": {
-    "ramda-fantasy": "^0.7.0",
     "type-of": "^2.0.1"
   }
 }
