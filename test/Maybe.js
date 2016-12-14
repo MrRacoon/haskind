@@ -40,7 +40,7 @@ describe('Maybe', () => {
       M.fromJust(Just(42)).should.be.eql(42)
     })
     it('(Nothing())', () => {
-      (() => M.fromJust(Nothing())).should.throw('asdf')
+      (() => M.fromJust(Nothing())).should.throw('haskind.Maybe.fromJust: Nothing')
     })
   })
   describe('fromMaybe', () => {
