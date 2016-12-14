@@ -1,6 +1,5 @@
 import should from 'should'
 import * as U from '../src/util'
-import * as L from '../src/List'
 
 describe('util', () => {
   describe('id', () => {
