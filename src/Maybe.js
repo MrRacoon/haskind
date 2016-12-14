@@ -30,6 +30,13 @@ export const fromMaybe = (def: any, m: Maybe): any =>
   isJust(m) ? m.just : def
 
 // listToMaybe :: [a] -> Maybe a
+export const listToMaybe = undefined
+
 // maybeToList :: Maybe a -> [a]
+export const maybeToList = undefined
+
 // catMaybes :: [Maybe a] -> [a]
+export const catMaybes = undefined
+
 // mapMaybe :: (a -> Maybe b) -> [a] -> [b]
+export const mapMaybe = undefined
