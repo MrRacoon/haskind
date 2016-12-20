@@ -32,12 +32,12 @@ describe('Tuple', () => {
   describe('uncurry', () => {
   })
   describe('swap', () => {
-    describe('[1,2]', () => {
+    describe('([1,2])', () => {
       it('== [2,1]', () => {
         T.swap([1,2]).should.be.eql([2,1])
       })
     })
-    describe('[2,1]', () => {
+    describe('([2,1])', () => {
       it('== [1,2]', () => {
         T.swap([2,1]).should.be.eql([1,2])
       })
