@@ -19,3 +19,5 @@ This project uses a combination of:
 
 and some functional magic to provide a set of functions closely mimicking the
 libraries provided by Haskell.
+
+I keep track of weird compatibility issues in [my notes](/notes.md).
