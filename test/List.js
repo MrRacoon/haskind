@@ -112,6 +112,16 @@ describe('List', () => {
       it('([1,2,3])', () => {
         L.reverse([1,2,3]).should.be.eql([3,2,1])
       })
+      describe('("123")', () => {
+        it('=== "321"', () => {
+          L.reverse('123').should.be.eql('321')
+        })
+      })
+      describe('("reverse")', () => {
+        it('=== "esrever"', () => {
+          L.reverse('reverse').should.be.eql('esrever')
+        })
+      })
     })
     describe('intersperse', () => {
       it('(",", "000")', () => {
