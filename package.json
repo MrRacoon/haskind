@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "run-s clean:dist deps compile",
+    "build:production": "run-s clean:dist deps compile:production",
     "clean": "run-p clean:*",
     "clean:deps": "rm -rf node_modules",
     "clean:dist": "rm -rf dist",
+    "compile:production": "NODE_ENV=production run-p compile",
     "compile": "babel --out-dir=dist src",
     "deps": "npm install",
     "full": "run-s build test",
