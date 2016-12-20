@@ -38,15 +38,15 @@ const condCheck =
       pair[0](...args)
 
 const condApply =
-  (...args) => (pair) => // eslint-disable-line
+  (...args: any[]) => (pair: Function[]) => // eslint-disable-line
       pair[1](...args)
 
-const undefinedCond =
+const undefinedCond: Function[][] =
   [[ True, constant(undefined) ]]
 
 export const cond: Function =
-  (ps) =>
-    (...args) =>
+  (ps: Function[][]): Function =>
+    (...args: any[]): any =>
       ps.concat(undefinedCond)
         .filter(condCheck(...args))
         .map(condApply(...args))[0]
