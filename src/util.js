@@ -6,13 +6,13 @@ export const id = a => a
 
 // =============================================================================
 
-export const _lazy: Function = (fn: Function, args: any[]): any => () => {
-  return fn.apply(this, args)
-}
+export const _lazy: Function =
+  (fn: Function, args: any[]): any => () =>
+    fn.apply(this, args)
 
-export const _notUndefined = (x: ?any, fn: Function): any => {
-  return typeof x === 'undefined' ? fn() : x
-}
+export const _notUndefined =
+  (x: ?any, fn: Function): any =>
+    typeof x === 'undefined' ? fn() : x
 
 export const _curry: Function =
   (fn: Function): Function =>
@@ -22,3 +22,31 @@ export const _curry: Function =
       else
         return args.reduce((f, a) => _curry(f.bind(this, a)), fn)
     }
+
+// =============================================================================
+
+export const True: Function = () => true
+export const False: Function = () => false
+
+// eslint-disable-next-line
+export const constant = _curry((a, b) => a)
+
+// =============================================================================
+
+const condCheck =
+  (...args) => (pair) => // eslint-disable-line
+      pair[0](...args)
+
+const condApply =
+  (...args) => (pair) => // eslint-disable-line
+      pair[1](...args)
+
+const undefinedCond =
+  [[ True, constant(undefined) ]]
+
+export const cond: Function =
+  (ps) =>
+    (...args) =>
+      ps.concat(undefinedCond)
+        .filter(condCheck(...args))
+        .map(condApply(...args))[0]

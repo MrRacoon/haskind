@@ -108,4 +108,85 @@ describe('util', () => {
       })
     })
   })
+  describe('True', () => {
+    describe('()', () => {
+      it('== true', () => {
+        U.True().should.be.eql(true)
+      })
+    })
+    describe('(true)', () => {
+      it('== true', () => {
+        U.True(true).should.be.eql(true)
+      })
+    })
+    describe('("true")', () => {
+      it('== true', () => {
+        U.True('true').should.be.eql(true)
+      })
+    })
+    describe('(1)', () => {
+      it('== true', () => {
+        U.True(1).should.be.eql(true)
+      })
+    })
+  })
+  describe('False', () => {
+    describe('()', () => {
+      it('== false', () => {
+        U.False().should.be.eql(false)
+      })
+    })
+    describe('(true)', () => {
+      it('== false', () => {
+        U.False(true).should.be.eql(false)
+      })
+    })
+    describe('("true")', () => {
+      it('== false', () => {
+        U.False('true').should.be.eql(false)
+      })
+    })
+    describe('(1)', () => {
+      it('== false', () => {
+        U.False(1).should.be.eql(false)
+      })
+    })
+  })
+  describe('cond', () => {
+    describe('let fns = [[lt(0), constant(-1)], [eq(0), id], [gt(0), constant(1)]] in', () => {
+      let fns
+      beforeEach(() => {
+        const lt = x => y => x < y
+        const eq = x => y => x === y
+        const gt = x => y => x > y
+        fns = [
+          [lt(0), U.constant(1)],
+          [eq(0), U.id],
+          [gt(0), U.constant(-1)]
+        ]
+      })
+      describe('(fns)(-10)', () => {
+        it('== -1', () => {
+          U.cond(fns)(-10).should.be.eql(-1)
+        })
+      })
+      describe('(fns)(0)', () => {
+        it('== 0', () => {
+          U.cond(fns)(0).should.be.eql(0)
+        })
+      })
+      describe('(fns)(20)', () => {
+        it('== 1', () => {
+          U.cond(fns)(20).should.be.eql(1)
+        })
+      })
+    })
+    describe('let fns = []', () => {
+      describe('(fns)(-10)', () => {
+        it('== undefined', () => {
+          should(U.cond([])(-10)).be.eql(undefined)
+        })
+      })
+    })
+  })
 })
