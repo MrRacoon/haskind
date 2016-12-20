@@ -45,8 +45,18 @@ export const map: Function = _curry(
     ls.map(fn)
 )
 
+
 export const reverse: Function =
-  (ls: any[]): any[] => ls.reduce((acc, x) => [x].concat(acc), [])
+  (ls: any[] | string): any[] | string => {
+    switch (type(ls)) {
+    case 'string':
+      return reverse(ls.split('')).join('')
+    case 'array':
+      return ls.reduce((acc, x) => [x].concat(acc), [])
+    default:
+      return ls
+    }
+  }
 
 export type strOrList = (string | any[])
 

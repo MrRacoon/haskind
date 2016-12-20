@@ -5,7 +5,7 @@ const { Left, Right } = E
 
 const inc = x => x + 1
 
-describe('Either', () => {
+xdescribe('Either', () => {
   describe('either', () => {
     describe('(inc, inc, Left(4))', () => {
       it('== 5', () => {

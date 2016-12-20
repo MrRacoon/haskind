@@ -343,7 +343,7 @@ describe('List', () => {
         })
       })
       describe('(id)([true])', () => {
-        it('true', () => {
+        it('== true', () => {
           L.any(id)([true]).should.be.eql(true)
         })
       })
