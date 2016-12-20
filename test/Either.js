@@ -13,6 +13,15 @@ describe('Either', () => {
     it('(inc, inc, Right(8))', () => {
       E.either(inc, inc, Right(8)).should.be.eql(9)
     })
+    it('(inc)(inc, Right(8))', () => {
+      E.either(inc)(inc, Right(8)).should.be.eql(9)
+    })
+    it('(inc, inc)(Right(8))', () => {
+      E.either(inc, inc)(Right(8)).should.be.eql(9)
+    })
+    it('(inc)(inc)(Right(8))', () => {
+      E.either(inc)(inc)(Right(8)).should.be.eql(9)
+    })
   })
   describe('lefts', () => {
     it('([Left(1), Right(2), Left(3)])', () => {

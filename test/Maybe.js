@@ -18,6 +18,15 @@ describe('Maybe', () => {
     it('(1, inc, Nothing())', () => {
       M.maybe(1, x => x+1, Nothing()).should.eql(1)
     })
+    it('(1, inc)(Nothing())', () => {
+      M.maybe(1, x => x+1)(Nothing()).should.eql(1)
+    })
+    it('(1)(inc, Nothing())', () => {
+      M.maybe(1)(x => x+1, Nothing()).should.eql(1)
+    })
+    it('(1)(inc)(Nothing())', () => {
+      M.maybe(1)(x => x+1)(Nothing()).should.eql(1)
+    })
   })
   describe('isJust', () => {
     it('(Just(42))', () => {
@@ -50,6 +59,9 @@ describe('Maybe', () => {
     it('(12, Nothing())', () => {
       M.fromMaybe(12, Nothing()).should.be.eql(12)
     })
+    it('(12)(Nothing())', () => {
+      M.fromMaybe(12, Nothing()).should.be.eql(12)
+    })
   })
   describe('listToMaybe', () => {
     it('([42])', () => {
@@ -76,6 +88,10 @@ describe('Maybe', () => {
     it('(maybeEven, [1,2,3])', () => {
       const maybeEven = (x) => x % 2 === 0 ? Just(x) : Nothing()
       M.mapMaybe(maybeEven, [1,2,3]).should.be.eql([2])
+    })
+    it('(maybeEven)([1,2,3])', () => {
+      const maybeEven = (x) => x % 2 === 0 ? Just(x) : Nothing()
+      M.mapMaybe(maybeEven)([1,2,3]).should.be.eql([2])
     })
   })
 })
