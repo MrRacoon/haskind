@@ -1,4 +1,7 @@
 
+// isString :: String -> Bool
+export const isString = undefined
+
 // lines :: String -> [String]
 export const lines = undefined
 
