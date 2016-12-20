@@ -7,5 +7,11 @@ Notes
 * Haskell.Data.Bool.(&&) collides with js's (&&)
   - changed the name to `haskind.Bool.and`
 
+* Haskell.Data.Bool.(&&) short circuits
+  - `haskind.Bool.and`'s eager evaluation will not allow this
+
 * Haskell.Data.Bool.(||) collides with js's (||)
   - changed the name to `haskind.Bool.or`
+
+* Haskell.Data.Bool.(||) short circuits
+  - `haskind.Bool.or`'s eager evaluation will not allow this
