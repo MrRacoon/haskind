@@ -1,4 +1,4 @@
-import * as M from '../../Map'
+import * as M from '../src/Map'
 
 describe('Map', () => {
   describe('null', () => {
