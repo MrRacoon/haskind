@@ -129,6 +129,8 @@ export const minimum: Function =
 
 // Building lists
 
+// Scans
+
 // Accumulating maps
 
 // Unfolding
@@ -158,20 +160,17 @@ export const minimum: Function =
 // Searching by equality
 
 export const elem: Function = _curry(
-  (x: any, xs: any[]): boolean =>
-    xs.indexOf(x) !== -1
+  (x: any, xs: any[]): boolean => xs.indexOf(x) !== -1
 )
 
 export const notElem: Function = _curry(
-  (x: any, xs: any[]): boolean =>
-    xs.indexOf(x) === -1
+  (x: any, xs: any[]): boolean => xs.indexOf(x) === -1
 )
 
 // Searching with a predicate
 
 export const filter: Function = _curry(
-  (fn: Function, ls: any[]): any[] =>
-    ls.filter(fn)
+  (fn: Function, ls: any[]): any[] => ls.filter(fn)
 )
 
 // Indexing lists
@@ -231,3 +230,28 @@ export const union = undefined
 export const intersect = undefined
 
 // Ordered lists
+
+// sort :: Ord a => [a] -> [a]
+// export const sort = undefined
+
+// sortOn :: Ord b => (a -> b) -> [a] -> [a]
+// export const sortOn = undefined
+
+// insert :: Ord a => a -> [a] -> [a]
+// export const insert = undefined
+
+// The "By" Operations
+
+// nubBy :: (a -> a -> Bool) -> [a] -> [a]
+// deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
+// deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+// unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+// intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+// groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+
+// User-supplied comparison
+
+// sortBy :: (a -> a -> Ordering) -> [a] -> [a]
+// insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
+// maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+// minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a

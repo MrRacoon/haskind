@@ -479,6 +479,7 @@ describe('List', () => {
     })
   })
   describe('Predicates', () => {
+
   })
   describe('Searching by equality', () => {
     describe('elem', () => {
@@ -633,12 +634,12 @@ describe('List', () => {
     })
     describe('difference', () => {
       describe('([1,2,3], [2,3,4])', () => {
-        it('[1]', () => {
+        it('== [1]', () => {
           L.difference([1,2,3], [2,3,4]).should.be.eql([1])
         })
       })
       describe('([1,2,3,4,5], [2,3,4])', () => {
-        it('[1,5]', () => {
+        it('== [1,5]', () => {
           L.difference([1,2,3,4,5], [2,3,4]).should.be.eql([1,5])
         })
       })
