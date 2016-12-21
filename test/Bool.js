@@ -1,4 +1,3 @@
-import should from 'should'
 import * as B from '../src/Bool'
 import { error } from '../src/util'
 
