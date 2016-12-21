@@ -1,5 +1,6 @@
 import { _notUndefined, error, _lazy, _curry } from './util'
 import type from 'type-of'
+
 // Basic functions
 
 export const head: Function =
@@ -9,10 +10,11 @@ export const head: Function =
 export const last: Function =
   (ls: any[]): any =>
     _notUndefined(ls.slice(-1)[0], _lazy(error, ['List.last: empty list']))
+    // ^ I'm no longer a fan of this.
+    //   just write it out.
 
 export const tail: Function =
-  ([, ...xs]): any[] =>
-    xs
+  ([, ...xs]): any[] => xs
 
 export const init: Function =
   (ls: any[]): any[] => {
@@ -21,12 +23,10 @@ export const init: Function =
   }
 
 const _lengthArray : Function =
-  (ls: any[]) =>
-    ls.length
+  (ls: any[]) => ls.length
 
 const _lengthObject: Function =
-  (ls: {}): number =>
-    Object.keys(ls).length
+  (ls: {}): number => Object.keys(ls).length
 
 export const length: Function =
   function _length(ls: any): number {
@@ -135,7 +135,25 @@ export const minimum: Function =
 
 // Extracting sublists
 
+// take :: Int -> [a] -> [a]
+// drop :: Int -> [a] -> [a]
+// splitAt :: Int -> [a] -> ([a], [a])
+// takeWhile :: (a -> Bool) -> [a] -> [a]
+// dropWhile :: (a -> Bool) -> [a] -> [a]
+// dropWhileEnd :: (a -> Bool) -> [a] -> [a]
+// span :: (a -> Bool) -> [a] -> ([a], [a])
+// break :: (a -> Bool) -> [a] -> ([a], [a])
+// stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
+// group :: Eq a => [a] -> [[a]]
+// inits :: [a] -> [[a]]
+// tails :: [a] -> [[a]]
+
 // Predicates
+
+// isPrefixOf :: Eq a => [a] -> [a] -> Bool
+// isSuffixOf :: Eq a => [a] -> [a] -> Bool
+// isInfixOf :: Eq a => [a] -> [a] -> Bool
+// isSubsequenceOf :: Eq a => [a] -> [a] -> Bool
 
 // Searching by equality
 
@@ -158,10 +176,58 @@ export const filter: Function = _curry(
 
 // Indexing lists
 
+// (!!) :: [a] -> Int -> a
+// elemIndex :: Eq a => a -> [a] -> Maybe Int
+// elemIndices :: Eq a => a -> [a] -> [Int]
+// findIndex :: (a -> Bool) -> [a] -> Maybe Int
+// findIndices :: (a -> Bool) -> [a] -> [Int]
+
 // Zipping and unzipping lists
+
+// zip :: [a] -> [b] -> [(a, b)]
+export const zip = undefined
+// zip3 :: [a] -> [b] -> [c] -> [(a, b, c)]
+// zip4 :: [a] -> [b] -> [c] -> [d] -> [(a, b, c, d)]
+// zip5 :: [a] -> [b] -> [c] -> [d] -> [e] -> [(a, b, c, d, e)]
+// zip6 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [(a, b, c, d, e, f)]
+// zip7 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [(a, b, c, d, e, f, g)]
+// zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+// zipWith3 :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
+// zipWith4 :: (a -> b -> c -> d -> e) -> [a] -> [b] -> [c] -> [d] -> [e]
+// zipWith5 :: (a -> b -> c -> d -> e -> f) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f]
+// zipWith6 :: (a -> b -> c -> d -> e -> f -> g) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g]
+// zipWith7 :: (a -> b -> c -> d -> e -> f -> g -> h) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [h]
+
+// unzip :: [(a, b)] -> ([a], [b])
+export const unzip = undefined
+// unzip3 :: [(a, b, c)] -> ([a], [b], [c])
+// unzip4 :: [(a, b, c, d)] -> ([a], [b], [c], [d])
+// unzip5 :: [(a, b, c, d, e)] -> ([a], [b], [c], [d], [e])
+// unzip6 :: [(a, b, c, d, e, f)] -> ([a], [b], [c], [d], [e], [f])
+// unzip7 :: [(a, b, c, d, e, f, g)] -> ([a], [b], [c], [d], [e], [f], [g])
 
 // Functions on strings
 
+// lines :: String -> [String]
+// words :: String -> [String]
+// unlines :: [String] -> String
+// unwords :: [String] -> String
+
 // "Set" operations
+
+// nub :: Eq a => [a] -> [a]
+export const nub = undefined
+
+// delete_ :: Eq a => a -> [a] -> [a]
+export const delete_ = undefined
+
+// difference :: Eq a => [a] -> [a] -> [a]
+export const difference = undefined
+
+// union :: Eq a => [a] -> [a] -> [a]
+export const union = undefined
+
+// intersect :: Eq a => [a] -> [a] -> [a]
+export const intersect = undefined
 
 // Ordered lists

@@ -563,7 +563,28 @@ describe('List', () => {
   })
   describe('Zipping and unzipping lists', () => {
     describe('zip', () => {
-
+      describe('([1,2], [1,2,3])', () => {
+        it('== [[1,1], [2,2]]', () => {
+          L.zip([1,2], [1,2,3]).should.be.eql([[1,1], [2,2]])
+        })
+      })
+      describe('([1,2])([1,2,3])', () => {
+        it('== [[1,1], [2,2]]', () => {
+          L.zip([1,2])([1,2,3]).should.be.eql([[1,1], [2,2]])
+        })
+      })
+    })
+    describe('unzip', () => {
+      describe('([[1,1], [2,2], [4,5]])', () => {
+        it('== [[1,2,4], [1,2,5]]', () => {
+          L.unzip([[1,1], [2,2], [4,5]]).should.be.eql([[1,2,4], [1,2,5]])
+        })
+      })
+      describe('([1,2])([1,2,3])', () => {
+        it('== [[1,1], [2,2]]', () => {
+          L.zip([1,2])([1,2,3]).should.be.eql([[1,1], [2,2]])
+        })
+      })
     })
   })
   describe('Functions on strings', () => {
@@ -582,16 +603,69 @@ describe('List', () => {
   })
   describe('"Set" operations', () => {
     describe('nub', () => {
-
+      describe('([])', () => {
+        it('== []', () => {
+          L.nub([]).should.be.eql([])
+        })
+      })
+      describe('([1,2,3])', () => {
+        it('== [1,2,3]', () => {
+          L.nub([1,2,3]).should.be.eql([1,2,3])
+        })
+      })
+      describe('([1,2,3,4,2,1,4,6])', () => {
+        it('== [1,2,3,4,6]', () => {
+          L.nub([1,2,3,4,2,1,4,6]).should.be.eql([1,2,3,4,6])
+        })
+      })
     })
-    describe('delete\'', () => {
-
+    describe('delete_', () => {
+      describe('(3, [1,2,3,3,4,3])', () => {
+        it('== [1,2,3,4,3]', () => {
+          L.delete_(3, [1,2,3,3,4,3]).should.be.eql([1,2,3,4,3])
+        })
+      })
+      describe('("a", "banana")', () => {
+        it('== "bnana"', () => {
+          L.delete_('a', 'banana').should.be.eql('bnana')
+        })
+      })
+    })
+    describe('difference', () => {
+      describe('([1,2,3], [2,3,4])', () => {
+        it('[1]', () => {
+          L.difference([1,2,3], [2,3,4]).should.be.eql([1])
+        })
+      })
+      describe('([1,2,3,4,5], [2,3,4])', () => {
+        it('[1,5]', () => {
+          L.difference([1,2,3,4,5], [2,3,4]).should.be.eql([1,5])
+        })
+      })
     })
     describe('union', () => {
-
+      describe('([1,2,3,4], [2,4,6,8])', () => {
+        it('== [1,2,3,4,6,8]', () => {
+          L.union([1,2,3,4], [2,4,6,8]).should.be.eql([1,2,3,4,6,8])
+        })
+      })
+      describe('([1,2,2,3,4], [6,4,4,2])', () => {
+        it('== [1,2,2,3,4,6]', () => {
+          L.union([1,2,2,3,4], [6,4,4,2]).should.be.eql([1,2,2,3,4,6])
+        })
+      })
     })
     describe('intersect', () => {
-
+      describe('([1,2,3,4], [2,4,6,8])', () => {
+        it('== [2,4]', () => {
+          L.intersect([1,2,3,4], [2,4,6,8]).should.be.eql([2,4])
+        })
+      })
+      describe('([1,2,2,3,4], [6,4,4,2])', () => {
+        it('== [2,2,4]', () => {
+          L.intersect([1,2,2,3,4], [6,4,4,2]).should.be.eql([2,2,4])
+        })
+      })
     })
   })
 })
