@@ -1,6 +1,6 @@
 import * as M from '../src/Map'
 
-describe('Map', () => {
+xdescribe('Map', () => {
   describe('null', () => {
     describe('({})', () => {
       it('== true', () => {

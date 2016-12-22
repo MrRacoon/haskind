@@ -138,24 +138,54 @@ export const minimum: Function =
 // Extracting sublists
 
 // take :: Int -> [a] -> [a]
+export const take = undefined
+
 // drop :: Int -> [a] -> [a]
+export const drop = undefined
+
 // splitAt :: Int -> [a] -> ([a], [a])
+export const splitAt = undefined
+
 // takeWhile :: (a -> Bool) -> [a] -> [a]
+export const takeWhile = undefined
+
 // dropWhile :: (a -> Bool) -> [a] -> [a]
+export const dropWhile = undefined
+
 // dropWhileEnd :: (a -> Bool) -> [a] -> [a]
+export const dropWhileEnd = undefined
+
 // span :: (a -> Bool) -> [a] -> ([a], [a])
+export const span = undefined
+
 // break :: (a -> Bool) -> [a] -> ([a], [a])
+export const break_ = undefined
+
 // stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
+export const stripPrefix = undefined
+
 // group :: Eq a => [a] -> [[a]]
+export const group = undefined
+
 // inits :: [a] -> [[a]]
+export const inits = undefined
+
 // tails :: [a] -> [[a]]
+export const tails = undefined
 
 // Predicates
 
 // isPrefixOf :: Eq a => [a] -> [a] -> Bool
+export const isPrefixOf = undefined
+
 // isSuffixOf :: Eq a => [a] -> [a] -> Bool
+export const isSuffixOf = undefined
+
 // isInfixOf :: Eq a => [a] -> [a] -> Bool
+export const isInfixOf = undefined
+
 // isSubsequenceOf :: Eq a => [a] -> [a] -> Bool
+export const isSubsequenceOf = undefined
 
 // Searching by equality
 
@@ -208,9 +238,16 @@ export const unzip = undefined
 // Functions on strings
 
 // lines :: String -> [String]
+export const lines = undefined
+
 // words :: String -> [String]
+export const words = undefined
+
 // unlines :: [String] -> String
+export const unlines = undefined
+
 // unwords :: [String] -> String
+export const unwords = undefined
 
 // "Set" operations
 

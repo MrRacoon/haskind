@@ -471,15 +471,62 @@ describe('List', () => {
   describe('Unfolding', () => {
   })
   describe('Extracting sublists', () => {
-    describe('take', () => {
-
+    xdescribe('take', () => {
+      describe('(2, [1,2,3,4])', () => {
+        it('== [1,2]', () => {
+          L.take(2, [1,2,3,4]).should.be.eql([1,2])
+        })
+      })
+      describe('(2)([1,2,3,4])', () => {
+        it('== [1,2]', () => {
+          L.take(2)([1,2,3,4]).should.be.eql([1,2])
+        })
+      })
+      describe('(1, [1,2,3,4])', () => {
+        it('== [1]', () => {
+          L.take(1, [1,2,3,4]).should.be.eql([1])
+        })
+      })
+      describe('(0, [1,2,3,4])', () => {
+        it('== []', () => {
+          L.take(0, [1,2,3,4]).should.be.eql([])
+        })
+      })
+      describe('(-1, [1,2,3,4])', () => {
+        it('== []', () => {
+          L.take(-1, [1,2,3,4]).should.be.eql([])
+        })
+      })
     })
-    describe('drop', () => {
-
+    xdescribe('drop', () => {
+      describe('(2, [1,2,3,4])', () => {
+        it('== [3,4]', () => {
+          L.drop(2, [1,2,3,4]).should.be.eql([3,4])
+        })
+      })
+      describe('(2)([1,2,3,4])', () => {
+        it('== [3,4]', () => {
+          L.drop(2)([1,2,3,4]).should.be.eql([3,4])
+        })
+      })
+      describe('(1, [1,2,3,4])', () => {
+        it('== [2,3,4]', () => {
+          L.drop(1, [1,2,3,4]).should.be.eql([2,3,4])
+        })
+      })
+      describe('(0, [1,2,3,4])', () => {
+        it('== []', () => {
+          L.drop(0, [1,2,3,4]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('(-1, [1,2,3,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.drop(-1, [1,2,3,4]).should.be.eql([1,2,3,4])
+        })
+      })
     })
   })
   describe('Predicates', () => {
-
   })
   describe('Searching by equality', () => {
     describe('elem', () => {
@@ -562,7 +609,7 @@ describe('List', () => {
 
     })
   })
-  describe('Zipping and unzipping lists', () => {
+  xdescribe('Zipping and unzipping lists', () => {
     describe('zip', () => {
       describe('([1,2], [1,2,3])', () => {
         it('== [[1,1], [2,2]]', () => {
@@ -588,21 +635,117 @@ describe('List', () => {
       })
     })
   })
-  describe('Functions on strings', () => {
+  xdescribe('Functions on strings', () => {
     describe('lines', () => {
-
+      describe('("")', () => {
+        it('== []', () => {
+          L.lines('').should.be.eql([])
+        })
+      })
+      describe('("\\n")', () => {
+        it('== [""]', () => {
+          L.lines('\\n').should.be.eql([''])
+        })
+      })
+      describe('("one")', () => {
+        it('== ["one"]', () => {
+          L.lines('one').should.be.eql(['one'])
+        })
+      })
+      describe('("one\\n")', () => {
+        it('== ["one"]', () => {
+          L.lines('one\\n').should.be.eql(['one'])
+        })
+      })
+      describe('("one\\n\\n")', () => {
+        it('== ["one", ""]', () => {
+          L.lines('"one\\n\\n"').should.be.eql(['one', ''])
+        })
+      })
+      describe('("one\\ntwo")', () => {
+        it('== ["one", "two"]', () => {
+          L.lines('one\\ntwo').should.be.eql(['one', 'two'])
+        })
+      })
+      describe('("one\\ntwo\\n")', () => {
+        it('== ["one", "two"]', () => {
+          L.lines('one\\ntwo\\n').should.be.eql(['one', 'two'])
+        })
+      })
     })
     describe('words', () => {
-
+      describe('("")', () => {
+        it('== []', () => {
+          L.words('').should.be.eql([])
+        })
+      })
+      describe('("one")', () => {
+        it('== ["one"]', () => {
+          L.words('one').should.be.eql(['one'])
+        })
+      })
+      describe('("one ")', () => {
+        it('== ["one"]', () => {
+          L.words('one ').should.be.eql(['one'])
+        })
+      })
+      describe('("one two")', () => {
+        it('== ["one", "two"]', () => {
+          L.words('one two').should.be.eql(['one', 'two'])
+        })
+      })
+      describe('("one two ")', () => {
+        it('== ["one", "two"]', () => {
+          L.words('one two ').should.be.eql(['one', 'two'])
+        })
+      })
+      describe('(" one two ")', () => {
+        it('== ["one", "two"]', () => {
+          L.words(' one two ').should.be.eql(['one', 'two'])
+        })
+      })
     })
     describe('unlines', () => {
-
+      describe('([])', () => {
+        it('== ""', () => {
+          L.unlines([]).should.be.eql('')
+        })
+      })
+      describe('(["one"])', () => {
+        it('== "one\\n"', () => {
+          L.unlines(['one']).should.be.eql('one\n')
+        })
+      })
+      describe('(["one", "two"])', () => {
+        it('== "one\\ntwo\\n"', () => {
+          L.unlines(['one', 'two']).should.be.eql('one\ntwo\n')
+        })
+      })
     })
     describe('unwords', () => {
-
+      describe('([])', () => {
+        it('== ""', () => {
+          L.unwords([]).should.be.eql('')
+        })
+      })
+      describe('(["one"])', () => {
+        it('== "one"', () => {
+          L.unwords(['one']).should.be.eql('one')
+        })
+      })
+      describe('(["one", "two"])', () => {
+        it('== "one two"', () => {
+          L.unwords(['one', 'two']).should.be.eql('one two')
+        })
+      })
+      describe('(["one ", " two"])', () => {
+        it('== "one   two"', () => {
+          L.unwords(['one ', ' two']).should.be.eql('one   two')
+        })
+      })
     })
   })
-  describe('"Set" operations', () => {
+  xdescribe('"Set" operations', () => {
     describe('nub', () => {
       describe('([])', () => {
         it('== []', () => {
@@ -631,11 +774,21 @@ describe('List', () => {
           L.delete_('a', 'banana').should.be.eql('bnana')
         })
       })
+      describe('("a")("banana")', () => {
+        it('== "bnana"', () => {
+          L.delete_('a')('banana').should.be.eql('bnana')
+        })
+      })
     })
     describe('difference', () => {
       describe('([1,2,3], [2,3,4])', () => {
         it('== [1]', () => {
           L.difference([1,2,3], [2,3,4]).should.be.eql([1])
+        })
+      })
+      describe('([1,2,3])([2,3,4])', () => {
+        it('== [1]', () => {
+          L.difference([1,2,3])([2,3,4]).should.be.eql([1])
         })
       })
       describe('([1,2,3,4,5], [2,3,4])', () => {
@@ -650,6 +803,11 @@ describe('List', () => {
           L.union([1,2,3,4], [2,4,6,8]).should.be.eql([1,2,3,4,6,8])
         })
       })
+      describe('([1,2,3,4])([2,4,6,8])', () => {
+        it('== [1,2,3,4,6,8]', () => {
+          L.union([1,2,3,4])([2,4,6,8]).should.be.eql([1,2,3,4,6,8])
+        })
+      })
       describe('([1,2,2,3,4], [6,4,4,2])', () => {
         it('== [1,2,2,3,4,6]', () => {
           L.union([1,2,2,3,4], [6,4,4,2]).should.be.eql([1,2,2,3,4,6])
@@ -660,6 +818,11 @@ describe('List', () => {
       describe('([1,2,3,4], [2,4,6,8])', () => {
         it('== [2,4]', () => {
           L.intersect([1,2,3,4], [2,4,6,8]).should.be.eql([2,4])
+        })
+      })
+      describe('([1,2,3,4])([2,4,6,8])', () => {
+        it('== [2,4]', () => {
+          L.intersect([1,2,3,4])([2,4,6,8]).should.be.eql([2,4])
         })
       })
       describe('([1,2,2,3,4], [6,4,4,2])', () => {

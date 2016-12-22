@@ -109,5 +109,20 @@ describe('Bool', () => {
         B.bool(1, 2, false).should.be.eql(1)
       })
     })
+    describe('(1)(2, false)', () => {
+      it('== 1', () => {
+        B.bool(1)(2, false).should.be.eql(1)
+      })
+    })
+    describe('(1, 2)(false)', () => {
+      it('== 1', () => {
+        B.bool(1, 2)(false).should.be.eql(1)
+      })
+    })
+    describe('(1)(2)(false)', () => {
+      it('== 1', () => {
+        B.bool(1)(2)(false).should.be.eql(1)
+      })
+    })
   })
 })
