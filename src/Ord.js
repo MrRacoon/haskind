@@ -1,3 +1,9 @@
+export const LT = -1
+export const EQ = 0
+export const GT = 1
+
+export const Ordering = { LT, EQ, GT }
+
 // compare :: a -> a -> Ordering
 export const compare = undefined
 
@@ -18,8 +24,6 @@ export const max = undefined
 
 // min :: a -> a -> a
 export const min = undefined
-
-export type Ordering = LT | EQ | GT
 
 // comparing :: Ord a => (b -> a) -> b -> b -> Ordering
 export const comparing = undefined
