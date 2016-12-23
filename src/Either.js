@@ -1,4 +1,7 @@
 
+export const Left  = left => ({ left })
+export const Right = right => ({ right })
+
 // either :: (a -> c) -> (b -> c) -> Either a b -> c
 export const either = undefined
 

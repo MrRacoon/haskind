@@ -3,6 +3,7 @@ import * as L from '../src/List'
 import { id } from '../src/util'
 
 const isEven = x => x % 2 === 0
+const eq = (x,y) => x === y
 
 describe('List', () => {
   describe('Basic Functions', () => {
@@ -742,7 +743,7 @@ describe('List', () => {
     })
   })
   describe('Searching with a predicate ', () => {
-    describe('find', () => {
+    xdescribe('find', () => {
 
     })
     describe('filter', () => {
@@ -778,6 +779,52 @@ describe('List', () => {
           L.partition(isEven)([1,2,3,4]).should.be.eql([[2,4], [1,3]])
         })
       })
+    })
+  })
+  xdescribe('Indexing lists', () => {
+    describe('index', () => {
+      describe('([1,2,3], 0)', () => {
+        it('== 1', () => {
+          L.index([1,2,3], 0).should.be.eql(1)
+        })
+      })
+      describe('([1,2,3], 1)', () => {
+        it('== 2', () => {
+          L.index([1,2,3], 1).should.be.eql(2)
+        })
+      })
+      describe('([1,2,3], 2)', () => {
+        it('== 3', () => {
+          L.index([1,2,3], 2).should.be.eql(3)
+        })
+      })
+      describe('([1,2,3])(2)', () => {
+        it('== 3', () => {
+          L.index([1,2,3])(2).should.be.eql(3)
+        })
+      })
+      describe('([1,2,3], 3)', () => {
+        it('errors: haskind.List.index: index too large', () => {
+          (() => L.index([1,2,3], 3)).should.throw('haskind.List.index: index too large')
+        })
+      })
+      describe('([1,2,3], -1)', () => {
+        it('errors: haskind.List.index: negative index', () => {
+          (() => L.index([1,2,3], -1)).should.throw('haskind.List.index: negative index')
+        })
+      })
+    })
+    describe('elemIndex', () => {
+
+    })
+    describe('elemIndices', () => {
+
+    })
+    describe('findIndex', () => {
+
+    })
+    describe('findIndices', () => {
+
     })
   })
   xdescribe('Zipping and unzipping lists', () => {
@@ -1001,6 +1048,97 @@ describe('List', () => {
           L.intersect([1,2,2,3,4], [6,4,4,2]).should.be.eql([2,2,4])
         })
       })
+    })
+  })
+  xdescribe('Ordered Lists', () => {
+    describe('sort', () => {
+      describe('([4,2,3,1])', () => {
+        it('== [1,2,3,4]', () => {
+          L.sort([4,2,3,1]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('([4,2,3,1,1,2,4,3])', () => {
+        it('== [1,1,2,2,3,3,4,4]', () => {
+          L.sort([4,2,3,1,1,2,4,3]).should.be.eql([1,1,2,2,3,3,4,4])
+        })
+      })
+    })
+    describe('sortOn', () => {
+      describe('(id, [4,2,3,1])', () => {
+        it('== [1,2,3,4]', () => {
+          L.sort(id, [4,2,3,1]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('(id)([4,2,3,1])', () => {
+        it('== [1,2,3,4]', () => {
+          L.sort(id)([4,2,3,1]).should.be.eql([1,2,3,4])
+        })
+      })
+    })
+    describe('insert', () => {
+      describe('(3, [1,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.insert(3, [1,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('(3)([1,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.insert(3)([1,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
+    })
+  })
+  xdescribe('The "by" operations', () => {
+    describe('nubBy', () => {
+      describe('(eq, [])', () => {
+        it('== []', () => {
+          L.nubBy(eq, []).should.be.eql([])
+        })
+      })
+      describe('(eq, [1,2,3])', () => {
+        it('== [1,2,3]', () => {
+          L.nubBy(eq, [1,2,3]).should.be.eql([1,2,3])
+        })
+      })
+      describe('(eq, [1,1,2,2,3,3])', () => {
+        it('== [1,2,3]', () => {
+          L.nubBy(eq, [1,1,2,2,3,3]).should.be.eql([1,2,3])
+        })
+      })
+      describe('(eq)([1,1,2,2,3,3])', () => {
+        it('== [1,2,3]', () => {
+          L.nubBy(eq)([1,1,2,2,3,3]).should.be.eql([1,2,3])
+        })
+      })
+    })
+    describe('deleteBy', () => {
+
+    })
+    describe('deleteFirstBy', () => {
+
+    })
+    describe('unionBy', () => {
+
+    })
+    describe('intersectBy', () => {
+
+    })
+    describe('groupBy', () => {
+
+    })
+  })
+  describe('User-supplied comparison', () => {
+    describe('sortBy', () => {
+
+    })
+    describe('insertBy', () => {
+
+    })
+    describe('maximumBy', () => {
+
+    })
+    describe('minimumBy', () => {
+
     })
   })
 })

@@ -5,7 +5,31 @@ const { Left, Right } = E
 
 const inc = x => x + 1
 
-xdescribe('Either', () => {
+describe.only('Either', () => {
+  describe('Left', () => {
+    describe('("value")', () => {
+      it('== { left: "value" }', () => {
+        E.Left('value').should.be.eql({ left: 'value' })
+      })
+    })
+    describe('(4)', () => {
+      it('== { left: 4 }', () => {
+        E.Left(4).should.be.eql({ left: 4 })
+      })
+    })
+  })
+  describe('Right', () => {
+    describe('("value")', () => {
+      it('== { right: "value" }', () => {
+        E.Right('value').should.be.eql({ right: 'value' })
+      })
+    })
+    describe('(4)', () => {
+      it('== { right: 4 }', () => {
+        E.Right(4).should.be.eql({ right: 4 })
+      })
+    })
+  })
   describe('either', () => {
     describe('(inc, inc, Left(4))', () => {
       it('== 5', () => {
