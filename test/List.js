@@ -2,6 +2,7 @@ import should from 'should'
 import * as L from '../src/List'
 import { id } from '../src/util'
 
+const isEven = x => x % 2 === 0
 
 describe('List', () => {
   describe('Basic Functions', () => {
@@ -470,8 +471,8 @@ describe('List', () => {
   })
   describe('Unfolding', () => {
   })
-  describe('Extracting sublists', () => {
-    xdescribe('take', () => {
+  xdescribe('Extracting sublists', () => {
+    describe('take', () => {
       describe('(2, [1,2,3,4])', () => {
         it('== [1,2]', () => {
           L.take(2, [1,2,3,4]).should.be.eql([1,2])
@@ -498,7 +499,7 @@ describe('List', () => {
         })
       })
     })
-    xdescribe('drop', () => {
+    describe('drop', () => {
       describe('(2, [1,2,3,4])', () => {
         it('== [3,4]', () => {
           L.drop(2, [1,2,3,4]).should.be.eql([3,4])
@@ -526,7 +527,165 @@ describe('List', () => {
       })
     })
   })
-  describe('Predicates', () => {
+  xdescribe('Predicates', () => {
+    describe('isPrefixOf', () => {
+      describe('([], [1,2,3])', () => {
+        it('== true', () => {
+          L.isPrefixOf([], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1], [1,2,3])', () => {
+        it('== true', () => {
+          L.isPrefixOf([1], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,2], [1,2,3])', () => {
+        it('== true', () => {
+          L.isPrefixOf([1,2], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,2,3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isPrefixOf([1,2,3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,2,3,2], [1,2,3])', () => {
+        it('== false', () => {
+          L.isPrefixOf([1,2,3,2], [1,2,3]).should.be.eql(false)
+        })
+      })
+      describe('([2], [1,2,3])', () => {
+        it('== false', () => {
+          L.isPrefixOf([2], [1,2,3]).should.be.eql(false)
+        })
+      })
+      describe('([1,2,3])([1,2,3])', () => {
+        it('== true', () => {
+          L.isPrefixOf([1,2,3])([1,2,3]).should.be.eql(true)
+        })
+      })
+    })
+    describe('isSuffixOf', () => {
+      describe('([], [1,2,3])', () => {
+        it('== true', () => {
+          L.isSuffixOf([], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isSuffixOf([3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([2,3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isSuffixOf([2,3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,2,3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isSuffixOf([1,2,3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([2], [1,2,3])', () => {
+        it('== false', () => {
+          L.isSuffixOf([2], [1,2,3]).should.be.eql(false)
+        })
+      })
+      describe('([1,2,3])([1,2,3])', () => {
+        it('== true', () => {
+          L.isSuffixOf([1,2,3])([1,2,3]).should.be.eql(true)
+        })
+      })
+    })
+    describe('isInfixOf', () => {
+      describe('([], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([2], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([1], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([2], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([2], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,2], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([1,2], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([2,3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([2,3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,3], [1,2,3])', () => {
+        it('== false', () => {
+          L.isInfixOf([1,3], [1,2,3]).should.be.eql(false)
+        })
+      })
+      describe('([4], [1,2,3])', () => {
+        it('== false', () => {
+          L.isInfixOf([3], [1,2,3]).should.be.eql(false)
+        })
+      })
+      describe('([2,3])([1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([2,3])([1,2,3]).should.be.eql(true)
+        })
+      })
+    })
+    describe('isSubsequenceOf', () => {
+      describe('([], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([1], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([4], [1,2,3])', () => {
+        it('== false', () => {
+          L.isInfixOf([4], [1,2,3]).should.be.eql(false)
+        })
+      })
+      describe('([1,2], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([1,2], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,3], [1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([1,3], [1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,4], [1,2,3])', () => {
+        it('== false', () => {
+          L.isInfixOf([1,4], [1,2,3]).should.be.eql(false)
+        })
+      })
+      describe('([1,3])([1,2,3])', () => {
+        it('== true', () => {
+          L.isInfixOf([1,3])([1,2,3]).should.be.eql(true)
+        })
+      })
+    })
   })
   describe('Searching by equality', () => {
     describe('elem', () => {
@@ -594,19 +753,31 @@ describe('List', () => {
       })
       describe('(isEven, [1,2,3])', () => {
         it('== [2]', () => {
-          const fn = x => x % 2 === 0
-          L.filter(fn, [1,2,3]).should.eql([2])
+          L.filter(isEven, [1,2,3]).should.eql([2])
         })
       })
       describe('(isEven)([1,2,3])', () => {
         it('== [2]', () => {
-          const fn = x => x % 2 === 0
-          L.filter(fn)([1,2,3]).should.eql([2])
+          L.filter(isEven)([1,2,3]).should.eql([2])
         })
       })
     })
-    describe('partition', () => {
-
+    xdescribe('partition', () => {
+      describe('(isEven, [])', () => {
+        it('== [[], []]', () => {
+          L.partition(isEven, []).should.be.eql([[], []])
+        })
+      })
+      describe('(isEven, [1,2,3,4])', () => {
+        it('== [[2,4], [1,3]]', () => {
+          L.partition(isEven, [1,2,3,4]).should.be.eql([[2,4], [1,3]])
+        })
+      })
+      describe('(isEven)([1,2,3,4])', () => {
+        it('== [[2,4], [1,3]]', () => {
+          L.partition(isEven)([1,2,3,4]).should.be.eql([[2,4], [1,3]])
+        })
+      })
     })
   })
   xdescribe('Zipping and unzipping lists', () => {
