@@ -818,13 +818,56 @@ describe('List', () => {
 
     })
     describe('elemIndices', () => {
-
+      describe('(1, [])', () => {
+        it('== []', () => {
+          L.elemIndices(1, []).should.be.eql([])
+        })
+      })
+      describe('(1, [2,3,4])', () => {
+        it('== []', () => {
+          L.elemIndices(1, [2,3,4]).should.be.eql([])
+        })
+      })
+      describe('(1, [1,2,3,4,1])', () => {
+        it('== [0,4]', () => {
+          L.elemIndices(1, [1,2,3,4,1]).should.be.eql([0,4])
+        })
+      })
+      describe('(1)([1,2,3,4,1])', () => {
+        it('== [0,4]', () => {
+          L.elemIndices(1)([1,2,3,4,1]).should.be.eql([0,4])
+        })
+      })
     })
     describe('findIndex', () => {
 
     })
     describe('findIndices', () => {
-
+      describe('(isEven, [])', () => {
+        it('== []', () => {
+          L.findIndices(isEven, []).should.be.eql([])
+        })
+      })
+      describe('(isEven, [1,2,3,4])', () => {
+        it('== [1,3]', () => {
+          L.findIndices(isEven, [1,2,3,4]).should.be.eql([1,3])
+        })
+      })
+      describe('(isEven)([1,2,3,4])', () => {
+        it('== [1,3]', () => {
+          L.findIndices(isEven)([1,2,3,4]).should.be.eql([1,3])
+        })
+      })
+      describe('(isEven, [2,2,2,2,2])', () => {
+        it('== [0,1,2,3,4]', () => {
+          L.findIndices(isEven, [2,2,2,2,2]).should.be.eql([0,1,2,3,4])
+        })
+      })
+      describe('(isEven, [1,1,1,1,1])', () => {
+        it('== []', () => {
+          L.findIndices(isEven, [1,1,1,1,1]).should.be.eql([])
+        })
+      })
     })
   })
   xdescribe('Zipping and unzipping lists', () => {
