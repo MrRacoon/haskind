@@ -268,13 +268,13 @@ export const intersect = undefined
 // Ordered lists
 
 // sort :: Ord a => [a] -> [a]
-// export const sort = undefined
+export const sort = undefined
 
 // sortOn :: Ord b => (a -> b) -> [a] -> [a]
-// export const sortOn = undefined
+export const sortOn = undefined
 
 // insert :: Ord a => a -> [a] -> [a]
-// export const insert = undefined
+export const insert = undefined
 
 // The "By" Operations
 

@@ -5,7 +5,7 @@ export type Maybe = _Just<any> | Nothing
 export type _Just = { just: any }
 export type _Nothing = { nothing: void }
 
-export const Just: Maybe = (x) => ({ just: x })
+export const Just: Maybe = just => ({ just })
 export const Nothing: Maybe = () => ({ nothing: null })
 
 export const maybe = _curry((def: any, fn: Function, m: Maybe) => {
