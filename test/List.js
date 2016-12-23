@@ -1,9 +1,15 @@
 import should from 'should'
 import * as L from '../src/List'
 import { id } from '../src/util'
+import { Ordering } from '../src/Ord'
 
 const isEven = x => x % 2 === 0
 const eq = (x,y) => x === y
+const compare = (x,y) => x === y
+  ? Ordering.EQ
+  : x < y
+  ? Ordering.LT
+  : Ordering.GT
 
 describe('List', () => {
   describe('Basic Functions', () => {
@@ -1170,18 +1176,64 @@ describe('List', () => {
 
     })
   })
-  describe('User-supplied comparison', () => {
+  xdescribe('User-supplied comparison', () => {
     describe('sortBy', () => {
-
+      describe('(compare, [1,3,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.sortBy(compare, [1,3,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('(compare)([1,3,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.sortBy(compare, [1,3,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
     })
     describe('insertBy', () => {
-
+      describe('(compare, 3, [1,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.insertBy(compare, 3, [1,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('(compare)(3, [1,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.insertBy(compare)(3, [1,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('(compare, 3)([1,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.insertBy(compare, 3)([1,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
+      describe('(compare)(3)([1,2,4])', () => {
+        it('== [1,2,3,4]', () => {
+          L.insertBy(compare)(3)([1,2,4]).should.be.eql([1,2,3,4])
+        })
+      })
     })
     describe('maximumBy', () => {
-
+      describe('(compare, [1,3,2,4,2])', () => {
+        it('== 4', () => {
+          L.maximumBy(compare, [1,3,2,4,2]).should.be.eql(4)
+        })
+      })
+      describe('(compare)([1,3,2,4,2])', () => {
+        it('== 4', () => {
+          L.maximumBy(compare)([1,3,2,4,2]).should.be.eql(4)
+        })
+      })
     })
     describe('minimumBy', () => {
-
+      describe('(compare, [1,3,2,4,2])', () => {
+        it('== 1', () => {
+          L.minimumBy(compare, [1,3,2,4,2]).should.be.eql(1)
+        })
+      })
+      describe('(compare)([1,3,2,4,2])', () => {
+        it('== 1', () => {
+          L.minimumBy(compare)([1,3,2,4,2]).should.be.eql(1)
+        })
+      })
     })
   })
 })
