@@ -5,9 +5,6 @@ export const id = a => a
 export const True: Function = () => true
 export const False: Function = () => false
 
-// eslint-disable-next-line
-export const constant = _curry((a, b) => a)
-
 export const error = (str: string): void => {
   throw new Error(`haskind.${str}`)
 }
@@ -31,6 +28,9 @@ export const _curry: Function =
       else
         return args.reduce((f, a) => _curry(f.bind(this, a)), fn)
     }
+
+// eslint-disable-next-line
+export const constant = _curry((a, b) => a)
 
 // =============================================================================
 
