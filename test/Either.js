@@ -5,7 +5,7 @@ const { Left, Right } = E
 
 const inc = x => x + 1
 
-describe.only('Either', () => {
+xdescribe('Either', () => {
   describe('Left', () => {
     describe('("value")', () => {
       it('== { left: "value" }', () => {

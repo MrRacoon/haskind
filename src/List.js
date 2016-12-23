@@ -29,13 +29,12 @@ const _lengthObject: Function =
   (ls: {}): number => Object.keys(ls).length
 
 export const length: Function =
-  function _length(ls: any): number {
-
-    if (Array.isArray(ls))
-      return _lengthArray(ls)
-
-    if (typeof ls === 'object')
-      return _lengthObject(ls)
+  function _length(ls: any): (number | void) {
+    switch (type(ls)) {
+    case 'object': return _lengthObject(ls)
+    case 'array' : return _lengthArray(ls)
+    default      : return undefined
+    }
   }
 
 // List transformations

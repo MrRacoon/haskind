@@ -1,8 +1,17 @@
+import type from 'type-of'
+
+export const id = a => a
+
+export const True: Function = () => true
+export const False: Function = () => false
+
+// eslint-disable-next-line
+export const constant = _curry((a, b) => a)
+
 export const error = (str: string): void => {
   throw new Error(`haskind.${str}`)
 }
 
-export const id = a => a
 
 // =============================================================================
 
@@ -12,7 +21,7 @@ export const _lazy: Function =
 
 export const _notUndefined =
   (x: ?any, fn: Function): any =>
-    typeof x === 'undefined' ? fn() : x
+    type(x) === 'undefined' ? fn() : x
 
 export const _curry: Function =
   (fn: Function): Function =>
@@ -22,14 +31,6 @@ export const _curry: Function =
       else
         return args.reduce((f, a) => _curry(f.bind(this, a)), fn)
     }
-
-// =============================================================================
-
-export const True: Function = () => true
-export const False: Function = () => false
-
-// eslint-disable-next-line
-export const constant = _curry((a, b) => a)
 
 // =============================================================================
 
