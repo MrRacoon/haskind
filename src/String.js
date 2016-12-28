@@ -1,6 +1,6 @@
 
 // isString :: String -> Bool
-export const isString = undefined
+export const isString = undefined;
 
 /*
 
@@ -19,10 +19,10 @@ toString(['s', 't', 'r', 'i', 'n', 'g']) === "string"
 */
 
 // fromString :: String -> a
-export const fromString = undefined
+export const fromString = undefined;
 
 // toString :: a -> String
-export const toString = undefined
+export const toString = undefined;
 
 /*
 

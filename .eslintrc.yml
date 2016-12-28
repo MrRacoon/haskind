@@ -22,4 +22,4 @@ rules:
     - single
   semi:
     - error
-    - never
+    - always
