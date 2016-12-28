@@ -1,5 +1,6 @@
 import should from 'should'
 import * as L from '../src/List'
+import { fibs } from './helpers'
 import { id } from '../src/util'
 import { Ordering } from '../src/Ord'
 
@@ -505,6 +506,16 @@ describe('List', () => {
           L.take(-1, [1,2,3,4]).should.be.eql([])
         })
       })
+      describe('(-1, [1,2,3,4])', () => {
+        it('== []', () => {
+          L.take(-1, [1,2,3,4]).should.be.eql([])
+        })
+      })
+      describe('(5, fibs())', () => {
+        it('== [1,1,2,3,5]', () => {
+          L.take(1, fibs()).should.be.eql([1,1,2,3,5])
+        })
+      })
     })
     describe('drop', () => {
       describe('(2, [1,2,3,4])', () => {
@@ -569,6 +580,11 @@ describe('List', () => {
       describe('([1,2,3])([1,2,3])', () => {
         it('== true', () => {
           L.isPrefixOf([1,2,3])([1,2,3]).should.be.eql(true)
+        })
+      })
+      describe('([1,1,2,3,5], fibs())', () => {
+        it('== false', () => {
+          L.isPrefixOf([1,1,2,3,5], fibs()).should.be.eql(true)
         })
       })
     })
