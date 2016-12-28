@@ -1,4 +1,3 @@
-// import should from 'should'
 import * as T from '../src/Tuple'
 
 

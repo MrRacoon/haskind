@@ -1,4 +1,3 @@
-// import should from 'should'
 import * as E from '../src/Either'
 
 const { Left, Right } = E

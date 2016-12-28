@@ -1,4 +1,3 @@
-// import should from 'should'
 import * as M from '../src/Maybe'
 import { id } from '../src/util'
 
