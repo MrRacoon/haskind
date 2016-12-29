@@ -51,3 +51,21 @@ export const cond: Function =
       ps.concat(undefinedCond)
         .filter(condCheck(...args))
         .map(condApply(...args))[0];
+
+export const propExists = (prop, obj) => typeof(obj[prop]) !== 'undefined';
+
+export function typeit (x) {
+  switch (type(x)) {
+  case 'object':
+    switch (true) {
+    case x instanceof Map : return 'Map';
+    case x instanceof Set : return 'Set';
+    case propExists('right', x): return 'Either';
+    case propExists('left', x): return 'Either';
+    case propExists('just', x): return 'Maybe';
+    case propExists('nothing', x): return 'Maybe';
+    default : return type(x);
+    }
+  default : return type(x);
+  }
+}

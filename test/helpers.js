@@ -1,3 +1,6 @@
+export const phonebook = new Map([['erik', 3], ['jack', 9]]);
+
+export const classnames = new Set(['erik', 'jack']);
 
 export function* fibs () {
   let next = 1;
@@ -5,13 +8,23 @@ export function* fibs () {
   let temp;
   while (true) { // eslint-disable-line
     yield next;
-    temp = acc;
-    acc  = next + acc;
-    next = temp;
+    temp = next + acc;
+    next = acc;
+    acc  = temp;
   }
 }
 
 describe('helpers', () => {
+  describe('phonebook', () => {
+    it('instanceof Map', () => {
+      phonebook.should.be.instanceof(Map);
+    });
+  });
+  describe('classnames', () => {
+    it('instanceof Set', () => {
+      classnames.should.be.instanceof(Set);
+    });
+  });
   describe('fibs', () => {
     describe('()', () => {
       let f = fibs();

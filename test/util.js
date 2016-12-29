@@ -189,4 +189,76 @@ describe('util', () => {
       });
     });
   });
+  describe('typeit', () => {
+    describe('(true)', () => {
+      it('== "boolean"', () => {
+        U.typeit(true).should.be.eql('boolean');
+      });
+    });
+    describe('(false)', () => {
+      it('== "boolean"', () => {
+        U.typeit(false).should.be.eql('boolean');
+      });
+    });
+    describe('(new Map())', () => {
+      it('== "Map"', () => {
+        U.typeit(new Map()).should.be.eql('Map');
+      });
+    });
+    describe('(new Set())', () => {
+      it('== "Set"', () => {
+        U.typeit(new Set()).should.be.eql('Set');
+      });
+    });
+    describe('(45)', () => {
+      it('== "number"', () => {
+        U.typeit(45).should.be.eql('number');
+      });
+    });
+    describe('(45.9)', () => {
+      it('== "number"', () => {
+        U.typeit(45.9).should.be.eql('number');
+      });
+    });
+    describe('("4")', () => {
+      it('== "string"', () => {
+        U.typeit('4').should.be.eql('string');
+      });
+    });
+    describe('("asdf")', () => {
+      it('== "string"', () => {
+        U.typeit('asdf').should.be.eql('string');
+      });
+    });
+    describe('(["e", "r", "i", "k"])', () => {
+      it('== "array"', () => {
+        U.typeit(['e', 'r', 'i', 'k']).should.be.eql('array');
+      });
+    });
+    describe('({ some: "obj" })', () => {
+      it('== "object"', () => {
+        U.typeit({ some: 'obj' }).should.be.eql('object');
+      });
+    });
+    describe('(Nothing())', () => {
+      it('== "Maybe"', () => {
+        U.typeit({ nothing: null }).should.be.eql('Maybe');
+      });
+    });
+    describe('(Just(2))', () => {
+      it('== "Maybe"', () => {
+        U.typeit({ just: 2 }).should.be.eql('Maybe');
+      });
+    });
+    describe('(Left(2))', () => {
+      it('== "Either"', () => {
+        U.typeit({ left: 2 }).should.be.eql('Either');
+      });
+    });
+    describe('(Right(2))', () => {
+      it('== "Either"', () => {
+        U.typeit({ right: 2 }).should.be.eql('Either');
+      });
+    });
+  });
 });
