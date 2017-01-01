@@ -4,7 +4,7 @@ const { Left, Right } = E;
 
 const inc = x => x + 1;
 
-xdescribe('Either', () => {
+describe('Either', () => {
   describe('Left', () => {
     describe('("value")', () => {
       it('== { left: "value" }', () => {
@@ -73,24 +73,24 @@ xdescribe('Either', () => {
   describe('isLeft', () => {
     describe('(Left(42))', () => {
       it('== true', () => {
-        E.isLeft(42).should.be.eql(true);
+        E.isLeft(Left(42)).should.be.eql(true);
       });
     });
     describe('(Right(42))', () => {
       it('== false', () => {
-        E.isLeft(42).should.be.eql(false);
+        E.isLeft(Right(42)).should.be.eql(false);
       });
     });
   });
   describe('isRight', () => {
     describe('(Left(42))', () => {
       it('== false', () => {
-        E.isLeft(42).should.be.eql(false);
+        E.isRight(Left(42)).should.be.eql(false);
       });
     });
     describe('(Right(42))', () => {
       it('== true', () => {
-        E.isLeft(42).should.be.eql(true);
+        E.isRight(Right(42)).should.be.eql(true);
       });
     });
   });

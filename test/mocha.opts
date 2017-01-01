@@ -1,4 +1,4 @@
 --require babel-core/register
 --require should
---reporter spec
+--reporter list
 --ui bdd
