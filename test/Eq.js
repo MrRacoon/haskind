@@ -1,6 +1,6 @@
 import * as E from '../src/Eq';
 
-xdescribe('Eq', () => {
+describe('Eq', () => {
   describe('eq', () => {
     describe('(1,1)', () => {
       it('== true', () => {
