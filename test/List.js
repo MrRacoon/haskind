@@ -947,8 +947,13 @@ describe('List', () => {
       });
     });
   });
-  xdescribe('Zipping and unzipping lists', () => {
+  describe('Zipping and unzipping lists', () => {
     describe('zip', () => {
+      describe('([], [])', () => {
+        it('== []', () => {
+          L.zip([], []).should.be.eql([]);
+        });
+      });
       describe('([1,2], [1,2,3])', () => {
         it('== [[1,1], [2,2]]', () => {
           L.zip([1,2], [1,2,3]).should.be.eql([[1,1], [2,2]]);
@@ -961,6 +966,11 @@ describe('List', () => {
       });
     });
     describe('unzip', () => {
+      describe('([])', () => {
+        it('== []', () => {
+          L.unzip([]).should.be.eql([[],[]]);
+        });
+      });
       describe('([[1,1], [2,2], [4,5]])', () => {
         it('== [[1,2,4], [1,2,5]]', () => {
           L.unzip([[1,1], [2,2], [4,5]]).should.be.eql([[1,2,4], [1,2,5]]);

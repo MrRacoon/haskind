@@ -277,7 +277,14 @@ export const findIndices: Function = _curry(
 // Zipping and unzipping lists
 
 // zip :: [a] -> [b] -> [(a, b)]
-export const zip = undefined;
+export const zip = _curry((xs, ys) => {
+  const ret = [];
+  const len = xs.length < ys.length ? xs.length : ys.length;
+  for (let i = 0; i < len; i+=1) {
+    ret.push([xs[i], ys[i]]);
+  }
+  return ret;
+});
 // zip3 :: [a] -> [b] -> [c] -> [(a, b, c)]
 // zip4 :: [a] -> [b] -> [c] -> [d] -> [(a, b, c, d)]
 // zip5 :: [a] -> [b] -> [c] -> [d] -> [e] -> [(a, b, c, d, e)]
@@ -291,7 +298,16 @@ export const zip = undefined;
 // zipWith7 :: (a -> b -> c -> d -> e -> f -> g -> h) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [h]
 
 // unzip :: [(a, b)] -> ([a], [b])
-export const unzip = undefined;
+export const unzip = _curry((as: any[][]): any[][] => {
+  let xs = [];
+  let ys = [];
+  const len = as.length;
+  for (let i=0; i < len; i+=1) {
+    xs.push(as[i][0]);
+    ys.push(as[i][1]);
+  }
+  return [xs, ys];
+});
 // unzip3 :: [(a, b, c)] -> ([a], [b], [c])
 // unzip4 :: [(a, b, c, d)] -> ([a], [b], [c], [d])
 // unzip5 :: [(a, b, c, d, e)] -> ([a], [b], [c], [d], [e])
