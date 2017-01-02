@@ -137,13 +137,19 @@ export const minimum: Function =
 // Extracting sublists
 
 // take :: Int -> [a] -> [a]
-export const take = undefined;
+export const take = _curry((n: number, xs: any[]): any[] =>
+  n < 0 ? [] : xs.slice(0, n)
+);
 
 // drop :: Int -> [a] -> [a]
-export const drop = undefined;
+export const drop = _curry((n: number, xs: any[]): any[] =>
+  n < 0 ? xs : xs.filter((x, i) => i >= n)
+);
 
 // splitAt :: Int -> [a] -> ([a], [a])
-export const splitAt = undefined;
+export const splitAt = _curry((n, xs) =>
+  xs.filter((x, i) => i !== n)
+);
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 export const takeWhile = undefined;
@@ -205,10 +211,68 @@ export const filter: Function = _curry(
 // Indexing lists
 
 // (!!) :: [a] -> Int -> a
+export const index: Function = _curry(
+  (ls: any[], i: number): any => {
+    if (i >= ls.length) {
+      return error('List.index: index too large');
+    }
+    if (i < 0) {
+      return error('List.index: negative index');
+    }
+    return ls[i];
+  }
+);
+
 // elemIndex :: Eq a => a -> [a] -> Maybe Int
+export const elemIndex: Function = _curry(
+  (l: any, ls: any[]) => {
+    const length = ls.length;
+    for (let i = 0; i < length; i+=1) {
+      if (l === ls[i]) {
+        return { just: i };
+      }
+    }
+    return { nothing: null };
+  }
+);
+
 // elemIndices :: Eq a => a -> [a] -> [Int]
+export const elemIndices: Function = _curry(
+  (x, xs): number[] => {
+    const ys = [];
+    xs.forEach((y, i) => y === x && ys.push(i));
+    return ys;
+  }
+);
+
 // findIndex :: (a -> Bool) -> [a] -> Maybe Int
+export const findIndex: Function = _curry(
+  (prd: Function, ls: any[]) => {
+    const length = ls.length;
+    for (let i = 0; i < length; i+=1) {
+      if (prd(ls[i])) {
+        return { just: i };
+      }
+    }
+    return { nothing: null };
+  }
+
+);
+
 // findIndices :: (a -> Bool) -> [a] -> [Int]
+export const findIndices: Function = _curry(
+  (prd: Function, ls: any[]) => {
+    const length = ls.length;
+    let ys = [];
+    for (let i = 0; i < length; i+=1) {
+      if (prd(ls[i])) {
+        ys.push(i);
+      }
+    }
+    return ys;
+  }
+
+);
 
 // Zipping and unzipping lists
 
