@@ -331,19 +331,73 @@ export const unwords = undefined;
 // "Set" operations
 
 // nub :: Eq a => [a] -> [a]
-export const nub = undefined;
+export const nub =
+  (xs) => {
+    const list = [];
+    xs.forEach(x => list.indexOf(x) === -1 && list.push(x));
+    return list;
+  };
 
 // delete_ :: Eq a => a -> [a] -> [a]
-export const delete_ = undefined;
+export const delete_ = _curry(
+  (x, xs) => {
+    let list = [];
+    const len = xs.length;
+    for (let i = 0; i < len; i+=1) {
+      if (xs[i] === x) {
+        list = list.concat(xs.slice(i+1));
+        break;
+      }
+      list.push(xs[i]);
+    }
+    if (type(xs) === 'String') {
+      return list.join('');
+    }
+    return list;
+  }
+);
 
 // difference :: Eq a => [a] -> [a] -> [a]
-export const difference = undefined;
+export const difference = _curry(
+  (as, bs) => {
+    const list = [];
+    const len = as.length;
+    for (let i = 0; i < len; i+=1) {
+      if (bs.indexOf(as[i]) === -1) {
+        list.push(as[i]);
+      }
+    }
+    return list;
+  }
+);
 
 // union :: Eq a => [a] -> [a] -> [a]
-export const union = undefined;
+export const union = _curry(
+  (as, bs) => {
+    const list = as;
+    const len = bs.length;
+    for (let i = 0; i < len; i+=1) {
+      if (as.indexOf(bs[i]) === -1) {
+        list.push(bs[i]);
+      }
+    }
+    return list;
+  }
+);
 
 // intersect :: Eq a => [a] -> [a] -> [a]
-export const intersect = undefined;
+export const intersect = _curry(
+  (as, bs) => {
+    const list = [];
+    const len = as.length;
+    for (let i = 0; i < len; i+=1) {
+      if (bs.indexOf(as[i]) !== -1) {
+        list.push(as[i]);
+      }
+    }
+    return list;
+  }
+);
 
 // Ordered lists
 

@@ -1093,7 +1093,7 @@ describe('List', () => {
       });
     });
   });
-  xdescribe('"Set" operations', () => {
+  describe('"Set" operations', () => {
     describe('nub', () => {
       describe('([])', () => {
         it('== []', () => {
