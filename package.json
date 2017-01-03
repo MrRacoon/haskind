@@ -4,7 +4,8 @@
   "description": "Good ol' Haskell functions for use in Javascript",
   "main": "index.js",
   "scripts": {
-    "build": "run-s clean:dist deps compile",
+    "build": "npm run build:production",
+    "build:dev": "run-s clean:dist deps compile",
     "build:production": "run-s clean:dist deps compile:production",
     "clean": "run-p clean:*",
     "clean:deps": "rm -rf node_modules",
