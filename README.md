@@ -1,6 +1,9 @@
 haskind
 =======
 
+[![dependencies Status](https://david-dm.org/MrRacoon/haskind/status.svg)](https://david-dm.org/MrRacoon/haskind)
+[![Build Status](https://travis-ci.org/MrRacoon/haskind.svg?branch=master)](https://travis-ci.org/MrRacoon/haskind)
+
 ##### Tried and true Haskell functions for use in Javascript
 
 .oO( or at least as close as we can get )
