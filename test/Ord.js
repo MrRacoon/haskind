@@ -4,7 +4,7 @@ const { LT, EQ, GT } = O;
 
 const length = xs => xs.length;
 
-xdescribe('Ord', () => {
+describe('Ord', () => {
   describe('LT', () => {
     it('== -1', () => {
       LT.should.be.eql(-1);
