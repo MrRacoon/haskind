@@ -1,0 +1,10 @@
+src/
+test/
+
+.eslintrc.yml
+.travis.yml
+
+lamda.png
+js.png
+
+notes.md
