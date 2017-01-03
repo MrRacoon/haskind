@@ -12,10 +12,9 @@ haskind
 
 ---
 
-This project uses a combination of:
+This project uses:
 
 * [Flow types](https://flowtype.org/)
-* [type-of](https://github.com/ForbesLindesay/type-of)
 
 and some functional magic to provide a set of functions closely mimicking the
 libraries provided by Haskell.

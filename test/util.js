@@ -189,75 +189,95 @@ describe('util', () => {
       });
     });
   });
-  describe('typeit', () => {
+  describe('type', () => {
+    describe('(null)', () => {
+      it('== "Null"', () => {
+        U.type(null).should.be.eql('Null');
+      });
+    });
     describe('(true)', () => {
-      it('== "boolean"', () => {
-        U.typeit(true).should.be.eql('boolean');
+      it('== "Boolean"', () => {
+        U.type(true).should.be.eql('Boolean');
       });
     });
     describe('(false)', () => {
-      it('== "boolean"', () => {
-        U.typeit(false).should.be.eql('boolean');
+      it('== "Boolean"', () => {
+        U.type(false).should.be.eql('Boolean');
       });
     });
     describe('(new Map())', () => {
       it('== "Map"', () => {
-        U.typeit(new Map()).should.be.eql('Map');
+        U.type(new Map()).should.be.eql('Map');
       });
     });
     describe('(new Set())', () => {
       it('== "Set"', () => {
-        U.typeit(new Set()).should.be.eql('Set');
+        U.type(new Set()).should.be.eql('Set');
       });
     });
     describe('(45)', () => {
-      it('== "number"', () => {
-        U.typeit(45).should.be.eql('number');
+      it('== "Number"', () => {
+        U.type(45).should.be.eql('Number');
       });
     });
     describe('(45.9)', () => {
-      it('== "number"', () => {
-        U.typeit(45.9).should.be.eql('number');
+      it('== "Number"', () => {
+        U.type(45.9).should.be.eql('Number');
+      });
+    });
+    describe('(NaN)', () => {
+      it('== "Number"', () => {
+        U.type(NaN).should.be.eql('Number');
+      });
+    });
+    describe('(Infinity)', () => {
+      it('== "Number"', () => {
+        U.type(Infinity).should.be.eql('Number');
+      });
+    });
+    describe('("")', () => {
+      it('== "String"', () => {
+        U.type('').should.be.eql('String');
       });
     });
     describe('("4")', () => {
-      it('== "string"', () => {
-        U.typeit('4').should.be.eql('string');
+      it('== "String"', () => {
+        U.type('4').should.be.eql('String');
       });
     });
     describe('("asdf")', () => {
-      it('== "string"', () => {
-        U.typeit('asdf').should.be.eql('string');
+      it('== "String"', () => {
+        U.type('asdf').should.be.eql('String');
       });
     });
     describe('(["e", "r", "i", "k"])', () => {
-      it('== "array"', () => {
-        U.typeit(['e', 'r', 'i', 'k']).should.be.eql('array');
+      it('== "Array"', () => {
+        U.type(['e', 'r', 'i', 'k']).should.be.eql('Array');
       });
     });
     describe('({ some: "obj" })', () => {
-      it('== "object"', () => {
-        U.typeit({ some: 'obj' }).should.be.eql('object');
+      it('== "Object"', () => {
+        U.type({ some: 'obj' }).should.be.eql('Object');
       });
     });
     describe('(Nothing())', () => {
       it('== "Maybe"', () => {
-        U.typeit({ nothing: null }).should.be.eql('Maybe');
+        U.type({ nothing: null }).should.be.eql('Maybe');
       });
     });
     describe('(Just(2))', () => {
       it('== "Maybe"', () => {
-        U.typeit({ just: 2 }).should.be.eql('Maybe');
+        U.type({ just: 2 }).should.be.eql('Maybe');
       });
     });
     describe('(Left(2))', () => {
       it('== "Either"', () => {
-        U.typeit({ left: 2 }).should.be.eql('Either');
+        U.type({ left: 2 }).should.be.eql('Either');
       });
     });
     describe('(Right(2))', () => {
       it('== "Either"', () => {
-        U.typeit({ right: 2 }).should.be.eql('Either');
+        U.type({ right: 2 }).should.be.eql('Either');
       });
     });
   });

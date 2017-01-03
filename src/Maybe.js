@@ -1,4 +1,4 @@
-import type from 'type-of';
+import { type } from './util';
 import { error, _curry } from './util';
 
 export type Maybe = _Just<any> | Nothing
@@ -16,11 +16,11 @@ export const maybe = _curry((def: any, fn: Function, m: Maybe) => {
 
 // isJust :: Maybe a -> Bool
 export const isJust: Function = (m: Maybe): boolean =>
-  type(m) === 'object' && type(m.just) !== 'undefined' && type(m.nothing) === 'undefined';
+  type(m) === 'Maybe' && type(m.just) !== 'undefined';
 
 // isNothing :: Maybe a -> Bool
 export const isNothing: Function = (m: Maybe): boolean =>
-  type(m) === 'object' && type(m.nothing) !== 'undefined' && type(m.just) === 'undefined';
+  type(m) === 'Maybe' && type(m.nothing) !== 'undefined';
 
 // fromJust :: Maybe a -> a
 export const fromJust = (m: Maybe): any =>
