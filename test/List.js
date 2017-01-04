@@ -3,7 +3,9 @@ import * as L from '../src/List';
 import { fibs } from './helpers';
 import { id } from '../src/util';
 import { Ordering } from '../src/Ord';
+import { Just, Nothing } from '../src/Maybe';
 
+const lt3 = x => x < 3;
 const isEven = x => x % 2 === 0;
 const eq = (x,y) => x === y;
 const compare = (x,y) => x === y
@@ -544,7 +546,7 @@ describe('List', () => {
         });
       });
     });
-    describe('splitAt', () => {
+    xdescribe('splitAt', () => {
       describe('(-1, [1,2,3,4,5])', () => {
         it('== [[], [1,2,3,4,5]]', () => {
           L.splitAt(3, [1,2,3,4,5]).should.be.eql([[1,2,3], [4,5]]);
@@ -566,19 +568,211 @@ describe('List', () => {
         });
       });
     });
-    describe('takeWhile', () => {
-
+    xdescribe('takeWhile', () => {
+      describe('(lt3, [1,2,3,4,5])', () => {
+        it('== [1,2]', () => {
+          L.takeWhile(lt3, [1,2,3,4,5]).should.be.eql([1,2]);
+        });
+      });
+      describe('(lt3)([1,2,3,4,5])', () => {
+        it('== [1,2]', () => {
+          L.takeWhile(lt3)([1,2,3,4,5]).should.be.eql([1,2]);
+        });
+      });
+      describe('(lt3, [1,2,3,2,1])', () => {
+        it('== [1,2]', () => {
+          L.takeWhile(lt3, [1,2,3,2,1]).should.be.eql([1,2]);
+        });
+      });
+      describe('(lt3, [5,1,2,3,2,1])', () => {
+        it('== []', () => {
+          L.takeWhile(lt3, [5,1,2,3,2,1]).should.be.eql([]);
+        });
+      });
+      describe('(lt3, [,1,2,2,1])', () => {
+        it('== [1,2,2,1]', () => {
+          L.takeWhile(lt3, [1,2,2,1]).should.be.eql([1,2,2,1]);
+        });
+      });
     });
-    describe('dropWhile', () => {
-
+    xdescribe('dropWhile', () => {
+      describe('(lt3, [1,2,3,4,5])', () => {
+        it('== [3,4,5]', () => {
+          L.dropWhile(lt3, [1,2,3,4,5]).should.be.eql([3,4,5]);
+        });
+      });
+      describe('(lt3)([1,2,3,4,5])', () => {
+        it('== [3,4,5]', () => {
+          L.dropWhile(lt3)([1,2,3,4,5]).should.be.eql([3,4,5]);
+        });
+      });
+      describe('(lt3, [1,2,3,2,1])', () => {
+        it('== [3,2,1]', () => {
+          L.dropWhile(lt3, [1,2,3,2,1]).should.be.eql([3,2,1]);
+        });
+      });
+      describe('(lt3, [1,2,2,1])', () => {
+        it('== []', () => {
+          L.dropWhile(lt3, [1,2,2,1]).should.be.eql([]);
+        });
+      });
     });
     // dropWhileEnd :: (a -> Bool) -> [a] -> [a]
+    xdescribe('dropWhileEnd', () => {
+      describe('(lt3, [1,2,3,4,5])', () => {
+        it('== [1,2,3,4,5]', () => {
+          L.dropWhileEnd(lt3, [1,2,3,4,5]).should.be.eql([1,2,3,4,5]);
+        });
+      });
+      describe('(lt3, [1,2,3,2,1])', () => {
+        it('== [1,2,3,2,1]', () => {
+          L.dropWhileEnd(lt3, [1,2,3,2,1]).should.be.eql([1,2,3]);
+        });
+      });
+      describe('(lt3)([1,2,3,2,1])', () => {
+        it('== [1,2,3,2,1]', () => {
+          L.dropWhileEnd(lt3)([1,2,3,2,1]).should.be.eql([1,2,3]);
+        });
+      });
+      describe('(lt3, [1,2,2,1])', () => {
+        it('== []', () => {
+          L.dropWhileEnd(lt3, [1,2,2,1]).should.be.eql([]);
+        });
+      });
+    });
     // span :: (a -> Bool) -> [a] -> ([a], [a])
+    xdescribe('span', () => {
+      describe('(lt3, [1,2,3,4,5])', () => {
+        it('== [[1,2], [3,4,5]]', () => {
+          L.span(lt3, [1,2,3,4,5]).should.be.eql([[1,2], [3,4,5]]);
+        });
+      });
+      describe('(lt3)([1,2,3,4,5])', () => {
+        it('== [[1,2], [3,4,5]]', () => {
+          L.span(lt3)([1,2,3,4,5]).should.be.eql([[1,2], [3,4,5]]);
+        });
+      });
+      describe('(lt3, [1,2,2,1])', () => {
+        it('== [[1,2,2,1], []]', () => {
+          L.span(lt3, [1,2,2,1]).should.be.eql([[1,2,2,1], []]);
+        });
+      });
+      describe('(lt3, [3,1,2,2,1])', () => {
+        it('== [[], [3,1,2,2,1]]', () => {
+          L.span(lt3, [3,1,2,2,1]).should.be.eql([[], [3,1,2,2,1]]);
+        });
+      });
+    });
     // break :: (a -> Bool) -> [a] -> ([a], [a])
+    xdescribe('break', () => {
+      describe('(lt3, [1,2,3,4,5])', () => {
+        it('== [[],[1,2,3,4,5]]', () => {
+          L.break(lt3, [1,2,3,4,5]).should.be.eql([[], [1,2,3,4,5]]);
+        });
+      });
+      describe('(lt3)([1,2,3,4,5])', () => {
+        it('== [[],[1,2,3,4,5]]', () => {
+          L.break(lt3)([1,2,3,4,5]).should.be.eql([[], [1,2,3,4,5]]);
+        });
+      });
+      describe('(lt3, [5,4,3,2,1,2,3,4,5])', () => {
+        it('== [[5,4,3],[2,1,2,3,4,5]]', () => {
+          L.break(lt3, [5,4,3,2,1,2,3,4,5]).should.be.eql([[5,4,3], [2,1,2,3,4,5]]);
+        });
+      });
+      describe('(lt3, [5,4,3,4,5])', () => {
+        it('== [[5,4,3,4,5],[]]', () => {
+          L.break(lt3, [5,4,3,4,5]).should.be.eql([[5,4,3,4,5], []]);
+        });
+      });
+    });
     // stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
+    xdescribe('stripPrefix', () => {
+      describe('([], [])', () => {
+        it('== Just([])', () => {
+          L.stripPrefix([], []).should.be.eql(Just([]));
+        });
+      });
+      describe('([1,2], [])', () => {
+        it('== Nothing()', () => {
+          L.stripPrefix([1,2], []).should.be.eql(Nothing());
+        });
+      });
+      describe('([], [1,2])', () => {
+        it('== Just([1,2])', () => {
+          L.stripPrefix([], [1,2]).should.be.eql(Just([1,2]));
+        });
+      });
+      describe('([1], [1,2])', () => {
+        it('== Just([2])', () => {
+          L.stripPrefix([1], [1,2]).should.be.eql(Just([2]));
+        });
+      });
+      describe('([1])([1,2])', () => {
+        it('== Just([2])', () => {
+          L.stripPrefix([1])([1,2]).should.be.eql(Just([2]));
+        });
+      });
+      describe('([1,2], [1,2])', () => {
+        it('== Just([])', () => {
+          L.stripPrefix([1,2], [1,2]).should.be.eql(Just([]));
+        });
+      });
+    });
     // group :: Eq a => [a] -> [[a]]
+    xdescribe('group', () => {
+      describe('([])', () => {
+        it('description', () => {
+          L.group([]).should.be.eql([]);
+        });
+      });
+      describe('([1,2,1,1])', () => {
+        it('== [[1], [2], [1,1]]', () => {
+          L.group([1,2,1,1]).should.be.eql([[1], [2], [1,1]]);
+        });
+      });
+      describe('([1,1,1])', () => {
+        it('== [[1,1,1]]', () => {
+          L.group([1,1,1]).should.be.eql([[1,1,1]]);
+        });
+      });
+    });
     // inits :: [a] -> [[a]]
+    xdescribe('inits', () => {
+      describe('([])', () => {
+        it('== [[]]', () => {
+          L.inits([]).should.be.eql([[]]);
+        });
+      });
+      describe('([1])', () => {
+        it('== [[], [1]]', () => {
+          L.inits([1]).should.be.eql([[], [1]]);
+        });
+      });
+      describe('([1,2,3])', () => {
+        it('== [[], [1], [1,2], [1,2,3]]', () => {
+          L.inits([1,2,3]).should.be.eql([[], [1], [1,2], [1,2,3]]);
+        });
+      });
+    });
     // tails :: [a] -> [[a]]
+    xdescribe('tails', () => {
+      describe('([])', () => {
+        it('== [[]]', () => {
+          L.tails([]).should.be.eql([[]]);
+        });
+      });
+      describe('([1])', () => {
+        it('== [[1], []]', () => {
+          L.tails([1,2,3]).should.be.eql([[1], []]);
+        });
+      });
+      describe('([1,2,3])', () => {
+        it('== [[1,2,3], [2,3], [3], []]', () => {
+          L.tails([1,2,3]).should.be.eql([[1,2,3], [2,3], [3], []]);
+        });
+      });
+    });
   });
   xdescribe('Predicates', () => {
     describe('isPrefixOf', () => {

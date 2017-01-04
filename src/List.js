@@ -147,9 +147,7 @@ export const drop = _curry((n: number, xs: any[]): any[] =>
 );
 
 // splitAt :: Int -> [a] -> ([a], [a])
-export const splitAt = _curry((n, xs) =>
-  xs.filter((x, i) => i !== n)
-);
+export const splitAt = undefined;
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 export const takeWhile = undefined;
