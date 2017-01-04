@@ -2,29 +2,24 @@ import * as I from '../src/Ix';
 
 describe('Ix', () => {
   describe('range', () => {
-    describe('(0, 0)', () => {
+    describe('([0, 0])', () => {
       it('== []', () => {
-        I.range(0, 0).should.be.eql([]);
+        I.range([0, 0]).should.be.eql([]);
       });
     });
-    describe('(0)(0)', () => {
-      it('== []', () => {
-        I.range(0)(0).should.be.eql([]);
-      });
-    });
-    describe('(-1, 0)', () => {
+    describe('([-1, 0])', () => {
       it('== [-1]', () => {
-        I.range(-1, 0).should.be.eql([-1]);
+        I.range([-1, 0]).should.be.eql([-1]);
       });
     });
-    describe('(0, 10)', () => {
+    describe('([0, 10])', () => {
       it('== [0,1,2,3,4,5,6,7,8,9]', () => {
-        I.range(0, 10).should.be.eql([0,1,2,3,4,5,6,7,8,9]);
+        I.range([0, 10]).should.be.eql([0,1,2,3,4,5,6,7,8,9]);
       });
     });
-    describe('(3, 10)', () => {
+    describe('([3, 10])', () => {
       it('== [3,4,5,6,7,8,9]', () => {
-        I.range(3, 10).should.be.eql([3,4,5,6,7,8,9]);
+        I.range([3, 10]).should.be.eql([3,4,5,6,7,8,9]);
       });
     });
   });

@@ -1,9 +1,8 @@
 import { _curry, error } from './util';
 
 // range :: (a, a) -> [a]
-export const range = _curry((i, n) =>
-  [...Array(n-i).keys()].map(x => x + i)
-);
+export const range = ([a, b]) =>
+  [...Array(b-a).keys()].map(x => x + a);
 
 // inRange :: (a, a) -> a -> Bool
 export const inRange = _curry(
