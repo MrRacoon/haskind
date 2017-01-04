@@ -545,7 +545,26 @@ describe('List', () => {
       });
     });
     describe('splitAt', () => {
-
+      describe('(-1, [1,2,3,4,5])', () => {
+        it('== [[], [1,2,3,4,5]]', () => {
+          L.splitAt(3, [1,2,3,4,5]).should.be.eql([[1,2,3], [4,5]]);
+        });
+      });
+      describe('(0, [1,2,3,4,5])', () => {
+        it('== [[], [1,2,3,4,5]]', () => {
+          L.splitAt(3, [1,2,3,4,5]).should.be.eql([[1,2,3], [4,5]]);
+        });
+      });
+      describe('(3, [1,2,3,4,5])', () => {
+        it('== [[1,2,3], [4,5]]', () => {
+          L.splitAt(3, [1,2,3,4,5]).should.be.eql([[1,2,3], [4,5]]);
+        });
+      });
+      describe('(9, [1,2,3,4,5])', () => {
+        it('== [[1,2,3,4,5], []]', () => {
+          L.splitAt(3, [1,2,3,4,5]).should.be.eql([[1,2,3], [4,5]]);
+        });
+      });
     });
     describe('takeWhile', () => {
 
@@ -1093,7 +1112,7 @@ describe('List', () => {
       });
     });
   });
-  describe('"Set" operations', () => {
+  xdescribe('"Set" operations', () => {
     describe('nub', () => {
       describe('([])', () => {
         it('== []', () => {
