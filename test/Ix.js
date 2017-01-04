@@ -1,6 +1,6 @@
 import * as I from '../src/Ix';
 
-xdescribe('Ix', () => {
+describe('Ix', () => {
   describe('range', () => {
     describe('(0, 0)', () => {
       it('== []', () => {
@@ -9,7 +9,7 @@ xdescribe('Ix', () => {
     });
     describe('(0)(0)', () => {
       it('== []', () => {
-        I.range(0, 0).should.be.eql([]);
+        I.range(0)(0).should.be.eql([]);
       });
     });
     describe('(-1, 0)', () => {
@@ -36,7 +36,7 @@ xdescribe('Ix', () => {
     });
     describe('([0, 0])(0)', () => {
       it('== 0', () => {
-        I.index([0,0], 0).should.be.eql(0);
+        I.index([0,0])(0).should.be.eql(0);
       });
     });
     describe('([3, 9], 3)', () => {
@@ -58,7 +58,7 @@ xdescribe('Ix', () => {
     });
     describe('([0, 0])(0)', () => {
       it('== true', () => {
-        I.inRange([0,0], 0).should.be.eql(true);
+        I.inRange([0,0])(0).should.be.eql(true);
       });
     });
     describe('([0, 0], -1)', () => {

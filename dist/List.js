@@ -182,11 +182,7 @@ var drop = exports.drop = (0, _util._curry)(function (n, xs) {
 });
 
 // splitAt :: Int -> [a] -> ([a], [a])
-var splitAt = exports.splitAt = (0, _util._curry)(function (n, xs) {
-  return xs.filter(function (x, i) {
-    return i !== n;
-  });
-});
+var splitAt = exports.splitAt = undefined;
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 var takeWhile = exports.takeWhile = undefined;
@@ -358,19 +354,66 @@ var unwords = exports.unwords = undefined;
 // "Set" operations
 
 // nub :: Eq a => [a] -> [a]
-var nub = exports.nub = undefined;
+var nub = exports.nub = function nub(xs) {
+  var list = [];
+  xs.forEach(function (x) {
+    return list.indexOf(x) === -1 && list.push(x);
+  });
+  return list;
+};
 
 // delete_ :: Eq a => a -> [a] -> [a]
-var delete_ = exports.delete_ = undefined;
+var delete_ = exports.delete_ = (0, _util._curry)(function (x, xs) {
+  var list = [];
+  var len = xs.length;
+  for (var i = 0; i < len; i += 1) {
+    if (xs[i] === x) {
+      list = list.concat(xs.slice(i + 1));
+      break;
+    }
+    list.push(xs[i]);
+  }
+  if ((0, _util.type)(xs) === 'String') {
+    return list.join('');
+  }
+  return list;
+});
 
 // difference :: Eq a => [a] -> [a] -> [a]
-var difference = exports.difference = undefined;
+var difference = exports.difference = (0, _util._curry)(function (as, bs) {
+  var list = [];
+  var len = as.length;
+  for (var i = 0; i < len; i += 1) {
+    if (bs.indexOf(as[i]) === -1) {
+      list.push(as[i]);
+    }
+  }
+  return list;
+});
 
 // union :: Eq a => [a] -> [a] -> [a]
-var union = exports.union = undefined;
+var union = exports.union = (0, _util._curry)(function (as, bs) {
+  var list = as;
+  var len = bs.length;
+  for (var i = 0; i < len; i += 1) {
+    if (as.indexOf(bs[i]) === -1) {
+      list.push(bs[i]);
+    }
+  }
+  return list;
+});
 
 // intersect :: Eq a => [a] -> [a] -> [a]
-var intersect = exports.intersect = undefined;
+var intersect = exports.intersect = (0, _util._curry)(function (as, bs) {
+  var list = [];
+  var len = as.length;
+  for (var i = 0; i < len; i += 1) {
+    if (bs.indexOf(as[i]) !== -1) {
+      list.push(as[i]);
+    }
+  }
+  return list;
+});
 
 // Ordered lists
 
