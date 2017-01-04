@@ -24,7 +24,8 @@
   },
   "keywords": [
     "haskell",
-    "functions"
+    "functions",
+    "hkci"
   ],
   "author": "Erik Sutherland <erik.misu@gmail.com>",
   "license": "MIT",

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.init = exports.tail = exports.last = exports.head = undefined;
+exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.init = exports.tail = exports.last = exports.head = undefined;
 
 var _keys = require('babel-runtime/core-js/object/keys');
 
@@ -429,15 +429,33 @@ var insert = exports.insert = undefined;
 // The "By" Operations
 
 // nubBy :: (a -> a -> Bool) -> [a] -> [a]
+var nubBy = exports.nubBy = undefined;
+
 // deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
+var deleteBy = exports.deleteBy = undefined;
+
 // deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+var deleteFirstsBy = exports.deleteFirstsBy = undefined;
+
 // unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+var unionBy = exports.unionBy = undefined;
+
 // intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+var intersectBy = exports.intersectBy = undefined;
+
 // groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+var groupBy = exports.groupBy = undefined;
 
 // User-supplied comparison
 
 // sortBy :: (a -> a -> Ordering) -> [a] -> [a]
+var sortBy = exports.sortBy = undefined;
+
 // insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
+var insertBy = exports.insertBy = undefined;
+
 // maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+var maximumBy = exports.maximumBy = undefined;
+
 // minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+var minimumBy = exports.minimumBy = undefined;
