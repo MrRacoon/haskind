@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tuple = exports.String = exports.Ord = exports.Maybe = exports.Map = exports.List = exports.Ix = exports.Eq = exports.Either = exports.Char = exports.Bool = undefined;
+exports.Tuple = exports.String = exports.Ord = exports.Maybe = exports.Map = exports.List = exports.Ix = exports.Function = exports.Eq = exports.Either = exports.Char = exports.Bool = undefined;
 
 var _Bool2 = require('./Bool');
 
@@ -20,6 +20,10 @@ var _Either = _interopRequireWildcard(_Either2);
 var _Eq2 = require('./Eq');
 
 var _Eq = _interopRequireWildcard(_Eq2);
+
+var _Function2 = require('./Function');
+
+var _Function = _interopRequireWildcard(_Function2);
 
 var _Ix2 = require('./Ix');
 
@@ -55,6 +59,7 @@ var Bool = exports.Bool = _Bool;
 var Char = exports.Char = _Char;
 var Either = exports.Either = _Either;
 var Eq = exports.Eq = _Eq;
+var Function = exports.Function = _Function;
 var Ix = exports.Ix = _Ix;
 var List = exports.List = _List;
 var Map = exports.Map = _Map;
