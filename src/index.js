@@ -1,4 +1,5 @@
 import * as _Bool   from './Bool';
+import * as _Char   from './Char';
 import * as _Either from './Either';
 import * as _Eq     from './Eq';
 import * as _Ix     from './Ix';
@@ -10,6 +11,7 @@ import * as _String from './String';
 import * as _Tuple  from './Tuple';
 
 export const Bool   = _Bool;
+export const Char   = _Char;
 export const Either = _Either;
 export const Eq     = _Eq;
 export const Ix     = _Ix;
