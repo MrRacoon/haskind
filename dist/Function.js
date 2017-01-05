@@ -7,19 +7,19 @@ Object.defineProperty(exports, "__esModule", {
 // id :: a -> a
 var id = exports.id = undefined;
 
-// const :: a -> b -> a
+// const_ :: a -> b -> a
 var const_ = exports.const_ = undefined;
 
-// (.) :: (b -> c) -> (a -> b) -> a -> c
-var comp = exports.comp = undefined;
+// (.) | compose :: (b -> c) -> (a -> b) -> a -> c
+var compose = exports.compose = undefined;
 
 // flip :: (a -> b -> c) -> b -> a -> c
 var flip = exports.flip = undefined;
 
-// ($) :: (a -> b) -> a -> b
+// ($) | pipe :: (a -> b) -> a -> b
 var ap = exports.ap = undefined;
 
-// (&) :: a -> (a -> b) -> b
+// (&) | apply :: a -> (a -> b) -> b
 var app = exports.app = undefined;
 
 // fix :: (a -> a) -> a

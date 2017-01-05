@@ -3,7 +3,7 @@ import { id } from '../src/util';
 
 const { Just, Nothing } = M;
 
-describe('Maybe', () => {
+describe('Maybe.', () => {
   describe('maybe', () => {
     describe('(1, id, Just(4))', () => {
       it('== 4', () => {

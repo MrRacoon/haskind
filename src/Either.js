@@ -1,8 +1,8 @@
 
-import { _curry } from './util';
+import { _curry, newKind } from './util';
 
-export const Left  = left => ({ left });
-export const Right = right => ({ right });
+export const Left  = newKind('left');
+export const Right = newKind('right');
 
 // either :: (a -> c) -> (b -> c) -> Either a b -> c
 export const either = _curry((lfn, rfn, ethr) => {

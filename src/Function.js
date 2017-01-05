@@ -2,19 +2,19 @@
 // id :: a -> a
 export const id = undefined;
 
-// const :: a -> b -> a
+// const_ :: a -> b -> a
 export const const_ = undefined;
 
-// (.) :: (b -> c) -> (a -> b) -> a -> c
-export const comp = undefined;
+// (.) | compose :: (b -> c) -> (a -> b) -> a -> c
+export const compose = undefined;
 
 // flip :: (a -> b -> c) -> b -> a -> c
 export const flip = undefined;
 
-// ($) :: (a -> b) -> a -> b
+// ($) | pipe :: (a -> b) -> a -> b
 export const ap = undefined;
 
-// (&) :: a -> (a -> b) -> b
+// (&) | apply :: a -> (a -> b) -> b
 export const app = undefined;
 
 // fix :: (a -> a) -> a

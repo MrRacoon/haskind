@@ -8,7 +8,6 @@ export const error = (str: string): void => {
   throw new Error(`haskind.${str}`);
 };
 
-
 // =============================================================================
 
 export const _lazy: Function =
@@ -31,6 +30,14 @@ export const _curry: Function =
 // NOTE: Moving to Data.Function
 // eslint-disable-next-line
 export const constant = _curry((a, b) => a)
+
+// =============================================================================
+
+export const newKind   = (name)   => (value)  => ({ [name]: value });
+export const emptyKind = (name)   => (arbit)  => ({ [name]: null }); // eslint-disable-line
+export const twoKind   = (n1, n2) => (v1, v2) => ({ [n1]: v1, [n2]: v2 });
+
+export const checkKind = _curry((name, a) => !!a[name]);
 
 // =============================================================================
 

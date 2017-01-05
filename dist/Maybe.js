@@ -7,12 +7,11 @@ exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe
 
 var _util = require('./util');
 
-var Just = exports.Just = function Just(just) {
-  return { just: just };
-};
-var Nothing = exports.Nothing = function Nothing() {
-  return { nothing: null };
-};
+// Just :: * -> *
+var Just = exports.Just = (0, _util.newKind)('just');
+
+// Nothing :: () -> *
+var Nothing = exports.Nothing = (0, _util.emptyKind)('nothing');
 
 var maybe = exports.maybe = (0, _util._curry)(function (def, fn, m) {
   if (isNothing(m)) return def;
