@@ -3,11 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tuple = exports.String = exports.Ord = exports.Maybe = exports.Map = exports.List = exports.Ix = exports.Eq = exports.Either = exports.Bool = undefined;
+exports.Tuple = exports.String = exports.Ord = exports.Maybe = exports.Map = exports.List = exports.Ix = exports.Eq = exports.Either = exports.Char = exports.Bool = undefined;
 
 var _Bool2 = require('./Bool');
 
 var _Bool = _interopRequireWildcard(_Bool2);
+
+var _Char2 = require('./Char');
+
+var _Char = _interopRequireWildcard(_Char2);
 
 var _Either2 = require('./Either');
 
@@ -48,6 +52,7 @@ var _Tuple = _interopRequireWildcard(_Tuple2);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 var Bool = exports.Bool = _Bool;
+var Char = exports.Char = _Char;
 var Either = exports.Either = _Either;
 var Eq = exports.Eq = _Eq;
 var Ix = exports.Ix = _Ix;
