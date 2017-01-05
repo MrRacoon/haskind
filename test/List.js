@@ -1,8 +1,9 @@
 import should from 'should';
 import { fibs } from './helpers';
-import { id } from '../src/util';
-import { List, Ord, Maybe } from '../src/Data';
+import { Data, util } from '../src';
 
+const { id } = util;
+const { List, Ord, Maybe } = Data;
 const { Ordering } = Ord;
 const { Just, Nothing } = Maybe;
 

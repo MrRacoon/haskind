@@ -50,3 +50,10 @@ This lib is still in heavy development. Some functions/tricks are definitely mis
 ### Contributing
 
 Luckily, it's super easy to contribute. I can't say no to anything that is provably available in Haskell. Submit a PR with the example case you want to cover in the tests, along with your solution, (or not, you can make the test pending and I'll eventually get around to it), and we'll sort it out.
+
+
+## License
+
+[MIT License](http://opensource.org/licenses/MIT)
+
+Copyright &copy; 2016 Erik Sutherland. All rights reserved.

@@ -1,6 +1,7 @@
-import { Maybe } from '../src/Data';
-import { id } from '../src/util';
+import { Data, util } from '../src';
 
+const { id } = util;
+const { Maybe } = Data;
 const { Just, Nothing } = Maybe;
 
 describe('Maybe.', () => {
