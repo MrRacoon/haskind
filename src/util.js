@@ -1,3 +1,4 @@
+// NOTE: moving to Data.Function
 export const id = a => a;
 
 export const True: Function = () => true;
@@ -27,6 +28,7 @@ export const _curry: Function =
         return args.reduce((f, a) => _curry(f.bind(this, a)), fn);
     };
 
+// NOTE: Moving to Data.Function
 // eslint-disable-next-line
 export const constant = _curry((a, b) => a)
 

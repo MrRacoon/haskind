@@ -2,14 +2,19 @@ import * as F from '../src/Function';
 
 xdescribe('Function', () => {
   describe('id', () => {
-    describe('("a")', () => {
-      it('== "a"', () => {
-        F.id('a').should.be.eql('a');
+    describe('(1)', () => {
+      it('== 1', () => {
+        F.id(1).should.be.eql(1);
       });
     });
-    describe('(3)', () => {
-      it('== 3', () => {
-        F.id(3).should.be.eql(3);
+    describe('(2.1)', () => {
+      it('== 2.1', () => {
+        F.id(2.1).should.be.eql(2.1);
+      });
+    });
+    describe('("2")', () => {
+      it('== 2', () => {
+        F.id('2').should.be.eql('2');
       });
     });
     describe('(true)', () => {
@@ -19,7 +24,22 @@ xdescribe('Function', () => {
     });
     describe('(null)', () => {
       it('== null', () => {
-        F.id(null).should.be.eql(null);
+        F.id(null).be.eql(null);
+      });
+    });
+    describe('(undefined)', () => {
+      it('== undefined', () => {
+        F.id(undefined).be.eql(undefined);
+      });
+    });
+    describe('(NaN)', () => {
+      it('== NaN', () => {
+        F.id(NaN).be.eql(NaN);
+      });
+    });
+    describe('(Infinity)', () => {
+      it('== Infinity', () => {
+        F.id(Infinity).be.eql(Infinity);
       });
     });
   });

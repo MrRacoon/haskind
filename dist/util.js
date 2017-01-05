@@ -25,6 +25,7 @@ exports.type = type;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// NOTE: moving to Data.Function
 var id = exports.id = function id(a) {
   return a;
 };
@@ -64,6 +65,7 @@ var _curry = exports._curry = function _curry(fn) {
   };
 };
 
+// NOTE: Moving to Data.Function
 // eslint-disable-next-line
 var constant = exports.constant = _curry(function (a, b) {
   return a;
