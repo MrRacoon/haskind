@@ -13,7 +13,7 @@ var _toArray2 = require('babel-runtime/helpers/toArray');
 
 var _toArray3 = _interopRequireDefault(_toArray2);
 
-var _util = require('./util');
+var _util = require('../util');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

@@ -1,5 +1,5 @@
 
-import { _curry, newKind } from './util';
+import { _curry, newKind } from '../util';
 
 export const Left  = newKind('left');
 export const Right = newKind('right');

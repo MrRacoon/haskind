@@ -1,5 +1,4 @@
-import { type } from './util';
-import { error, _curry, newKind, emptyKind } from './util';
+import { type, error, _curry, newKind, emptyKind } from '../util';
 
 export type Maybe    = _Just<any> | _Nothing
 export type _Just    = { just: any }

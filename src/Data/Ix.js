@@ -1,4 +1,4 @@
-import { _curry, error } from './util';
+import { _curry, error } from '../util';
 
 // range :: (a, a) -> [a]
 export const range = ([a: number, b: number]): number[] =>

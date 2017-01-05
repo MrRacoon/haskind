@@ -1,5 +1,5 @@
 
-import { _curry } from './util';
+import { _curry } from '../util';
 
 // eq :: a -> a -> Bool
 export const eq = _curry((a, b) => a === b );

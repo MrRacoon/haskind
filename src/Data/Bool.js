@@ -1,4 +1,4 @@
-import { _curry } from './util';
+import { _curry } from '../util';
 
 // and :: Bool -> Bool -> Bool
 export const and: Function = _curry(

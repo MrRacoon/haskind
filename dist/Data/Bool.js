@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.bool = exports.otherwise = exports.not = exports.or = exports.and = undefined;
 
-var _util = require('./util');
+var _util = require('../util');
 
 // and :: Bool -> Bool -> Bool
 var and = exports.and = (0, _util._curry)(function (x, y) {

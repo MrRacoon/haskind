@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.comparing = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.Ordering = exports.GT = exports.EQ = exports.LT = undefined;
 
-var _util = require('./util');
+var _util = require('../util');
 
 var LT = exports.LT = -1;
 var EQ = exports.EQ = 0;

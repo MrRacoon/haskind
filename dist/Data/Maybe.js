@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mapMaybe = exports.catMaybes = exports.maybeToList = exports.listToMaybe = exports.fromMaybe = exports.fromJust = exports.isNothing = exports.isJust = exports.maybe = exports.Nothing = exports.Just = undefined;
 
-var _util = require('./util');
+var _util = require('../util');
 
 // Just :: * -> *
 var Just = exports.Just = (0, _util.newKind)('just');

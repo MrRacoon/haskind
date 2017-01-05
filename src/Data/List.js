@@ -1,5 +1,4 @@
-import { _notUndefined, error, _lazy, _curry } from './util';
-import { type } from './util';
+import { type, _notUndefined, error, _lazy, _curry } from '../util';
 
 // Basic functions
 
