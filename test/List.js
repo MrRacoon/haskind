@@ -16,7 +16,7 @@ const compare = (x,y) => x === y
   ? Ordering.LT
   : Ordering.GT;
 
-describe('List.', () => {
+describe('List .', () => {
   describe('Basic Functions', () => {
     describe('head', () => {
       describe('([])', () => {

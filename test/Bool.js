@@ -1,7 +1,7 @@
 import { Bool } from '../src/Data';
 import { error } from '../src/util';
 
-describe('Bool.', () => {
+describe('Bool .', () => {
   describe('and', () => {
     describe('(true, true)', () => {
       it('== true', () => {

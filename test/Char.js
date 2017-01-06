@@ -1,6 +1,6 @@
 import { Char } from '../src/Data';
 
-xdescribe('Char.', () => {
+xdescribe('Char .', () => {
   describe('Character Classification', () => {
     describe('isControl', () => {
 

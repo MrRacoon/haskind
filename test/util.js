@@ -2,7 +2,7 @@ import should from 'should';
 import * as U from '../src/util';
 import { fibs } from './helpers';
 
-describe('util', () => {
+describe('util .', () => {
   describe('id', () => {
     describe('(1)', () => {
       it('== 1', () => {

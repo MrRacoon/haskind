@@ -1,6 +1,6 @@
 import { String } from '../src/Data';
 
-xdescribe('String.', () => {
+xdescribe('String .', () => {
   describe('isString.', () => {
     describe('("string")', () => {
       it('== true', () => {

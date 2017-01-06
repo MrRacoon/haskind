@@ -1,6 +1,6 @@
 import { Function } from '../src/Data';
 
-xdescribe('Function.', () => {
+xdescribe('Function .', () => {
   describe('id', () => {
     describe('(1)', () => {
       it('== 1', () => {

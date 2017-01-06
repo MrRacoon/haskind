@@ -4,7 +4,7 @@ const { Left, Right } = Either;
 
 const inc = x => x + 1;
 
-describe('Either.', () => {
+describe('Either .', () => {
   describe('Left', () => {
     describe('("value")', () => {
       it('== { left: "value" }', () => {

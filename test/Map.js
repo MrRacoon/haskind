@@ -1,6 +1,6 @@
 import { Map } from '../src/Data';
 
-describe('Map.', () => {
+describe('Map .', () => {
   describe('null', () => {
     describe('({})', () => {
       it('== true', () => {

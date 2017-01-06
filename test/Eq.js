@@ -1,6 +1,6 @@
 import { Eq } from '../src/Data';
 
-describe('Eq.', () => {
+describe('Eq .', () => {
   describe('eq', () => {
     describe('(1,1)', () => {
       it('== true', () => {

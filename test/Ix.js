@@ -1,6 +1,6 @@
 import { Ix } from '../src/Data';
 
-describe('Ix.', () => {
+describe('Ix .', () => {
   describe('range', () => {
     describe('([0, 0])', () => {
       it('== []', () => {
