@@ -986,18 +986,41 @@ describe('List .', () => {
         });
       });
     });
-    describe('lookup', () => {
-      describe('()', () => {
-
+    xdescribe('lookup', () => {
+      describe('(1, [[1, "a"], [2, "b"], [3, "c"]])', () => {
+        it('== Just("a")', () => {
+          List.lookup(1, [[1, 'a'], [2, 'b'], [3, 'c']]).should.be.eql('a');
+        });
       });
-      describe('()', () => {
-
+      describe('(2, [[1, "a"], [2, "b"], [3, "c"]])', () => {
+        it('== Just("b")', () => {
+          List.lookup(2, [[1, 'a'], [2, 'b'], [3, 'c']]).should.be.eql('b');
+        });
+      });
+      describe('(3, [[1, "a"], [2, "b"], [3, "c"]])', () => {
+        it('== Just("c")', () => {
+          List.lookup(3, [[1, 'a'], [2, 'b'], [3, 'c']]).should.be.eql('c');
+        });
+      });
+      describe('(4, [[1, "a"], [2, "b"], [3, "c"]])', () => {
+        it('== Nothing()', () => {
+          List.lookup(3, [[1, 'a'], [2, 'b'], [3, 'c']]).should.be.eql(Nothing());
+        });
       });
     });
   });
   describe('Searching with a predicate ', () => {
     xdescribe('find', () => {
-
+      describe('(lt3, [1,2,3,4,5])', () => {
+        it('== 1', () => {
+          List.find(lt3, [1,2,3,4,5]).should.be.eql(1);
+        });
+      });
+      describe('(lt3, [5,4,3,2,1])', () => {
+        it('== 1', () => {
+          List.find(lt3, [5,4,3,2,1]).should.be.eql(2);
+        });
+      });
     });
     describe('filter', () => {
       describe('(id, [1,2,3])', () => {
