@@ -1,5 +1,6 @@
 import should from 'should';
 import * as U from '../src/util';
+import { fibs } from './helpers';
 
 describe('util', () => {
   describe('id', () => {
@@ -11,6 +12,11 @@ describe('util', () => {
     describe('(2.1)', () => {
       it('== 2', () => {
         U.id(2).should.be.eql(2);
+      });
+    });
+    describe('("asdf")', () => {
+      it('== "asdf"', () => {
+        U.id('asdf').should.be.eql('asdf');
       });
     });
     describe('("2")', () => {
@@ -191,8 +197,13 @@ describe('util', () => {
   });
   describe('type', () => {
     describe('(null)', () => {
-      it('== "Null"', () => {
+      it('== "null"', () => {
         U.type(null).should.be.eql('Null');
+      });
+    });
+    describe('(undefined)', () => {
+      it('== "undefined"', () => {
+        U.type(undefined).should.be.eql('undefined');
       });
     });
     describe('(true)', () => {
@@ -215,6 +226,16 @@ describe('util', () => {
         U.type(new Set()).should.be.eql('Set');
       });
     });
+    describe('(-100)', () => {
+      it('== "Number"', () => {
+        U.type(-100).should.be.eql('Number');
+      });
+    });
+    describe('(0)', () => {
+      it('== "Number"', () => {
+        U.type(0).should.be.eql('Number');
+      });
+    });
     describe('(45)', () => {
       it('== "Number"', () => {
         U.type(45).should.be.eql('Number');
@@ -230,9 +251,19 @@ describe('util', () => {
         U.type(NaN).should.be.eql('Number');
       });
     });
+    describe('(-NaN)', () => {
+      it('== "Number"', () => {
+        U.type(-NaN).should.be.eql('Number');
+      });
+    });
     describe('(Infinity)', () => {
       it('== "Number"', () => {
         U.type(Infinity).should.be.eql('Number');
+      });
+    });
+    describe('(-Infinity)', () => {
+      it('== "Number"', () => {
+        U.type(-Infinity).should.be.eql('Number');
       });
     });
     describe('("")', () => {
@@ -250,9 +281,19 @@ describe('util', () => {
         U.type('asdf').should.be.eql('String');
       });
     });
+    describe('([])', () => {
+      it('== "Array"', () => {
+        U.type([]).should.be.eql('Array');
+      });
+    });
     describe('(["e", "r", "i", "k"])', () => {
       it('== "Array"', () => {
         U.type(['e', 'r', 'i', 'k']).should.be.eql('Array');
+      });
+    });
+    describe('({})', () => {
+      it('== "Object"', () => {
+        U.type({}).should.be.eql('Object');
       });
     });
     describe('({ some: "obj" })', () => {
@@ -280,62 +321,9 @@ describe('util', () => {
         U.type({ right: 2 }).should.be.eql('Either');
       });
     });
-  });
-  xdescribe('compose', function () {
-    const inc = x => x + 1;
-    const add = (a,b) => a + b;
-    describe('(inc, add)(1,1)', function () {
-      it('== 3', function () {
-        U.compose(inc, add)(1,1).should.be.eql(3);
-      });
-    });
-    describe('(inc, inc, add)(1,1)', function () {
-      it('== 4', function () {
-        U.compose(inc, inc, add)(1,1).should.be.eql(4);
-      });
-    });
-    describe('(inc)(0)', function () {
-      it('== 1', function () {
-        U.compose(inc)(0).should.be.eql(1);
-      });
-    });
-    describe('(inc, inc)(0)', function () {
-      it('== 2', function () {
-        U.compose(inc, inc)(0).should.be.eql(2);
-      });
-    });
-    describe('(inc, inc, inc)(0)', function () {
-      it('== 3', function () {
-        U.compose(inc, inc, inc)(0).should.be.eql(3);
-      });
-    });
-  });
-  xdescribe('pipe', function () {
-    const inc = x => x + 1;
-    const add = (a,b) => a + b;
-    describe('(add, inc)(1,1)', function () {
-      it('== 3', function () {
-        U.pipe(add, inc)(1,1).should.be.eql(3);
-      });
-    });
-    describe('(add, inc, inc)(1,1)', function () {
-      it('== 4', function () {
-        U.pipe(add, inc, inc)(1,1).should.be.eql(4);
-      });
-    });
-    describe('(inc)(0)', function () {
-      it('== 1', function () {
-        U.pipe(inc)(0).should.be.eql(1);
-      });
-    });
-    describe('(inc, inc)(0)', function () {
-      it('== 2', function () {
-        U.pipe(inc, inc)(0).should.be.eql(2);
-      });
-    });
-    describe('(inc, inc, inc)(0)', function () {
-      it('== 3', function () {
-        U.pipe(inc, inc, inc)(0).should.be.eql(3);
+    xdescribe('(fibs())', () => {
+      it('== "GeneratorFn"', () => {
+        U.type(fibs()).should.be.eql('GeneratorFn');
       });
     });
   });

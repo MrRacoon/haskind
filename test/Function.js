@@ -60,8 +60,65 @@ xdescribe('Function.', () => {
       });
     });
   });
+  xdescribe('compose', function () {
+    const inc = x => x + 1;
+    const add = (a,b) => a + b;
+    describe('(inc, add)(1,1)', function () {
+      it('== 3', function () {
+        Function.compose(inc, add)(1,1).should.be.eql(3);
+      });
+    });
+    describe('(inc, inc, add)(1,1)', function () {
+      it('== 4', function () {
+        Function.compose(inc, inc, add)(1,1).should.be.eql(4);
+      });
+    });
+    describe('(inc)(0)', function () {
+      it('== 1', function () {
+        Function.compose(inc)(0).should.be.eql(1);
+      });
+    });
+    describe('(inc, inc)(0)', function () {
+      it('== 2', function () {
+        Function.compose(inc, inc)(0).should.be.eql(2);
+      });
+    });
+    describe('(inc, inc, inc)(0)', function () {
+      it('== 3', function () {
+        Function.compose(inc, inc, inc)(0).should.be.eql(3);
+      });
+    });
+  });
+  xdescribe('pipe', function () {
+    const inc = x => x + 1;
+    const add = (a,b) => a + b;
+    describe('(add, inc)(1,1)', function () {
+      it('== 3', function () {
+        Function.pipe(add, inc)(1,1).should.be.eql(3);
+      });
+    });
+    describe('(add, inc, inc)(1,1)', function () {
+      it('== 4', function () {
+        Function.pipe(add, inc, inc)(1,1).should.be.eql(4);
+      });
+    });
+    describe('(inc)(0)', function () {
+      it('== 1', function () {
+        Function.pipe(inc)(0).should.be.eql(1);
+      });
+    });
+    describe('(inc, inc)(0)', function () {
+      it('== 2', function () {
+        Function.pipe(inc, inc)(0).should.be.eql(2);
+      });
+    });
+    describe('(inc, inc, inc)(0)', function () {
+      it('== 3', function () {
+        Function.pipe(inc, inc, inc)(0).should.be.eql(3);
+      });
+    });
+  });
   describe('comp', () => {
-
   });
   describe('flip', () => {
     describe('(const_, 1, 2)', () => {
