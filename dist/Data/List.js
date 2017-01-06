@@ -340,16 +340,24 @@ var unzip = exports.unzip = (0, _util._curry)(function (as) {
 // Functions on strings
 
 // lines :: String -> [String]
-var lines = exports.lines = undefined;
+var lines = exports.lines = function lines(str) {
+  return str.split('\n');
+};
 
 // words :: String -> [String]
-var words = exports.words = undefined;
+var words = exports.words = function words(str) {
+  return str.split(' ');
+};
 
 // unlines :: [String] -> String
-var unlines = exports.unlines = undefined;
+var unlines = exports.unlines = function unlines(xs) {
+  return xs.join('\n');
+};
 
 // unwords :: [String] -> String
-var unwords = exports.unwords = undefined;
+var unwords = exports.unwords = function unwords(xs) {
+  return xs.join(' ');
+};
 
 // "Set" operations
 
