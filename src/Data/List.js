@@ -30,9 +30,9 @@ const _lengthObject: Function =
 export const length: Function =
   function _length(ls: any): (number | void) {
     switch (type(ls)) {
-    case 'Object': return _lengthObject(ls);
-    case 'Array' : return _lengthArray(ls);
-    default      : return undefined;
+      case 'Object': return _lengthObject(ls);
+      case 'Array' : return _lengthArray(ls);
+      default      : return undefined;
     }
   };
 
@@ -47,12 +47,12 @@ export const map: Function = _curry(
 export const reverse: Function =
   (ls: any[] | string): any[] | string => {
     switch (type(ls)) {
-    case 'String':
-      return reverse(ls.split('')).join('');
-    case 'Array':
-      return ls.reduce((acc, x) => [x].concat(acc), []);
-    default:
-      return ls;
+      case 'String':
+        return reverse(ls.split('')).join('');
+      case 'Array':
+        return ls.reduce((acc, x) => [x].concat(acc), []);
+      default:
+        return ls;
     }
   };
 
@@ -62,18 +62,18 @@ export const intersperse: Function = _curry(
   (ch: any, ls: strOrList): strOrList => {
     switch (type(ls)) {
 
-    case 'Array':
-      return ls.reduce((acc, x) => {
-        return acc.length ? acc.concat([ch, x]) : [x];
-      }, [] );
+      case 'Array':
+        return ls.reduce((acc, x) => {
+          return acc.length ? acc.concat([ch, x]) : [x];
+        }, [] );
 
-    case 'String':
-      return ls.split('').reduce((acc, x) => {
-        return acc.length ? acc + ch + x : acc + x;
-      }, '' );
+      case 'String':
+        return ls.split('').reduce((acc, x) => {
+          return acc.length ? acc + ch + x : acc + x;
+        }, '' );
 
-    default:
-      error('List.interpserse: requires array or string, got: ' + type(ls));
+      default:
+        error('List.interpserse: requires array or string, got: ' + type(ls));
     }
   }
 );

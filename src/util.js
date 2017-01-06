@@ -63,21 +63,21 @@ export const propExists = (prop, obj) => typeof(obj[prop]) !== 'undefined';
 
 export function type (x) {
   switch (typeof x) {
-  case 'object':
-    switch (true) {
-    case x === null : return 'Null';
-    case x instanceof Map : return 'Map';
-    case x instanceof Set : return 'Set';
-    case Array.isArray(x) : return 'Array';
-    case propExists('right', x) : return 'Either';
-    case propExists('left', x) : return 'Either';
-    case propExists('just', x) : return 'Maybe';
-    case propExists('nothing', x): return 'Maybe';
-    default : return 'Object';
-    }
-  case 'string': return 'String';
-  case 'boolean': return 'Boolean';
-  case 'number': return 'Number';
-  default : return typeof x;
+    case 'object':
+      switch (true) {
+        case x === null : return 'Null';
+        case x instanceof Map : return 'Map';
+        case x instanceof Set : return 'Set';
+        case Array.isArray(x) : return 'Array';
+        case propExists('right', x) : return 'Either';
+        case propExists('left', x) : return 'Either';
+        case propExists('just', x) : return 'Maybe';
+        case propExists('nothing', x): return 'Maybe';
+        default : return 'Object';
+      }
+    case 'string': return 'String';
+    case 'boolean': return 'Boolean';
+    case 'number': return 'Number';
+    default : return typeof x;
   }
 }
