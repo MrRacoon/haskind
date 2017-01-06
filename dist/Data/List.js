@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.init = exports.tail = exports.last = exports.head = undefined;
+exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.init = exports.tail = exports.last = exports.head = undefined;
 
 var _keys = require('babel-runtime/core-js/object/keys');
 
@@ -13,7 +13,7 @@ var _toArray2 = require('babel-runtime/helpers/toArray');
 
 var _toArray3 = _interopRequireDefault(_toArray2);
 
-var _util = require('./util');
+var _util = require('../util');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -182,11 +182,7 @@ var drop = exports.drop = (0, _util._curry)(function (n, xs) {
 });
 
 // splitAt :: Int -> [a] -> ([a], [a])
-var splitAt = exports.splitAt = (0, _util._curry)(function (n, xs) {
-  return xs.filter(function (x, i) {
-    return i !== n;
-  });
-});
+var splitAt = exports.splitAt = undefined;
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 var takeWhile = exports.takeWhile = undefined;
@@ -358,19 +354,66 @@ var unwords = exports.unwords = undefined;
 // "Set" operations
 
 // nub :: Eq a => [a] -> [a]
-var nub = exports.nub = undefined;
+var nub = exports.nub = function nub(xs) {
+  var list = [];
+  xs.forEach(function (x) {
+    return list.indexOf(x) === -1 && list.push(x);
+  });
+  return list;
+};
 
 // delete_ :: Eq a => a -> [a] -> [a]
-var delete_ = exports.delete_ = undefined;
+var delete_ = exports.delete_ = (0, _util._curry)(function (x, xs) {
+  var list = [];
+  var len = xs.length;
+  for (var i = 0; i < len; i += 1) {
+    if (xs[i] === x) {
+      list = list.concat(xs.slice(i + 1));
+      break;
+    }
+    list.push(xs[i]);
+  }
+  if ((0, _util.type)(xs) === 'String') {
+    return list.join('');
+  }
+  return list;
+});
 
 // difference :: Eq a => [a] -> [a] -> [a]
-var difference = exports.difference = undefined;
+var difference = exports.difference = (0, _util._curry)(function (as, bs) {
+  var list = [];
+  var len = as.length;
+  for (var i = 0; i < len; i += 1) {
+    if (bs.indexOf(as[i]) === -1) {
+      list.push(as[i]);
+    }
+  }
+  return list;
+});
 
 // union :: Eq a => [a] -> [a] -> [a]
-var union = exports.union = undefined;
+var union = exports.union = (0, _util._curry)(function (as, bs) {
+  var list = as;
+  var len = bs.length;
+  for (var i = 0; i < len; i += 1) {
+    if (as.indexOf(bs[i]) === -1) {
+      list.push(bs[i]);
+    }
+  }
+  return list;
+});
 
 // intersect :: Eq a => [a] -> [a] -> [a]
-var intersect = exports.intersect = undefined;
+var intersect = exports.intersect = (0, _util._curry)(function (as, bs) {
+  var list = [];
+  var len = as.length;
+  for (var i = 0; i < len; i += 1) {
+    if (bs.indexOf(as[i]) !== -1) {
+      list.push(as[i]);
+    }
+  }
+  return list;
+});
 
 // Ordered lists
 
@@ -386,15 +429,33 @@ var insert = exports.insert = undefined;
 // The "By" Operations
 
 // nubBy :: (a -> a -> Bool) -> [a] -> [a]
+var nubBy = exports.nubBy = undefined;
+
 // deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
+var deleteBy = exports.deleteBy = undefined;
+
 // deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+var deleteFirstsBy = exports.deleteFirstsBy = undefined;
+
 // unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+var unionBy = exports.unionBy = undefined;
+
 // intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+var intersectBy = exports.intersectBy = undefined;
+
 // groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+var groupBy = exports.groupBy = undefined;
 
 // User-supplied comparison
 
 // sortBy :: (a -> a -> Ordering) -> [a] -> [a]
+var sortBy = exports.sortBy = undefined;
+
 // insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
+var insertBy = exports.insertBy = undefined;
+
 // maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+var maximumBy = exports.maximumBy = undefined;
+
 // minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+var minimumBy = exports.minimumBy = undefined;

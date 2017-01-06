@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.propExists = exports.cond = exports.constant = exports._curry = exports._notUndefined = exports._lazy = exports.error = exports.False = exports.True = exports.id = undefined;
+exports.propExists = exports.cond = exports.checkKind = exports.twoKind = exports.emptyKind = exports.newKind = exports.constant = exports._curry = exports._notUndefined = exports._lazy = exports.error = exports.False = exports.True = exports.id = undefined;
 
 var _set = require('babel-runtime/core-js/set');
 
@@ -21,10 +21,15 @@ var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 exports.type = type;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// NOTE: moving to Data.Function
 var id = exports.id = function id(a) {
   return a;
 };
@@ -64,9 +69,34 @@ var _curry = exports._curry = function _curry(fn) {
   };
 };
 
+// NOTE: Moving to Data.Function
 // eslint-disable-next-line
 var constant = exports.constant = _curry(function (a, b) {
   return a;
+});
+
+// =============================================================================
+
+var newKind = exports.newKind = function newKind(name) {
+  return function (value) {
+    return (0, _defineProperty3.default)({}, name, value);
+  };
+};
+var emptyKind = exports.emptyKind = function emptyKind(name) {
+  return function (arbit) {
+    return (0, _defineProperty3.default)({}, name, null);
+  };
+}; // eslint-disable-line
+var twoKind = exports.twoKind = function twoKind(n1, n2) {
+  return function (v1, v2) {
+    var _ref3;
+
+    return _ref3 = {}, (0, _defineProperty3.default)(_ref3, n1, v1), (0, _defineProperty3.default)(_ref3, n2, v2), _ref3;
+  };
+};
+
+var checkKind = exports.checkKind = _curry(function (name, a) {
+  return !!a[name];
 });
 
 // =============================================================================

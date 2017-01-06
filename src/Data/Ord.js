@@ -1,5 +1,5 @@
 
-import { _curry } from './util';
+import { _curry } from '../util';
 
 export const LT = -1;
 export const EQ = 0;

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.notEq = exports.eq = undefined;
 
-var _util = require('./util');
+var _util = require('../util');
 
 // eq :: a -> a -> Bool
 var eq = exports.eq = (0, _util._curry)(function (a, b) {

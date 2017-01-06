@@ -1,5 +1,4 @@
-import { _notUndefined, error, _lazy, _curry } from './util';
-import { type } from './util';
+import { type, _notUndefined, error, _lazy, _curry } from '../util';
 
 // Basic functions
 
@@ -147,9 +146,7 @@ export const drop = _curry((n: number, xs: any[]): any[] =>
 );
 
 // splitAt :: Int -> [a] -> ([a], [a])
-export const splitAt = _curry((n, xs) =>
-  xs.filter((x, i) => i !== n)
-);
+export const splitAt = undefined;
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 export const takeWhile = undefined;
@@ -413,15 +410,34 @@ export const insert = undefined;
 // The "By" Operations
 
 // nubBy :: (a -> a -> Bool) -> [a] -> [a]
+export const nubBy = undefined;
+
 // deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
+export const deleteBy = undefined;
+
 // deleteFirstsBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+export const deleteFirstsBy = undefined;
+
 // unionBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+export const unionBy = undefined;
+
 // intersectBy :: (a -> a -> Bool) -> [a] -> [a] -> [a]
+export const intersectBy = undefined;
+
 // groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
+export const groupBy = undefined;
+
 
 // User-supplied comparison
 
 // sortBy :: (a -> a -> Ordering) -> [a] -> [a]
+export const sortBy = undefined;
+
 // insertBy :: (a -> a -> Ordering) -> a -> [a] -> [a]
+export const insertBy = undefined;
+
 // maximumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+export const maximumBy = undefined;
+
 // minimumBy :: Foldable t => (a -> a -> Ordering) -> t a -> a
+export const minimumBy = undefined;

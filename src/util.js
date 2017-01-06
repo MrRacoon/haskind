@@ -1,3 +1,4 @@
+// NOTE: moving to Data.Function
 export const id = a => a;
 
 export const True: Function = () => true;
@@ -6,7 +7,6 @@ export const False: Function = () => false;
 export const error = (str: string): void => {
   throw new Error(`haskind.${str}`);
 };
-
 
 // =============================================================================
 
@@ -27,8 +27,17 @@ export const _curry: Function =
         return args.reduce((f, a) => _curry(f.bind(this, a)), fn);
     };
 
+// NOTE: Moving to Data.Function
 // eslint-disable-next-line
 export const constant = _curry((a, b) => a)
+
+// =============================================================================
+
+export const newKind   = (name)   => (value)  => ({ [name]: value });
+export const emptyKind = (name)   => (arbit)  => ({ [name]: null }); // eslint-disable-line
+export const twoKind   = (n1, n2) => (v1, v2) => ({ [n1]: v1, [n2]: v2 });
+
+export const checkKind = _curry((name, a) => !!a[name]);
 
 // =============================================================================
 
