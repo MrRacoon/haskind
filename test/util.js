@@ -1,6 +1,8 @@
 import should from 'should';
-import * as U from '../src/util';
 import { fibs } from './helpers';
+
+import { util as U } from '.';
+
 
 describe('util .', () => {
   describe('id', () => {

@@ -1,5 +1,6 @@
-import { Bool } from '../src/Data';
-import { error } from '../src/util';
+import { Data, util } from '.';
+const { Bool } = Data;
+const { error } = util;
 
 describe('Bool .', () => {
   describe('and', () => {

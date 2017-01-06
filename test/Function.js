@@ -1,4 +1,5 @@
-import { Function } from '../src/Data';
+import { Data } from '.';
+const { Function } = Data;
 
 xdescribe('Function .', () => {
   describe('id', () => {

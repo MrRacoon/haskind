@@ -1,19 +1,14 @@
 import should from 'should';
 import { fibs } from './helpers';
-import { Data, util } from '../src';
+import { Data, util } from '.';
 
 const { id } = util;
-const { List, Ord, Maybe } = Data;
-const { Ordering, lt } = Ord;
+const { List, Ord, Maybe, Eq } = Data;
+const { lt, compare } = Ord;
 const { Just, Nothing } = Maybe;
+const { eq } = Eq;
 
 const isEven = x => x % 2 === 0;
-const eq = (x,y) => x === y;
-const compare = (x,y) => x === y
-  ? Ordering.EQ
-  : x < y
-  ? Ordering.LT
-  : Ordering.GT;
 
 describe('List .', () => {
   describe('Basic Functions', () => {

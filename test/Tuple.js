@@ -1,4 +1,5 @@
-import { Tuple } from '../src/Data';
+import { Data } from '.';
+const { Tuple } = Data;
 
 describe('Tuple .', () => {
   describe('fst', () => {

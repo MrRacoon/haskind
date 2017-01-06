@@ -1,6 +1,5 @@
-export const phonebook = new Map([['erik', 3], ['jack', 9]]);
-
-export const classnames = new Set(['erik', 'jack']);
+export const phonebook  = new Map([['erik', 3], ['jack', 9]]);
+export const classmates = new Set(['erik', 'jack']);
 
 export function* fibs () {
   let next = 1;
@@ -20,9 +19,9 @@ describe('helpers', () => {
       phonebook.should.be.instanceof(Map);
     });
   });
-  describe('classnames', () => {
+  describe('classmates', () => {
     it('instanceof Set', () => {
-      classnames.should.be.instanceof(Set);
+      classmates.should.be.instanceof(Set);
     });
   });
   describe('fibs', () => {

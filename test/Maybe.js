@@ -1,4 +1,4 @@
-import { Data, util } from '../src';
+import { Data, util } from '.';
 
 const { id } = util;
 const { Maybe } = Data;

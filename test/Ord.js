@@ -1,4 +1,5 @@
-import { Ord } from '../src/Data';
+import { Data } from '.';
+const { Ord } = Data;
 
 const { LT, EQ, GT } = Ord;
 

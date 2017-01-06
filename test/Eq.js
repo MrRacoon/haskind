@@ -1,4 +1,5 @@
-import { Eq } from '../src/Data';
+import { Data } from '.';
+const { Eq } = Data;
 
 describe('Eq .', () => {
   describe('eq', () => {

@@ -1,4 +1,5 @@
-import { String } from '../src/Data';
+import { Data } from '.';
+const { String } = Data;
 
 xdescribe('String .', () => {
   describe('isString.', () => {

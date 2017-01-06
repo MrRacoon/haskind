@@ -1,4 +1,5 @@
-import { Char } from '../src/Data';
+import { Data } from '.';
+const { Char } = Data;
 
 xdescribe('Char .', () => {
   describe('Character Classification', () => {

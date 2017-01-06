@@ -1,4 +1,5 @@
-import { Ix } from '../src/Data';
+import { Data } from '.';
+const { Ix } = Data;
 
 describe('Ix .', () => {
   describe('range', () => {
