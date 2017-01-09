@@ -1,6 +1,6 @@
 
 // id :: a -> a
-export const id = undefined;
+export const id = x => x;
 
 // const_ :: a -> b -> a
 export const const_ = undefined;

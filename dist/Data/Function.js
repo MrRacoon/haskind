@@ -5,7 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 // id :: a -> a
-var id = exports.id = undefined;
+var id = exports.id = function id(x) {
+  return x;
+};
 
 // const_ :: a -> b -> a
 var const_ = exports.const_ = undefined;
