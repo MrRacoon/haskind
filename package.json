@@ -6,21 +6,20 @@
   "scripts": {
     "deps": "npm install",
     "lint": "eslint ./{src,test}/**/*.js --fix",
-    "compile": "babel --out-dir=dist src",
-    "compile:prod": "NODE_ENV=production run-s compile",
-    "mocha": "NODE_PATH=$PWD/src mocha test/**/*.js",
-    "mocha:dist": "NODE_PATH=$PWD/dist mocha test/**/*.js",
+
     "clean:deps": "rm -rf node_modules",
-    "clean:dist": "rm -rf dist",
-    "clean": "run-p clean:*",
-    "test": "run-s lint mocha mocha:dist",
-    "test:src": "run-s mocha:src",
-    "test:dev": "run-s compile mocha:dist",
-    "test:prod": "run-s compile:prod mocha:dist",
-    "test:all": "run-s lint mocha:src test:dev test:prod",
-    "build": "npm run build:prod",
-    "build:dev": "run-s clean:dist deps compile",
-    "build:prod": "run-s clean:dist deps compile:prod",
+    "clean:prod": "rm -rf dist",
+    "clean": "run-p clean:prod",
+
+    "build:prod": "NODE_ENV=production babel --out-dir=dist src",
+    "build:dev": "babel --out-dir=dist/Typed src",
+    "build": "run-p build:*",
+
+    "test:src": "NODE_PATH=$PWD/src mocha test/**/*.js",
+    "test:prod": "NODE_PATH=$PWD/dist mocha test/**/*.js",
+    "test:dev": "NODE_PATH=$PWD/dist/Typed mocha test/**/*.js",
+    "test": "run-p test:*",
+
     "repl": "hkci -c"
   },
   "repository": {
