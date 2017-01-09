@@ -1,8 +1,11 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.on = exports.fix = exports.app = exports.ap = exports.flip = exports.compose = exports.const_ = exports.id = undefined;
+
+var _util = require('../util');
 
 // id :: a -> a
 var id = exports.id = function id(x) {
@@ -10,7 +13,9 @@ var id = exports.id = function id(x) {
 };
 
 // const_ :: a -> b -> a
-var const_ = exports.const_ = undefined;
+var const_ = exports.const_ = (0, _util._curry)(function (a, b) {
+  return a;
+}); // eslint-disable-line
 
 // (.) | compose :: (b -> c) -> (a -> b) -> a -> c
 var compose = exports.compose = undefined;

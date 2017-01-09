@@ -45,7 +45,7 @@ describe('Function .', () => {
       });
     });
   });
-  xdescribe('const_', () => {
+  describe('const_', () => {
     describe('(1, 2)', () => {
       it('== 1', () => {
         Function.const_(1, 2).should.be.eql(1);

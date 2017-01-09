@@ -1,9 +1,10 @@
+import { _curry } from '../util';
 
 // id :: a -> a
 export const id = x => x;
 
 // const_ :: a -> b -> a
-export const const_ = undefined;
+export const const_ = _curry((a, b) => a); // eslint-disable-line
 
 // (.) | compose :: (b -> c) -> (a -> b) -> a -> c
 export const compose = undefined;
