@@ -1,10 +1,11 @@
-import { Ord } from '../src/Data';
+import { Data } from '.';
+const { Ord } = Data;
 
 const { LT, EQ, GT } = Ord;
 
 const length = xs => xs.length;
 
-describe('Ord.', () => {
+describe('Ord .', () => {
   describe('LT', () => {
     it('== -1', () => {
       LT.should.be.eql(-1);

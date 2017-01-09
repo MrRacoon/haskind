@@ -1,6 +1,7 @@
-import { Tuple } from '../src/Data';
+import { Data } from '.';
+const { Tuple } = Data;
 
-describe('Tuple.', () => {
+describe('Tuple .', () => {
   describe('fst', () => {
     describe('([1,2])', () => {
       it('== 1', () => {

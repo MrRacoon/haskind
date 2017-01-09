@@ -1,6 +1,7 @@
-import { Eq } from '../src/Data';
+import { Data } from '.';
+const { Eq } = Data;
 
-describe('Eq.', () => {
+describe('Eq .', () => {
   describe('eq', () => {
     describe('(1,1)', () => {
       it('== true', () => {

@@ -1,6 +1,7 @@
-import { Map } from '../src/Data';
+import { Data } from '.';
+const { Map } = Data;
 
-describe('Map.', () => {
+describe('Map .', () => {
   describe('null', () => {
     describe('({})', () => {
       it('== true', () => {

@@ -314,16 +314,24 @@ export const unzip = _curry((as: any[][]): any[][] => {
 // Functions on strings
 
 // lines :: String -> [String]
-export const lines = undefined;
+export const lines =
+  (str) =>
+    str.split('\n');
 
 // words :: String -> [String]
-export const words = undefined;
+export const words =
+  (str) =>
+    str.split(' ');
 
 // unlines :: [String] -> String
-export const unlines = undefined;
+export const unlines =
+  (xs) =>
+    xs.join('\n');
 
 // unwords :: [String] -> String
-export const unwords = undefined;
+export const unwords =
+  (xs) =>
+    xs.join(' ');
 
 // "Set" operations
 

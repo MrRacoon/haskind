@@ -1,7 +1,8 @@
-import { Bool } from '../src/Data';
-import { error } from '../src/util';
+import { Data, util } from '.';
+const { Bool } = Data;
+const { error } = util;
 
-describe('Bool.', () => {
+describe('Bool .', () => {
   describe('and', () => {
     describe('(true, true)', () => {
       it('== true', () => {
@@ -24,7 +25,7 @@ describe('Bool.', () => {
       });
     });
     xdescribe('(false, error("arb"))', () => {
-      it('== false', () => {
+      it('== false <- IMPOSSIBLE', () => {
         Bool.and(false, error('arb')).should.be.eql(false);
       });
     });
@@ -61,7 +62,7 @@ describe('Bool.', () => {
       });
     });
     xdescribe('(true, error("arb"))', () => {
-      it('== true', () => {
+      it('== true <- IMPOSSIBLE', () => {
         Bool.or(true, error('arb')).should.be.eql(true);
       });
     });

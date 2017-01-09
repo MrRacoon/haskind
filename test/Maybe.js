@@ -1,10 +1,10 @@
-import { Data, util } from '../src';
+import { Data, util } from '.';
 
 const { id } = util;
 const { Maybe } = Data;
 const { Just, Nothing } = Maybe;
 
-describe('Maybe.', () => {
+describe('Maybe .', () => {
   describe('maybe', () => {
     describe('(1, id, Just(4))', () => {
       it('== 4', () => {
