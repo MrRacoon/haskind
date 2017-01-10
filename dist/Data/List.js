@@ -159,13 +159,29 @@ var minimum = exports.minimum = function minimum(ls) {
   }, Infinity);
 };
 
-// Building lists
-
 // Scans
+
+// scanl :: (b -> a -> b) -> b -> [a] -> [b]
+// scanl' :: (b -> a -> b) -> b -> [a] -> [b]
+// scanl1 :: (a -> a -> a) -> [a] -> [a]
+// scanr :: (a -> b -> b) -> b -> [a] -> [b]
+// scanr1 :: (a -> a -> a) -> [a] -> [a]
 
 // Accumulating maps
 
+// mapAccumL :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
+// mapAccumR :: Traversable t => (a -> b -> (a, c)) -> a -> t b -> (a, t c)
+
+// Infinite Lists
+
+// iterate :: (a -> a) -> a -> [a]
+// repeat :: a -> [a]
+// replicate :: Int -> a -> [a]
+// cycle :: [a] -> [a]
+
 // Unfolding
+
+// unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
 
 // Extracting sublists
 

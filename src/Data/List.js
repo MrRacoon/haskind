@@ -125,8 +125,6 @@ export const minimum: Function =
   (ls: number[]): number =>
     ls.reduce((acc, x) => x <= acc ? x : acc, Infinity);
 
-// Building lists
-
 // Scans
 
 // scanl :: (b -> a -> b) -> b -> [a] -> [b]

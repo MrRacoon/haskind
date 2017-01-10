@@ -471,11 +471,29 @@ describe('List .', () => {
       });
     });
   });
-  describe('Building lists', () => {
+  describe('Scans', () => {
+    describe('scanl', () => {
+    });
   });
   describe('Accumulating Maps', () => {
+    describe('mapAccumL', () => {
+    });
+    describe('mapAccumR', () => {
+    });
+  });
+  describe('Infinite Lists', () => {
+    describe('iterate', () => {
+    });
+    describe('repeat', () => {
+    });
+    describe('replicate', () => {
+    });
+    describe('cycle', () => {
+    });
   });
   describe('Unfolding', () => {
+    describe('unfoldr', () => {
+    });
   });
   describe('Extracting sublists', () => {
     describe('take', () => {
