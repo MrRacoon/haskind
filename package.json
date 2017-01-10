@@ -12,12 +12,12 @@
     "clean": "run-p clean:prod",
 
     "build:prod": "NODE_ENV=production babel --out-dir=dist src",
-    "build:dev": "babel --out-dir=dist/Typed src",
+    "build:dev": "# babel --out-dir=dist/Typed src",
     "build": "run-p build:*",
 
     "test:src": "NODE_PATH=$PWD/src mocha test/**/*.js",
     "test:prod": "NODE_PATH=$PWD/dist mocha test/**/*.js",
-    "test:dev": "NODE_PATH=$PWD/dist/Typed mocha test/**/*.js",
+    "test:dev": "# NODE_PATH=$PWD/dist/Typed mocha test/**/*.js",
     "test": "run-p test:*",
 
     "repl": "hkci -c"
