@@ -53,11 +53,15 @@ Luckily, it's super easy to contribute. I can't say no to anything that is prova
 
 I see three jobs available to budding contributers. (In order of importance)
 
-* Definerer: defines expectations, writing tests, and verifying that the functionality provided aligns with haskell/ghci.
+* Definerer: Defines expectations, writing tests, and verifying that the functionality provided aligns with haskell/ghci.
 
-* Implementerers: Actually go through and create functions to fulfill expectations set forth by the definerers.
+* Implementerers: Creates functions to fulfill expectations set forth by the definerers.
 
-* Innovatorers: Go through existing implementations, and make them beterer in one way or anotherer.
+* Innovatorers: Audit existing implementations, and make them beterer in one way or anotherer.
+
+## Alternatives
+
+Haskind was heavily inspired by [Ramda](http://ramdajs.com/), [Lodash](https://lodash.com/) and [Haskell.Base](http://hackage.haskell.org/package/base).
 
 ## License
 
