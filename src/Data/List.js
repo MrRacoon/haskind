@@ -148,6 +148,18 @@ export const drop = _curry((n: number, xs: any[]): any[] =>
 // splitAt :: Int -> [a] -> ([a], [a])
 export const splitAt = undefined;
 
+// splitOn :: a -> [a] -> [[a]]
+export const splitOn = _curry(
+  (x, xs) => {
+    switch (type(xs)) {
+      case 'String':
+      case 'Array':
+        return xs.split(x);
+      default: return undefined;
+    }
+  }
+);
+
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 export const takeWhile = undefined;
 

@@ -564,6 +564,28 @@ describe('List .', () => {
         });
       });
     });
+    describe('splitOn', () => {
+      describe('(".", "some.dot.string")', () => {
+        it('== ["some", "dot", "string"]', () => {
+          List.splitOn('.', 'some.dot.string').should.be.eql(['some', 'dot', 'string']);
+        });
+      });
+      describe('(".")("some.dot.string")', () => {
+        it('== ["some", "dot", "string"]', () => {
+          List.splitOn('.')('some.dot.string').should.be.eql(['some', 'dot', 'string']);
+        });
+      });
+      xdescribe('(1, [0,1,0,0,1,1,0,0,1,0])', () => {
+        it('== [[0], [0,0], [], [0,0], [0]]', () => {
+          List.splitOn(1, [0,1,0,0,1,1,0,0,1,0]).should.be.eql([[0], [0,0], [], [0,0], [0]]);
+        });
+      });
+      xdescribe('(1)([0,1,0,0,1,1,0,0,1,0])', () => {
+        it('== [[0], [0,0], [], [0,0], [0]]', () => {
+          List.splitOn(1)([0,1,0,0,1,1,0,0,1,0]).should.be.eql([[0], [0,0], [], [0,0], [0]]);
+        });
+      });
+    });
     xdescribe('takeWhile', () => {
       describe('(lt(3), [1,2,3,4,5])', () => {
         it('== [1,2]', () => {
