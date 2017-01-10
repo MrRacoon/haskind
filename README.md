@@ -55,9 +55,9 @@ I see three jobs available to budding contributers. (In order of importance)
 
 * Definerer: Defines expectations, writing tests, and verifying that the functionality provided aligns with haskell/ghci.
 
-* Implementerers: Creates functions to fulfill expectations set forth by the definerers.
+* Implementerer: Creates functions to fulfill expectations set forth by the definerers.
 
-* Innovatorers: Audit existing implementations, and make them beterer in one way or anotherer.
+* Innovatorer: Audit existing implementations, and make them beterer in one way or anotherer.
 
 ## Alternatives
 
