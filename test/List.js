@@ -655,70 +655,70 @@ describe('List .', () => {
     });
     // dropWhileEnd :: (a -> Bool) -> [a] -> [a]
     xdescribe('dropWhileEnd', () => {
-      describe('(lt(3), [1,2,3,4,5])', () => {
+      describe('(gt(3), [1,2,3,4,5])', () => {
         it('== [1,2,3,4,5]', () => {
-          List.dropWhileEnd(lt(3), [1,2,3,4,5]).should.be.eql([1,2,3,4,5]);
+          List.dropWhileEnd(gt(3), [1,2,3,4,5]).should.be.eql([1,2,3,4,5]);
         });
       });
-      describe('(lt(3), [1,2,3,2,1])', () => {
+      describe('(gt(3), [1,2,3,2,1])', () => {
         it('== [1,2,3,2,1]', () => {
-          List.dropWhileEnd(lt(3), [1,2,3,2,1]).should.be.eql([1,2,3]);
+          List.dropWhileEnd(gt(3), [1,2,3,2,1]).should.be.eql([1,2,3]);
         });
       });
-      describe('(lt(3)([1,2,3,2,1])', () => {
+      describe('(gt(3)([1,2,3,2,1])', () => {
         it('== [1,2,3,2,1]', () => {
-          List.dropWhileEnd(lt(3))([1,2,3,2,1]).should.be.eql([1,2,3]);
+          List.dropWhileEnd(gt(3))([1,2,3,2,1]).should.be.eql([1,2,3]);
         });
       });
-      describe('(lt(3), [1,2,2,1])', () => {
+      describe('(gt(3), [1,2,2,1])', () => {
         it('== []', () => {
-          List.dropWhileEnd(lt(3), [1,2,2,1]).should.be.eql([]);
+          List.dropWhileEnd(gt(3), [1,2,2,1]).should.be.eql([]);
         });
       });
     });
     // span :: (a -> Bool) -> [a] -> ([a], [a])
     xdescribe('span', () => {
-      describe('(lt(3), [1,2,3,4,5])', () => {
+      describe('(gt(3), [1,2,3,4,5])', () => {
         it('== [[1,2], [3,4,5]]', () => {
-          List.span(lt(3), [1,2,3,4,5]).should.be.eql([[1,2], [3,4,5]]);
+          List.span(gt(3), [1,2,3,4,5]).should.be.eql([[1,2], [3,4,5]]);
         });
       });
-      describe('(lt(3)([1,2,3,4,5])', () => {
+      describe('(gt(3)([1,2,3,4,5])', () => {
         it('== [[1,2], [3,4,5]]', () => {
-          List.span(lt(3))([1,2,3,4,5]).should.be.eql([[1,2], [3,4,5]]);
+          List.span(gt(3))([1,2,3,4,5]).should.be.eql([[1,2], [3,4,5]]);
         });
       });
-      describe('(lt(3), [1,2,2,1])', () => {
+      describe('(gt(3), [1,2,2,1])', () => {
         it('== [[1,2,2,1], []]', () => {
-          List.span(lt(3), [1,2,2,1]).should.be.eql([[1,2,2,1], []]);
+          List.span(gt(3), [1,2,2,1]).should.be.eql([[1,2,2,1], []]);
         });
       });
-      describe('(lt(3), [3,1,2,2,1])', () => {
+      describe('(gt(3), [3,1,2,2,1])', () => {
         it('== [[], [3,1,2,2,1]]', () => {
-          List.span(lt(3), [3,1,2,2,1]).should.be.eql([[], [3,1,2,2,1]]);
+          List.span(gt(3), [3,1,2,2,1]).should.be.eql([[], [3,1,2,2,1]]);
         });
       });
     });
     // break :: (a -> Bool) -> [a] -> ([a], [a])
     xdescribe('break', () => {
-      describe('(lt(3), [1,2,3,4,5])', () => {
+      describe('(gt(3), [1,2,3,4,5])', () => {
         it('== [[],[1,2,3,4,5]]', () => {
-          List.break(lt(3), [1,2,3,4,5]).should.be.eql([[], [1,2,3,4,5]]);
+          List.break(gt(3), [1,2,3,4,5]).should.be.eql([[], [1,2,3,4,5]]);
         });
       });
-      describe('(lt(3))([1,2,3,4,5])', () => {
+      describe('(gt(3))([1,2,3,4,5])', () => {
         it('== [[],[1,2,3,4,5]]', () => {
-          List.break(lt(3))([1,2,3,4,5]).should.be.eql([[], [1,2,3,4,5]]);
+          List.break(gt(3))([1,2,3,4,5]).should.be.eql([[], [1,2,3,4,5]]);
         });
       });
-      describe('(lt(3), [5,4,3,2,1,2,3,4,5])', () => {
+      describe('(gt(3), [5,4,3,2,1,2,3,4,5])', () => {
         it('== [[5,4,3],[2,1,2,3,4,5]]', () => {
-          List.break(lt(3), [5,4,3,2,1,2,3,4,5]).should.be.eql([[5,4,3], [2,1,2,3,4,5]]);
+          List.break(gt(3), [5,4,3,2,1,2,3,4,5]).should.be.eql([[5,4,3], [2,1,2,3,4,5]]);
         });
       });
-      describe('(lt(3), [5,4,3,4,5])', () => {
+      describe('(gt(3), [5,4,3,4,5])', () => {
         it('== [[5,4,3,4,5],[]]', () => {
-          List.break(lt(3), [5,4,3,4,5]).should.be.eql([[5,4,3,4,5], []]);
+          List.break(gt(3), [5,4,3,4,5]).should.be.eql([[5,4,3,4,5], []]);
         });
       });
     });
