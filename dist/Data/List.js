@@ -185,7 +185,15 @@ var drop = exports.drop = (0, _util._curry)(function (n, xs) {
 var splitAt = exports.splitAt = undefined;
 
 // splitOn :: a -> [a] -> [[a]]
-var splitOn = exports.splitOn = undefined;
+var splitOn = exports.splitOn = (0, _util._curry)(function (x, xs) {
+  switch ((0, _util.type)(xs)) {
+    case 'String':
+    case 'Array':
+      return xs.split(x);
+    default:
+      return undefined;
+  }
+});
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 var takeWhile = exports.takeWhile = undefined;

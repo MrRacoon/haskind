@@ -564,7 +564,7 @@ describe('List .', () => {
         });
       });
     });
-    xdescribe('splitOn', () => {
+    describe('splitOn', () => {
       describe('(".", "some.dot.string")', () => {
         it('== ["some", "dot", "string"]', () => {
           List.splitOn('.', 'some.dot.string').should.be.eql(['some', 'dot', 'string']);
@@ -575,9 +575,14 @@ describe('List .', () => {
           List.splitOn('.')('some.dot.string').should.be.eql(['some', 'dot', 'string']);
         });
       });
-      describe('(1, [0,1,0,0,1,1,0,0,1,0])', () => {
+      xdescribe('(1, [0,1,0,0,1,1,0,0,1,0])', () => {
         it('== [[0], [0,0], [], [0,0], [0]]', () => {
           List.splitOn(1, [0,1,0,0,1,1,0,0,1,0]).should.be.eql([[0], [0,0], [], [0,0], [0]]);
+        });
+      });
+      xdescribe('(1)([0,1,0,0,1,1,0,0,1,0])', () => {
+        it('== [[0], [0,0], [], [0,0], [0]]', () => {
+          List.splitOn(1)([0,1,0,0,1,1,0,0,1,0]).should.be.eql([[0], [0,0], [], [0,0], [0]]);
         });
       });
     });
