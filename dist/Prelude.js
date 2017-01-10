@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.foldl = exports.filter = exports.map = undefined;
+exports.foldl = exports.filter = exports.map = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.either = exports.Right = exports.Left = exports.maybe = exports.Just = exports.Nothing = exports.otherwise = exports.not = exports.or = exports.and = undefined;
 
-var _List = require('./Data/List');
+var _Bool = require('./Data/Bool');
 
 var _Ord = require('./Data/Ord');
 
@@ -13,9 +13,11 @@ var _Eq = require('./Data/Eq');
 
 var _Tuple = require('./Data/Tuple');
 
-exports.map = _List.map;
-exports.filter = _List.filter;
-exports.foldl = _List.foldl;
+var _Maybe = require('./Data/Maybe');
+
+var _Either = require('./Data/Either');
+
+var _List = require('./Data/List');
 
 // data Bool :: *
 // = False
@@ -24,16 +26,28 @@ exports.foldl = _List.foldl;
 // (||) :: Bool -> Bool -> Bool
 // not :: Bool -> Bool
 // otherwise :: Bool
+exports.and = _Bool.and;
+exports.or = _Bool.or;
+exports.not = _Bool.not;
+exports.otherwise = _Bool.otherwise;
 
 // data Maybe a
 // = Nothing
 // | Just a
 // maybe :: b -> (a -> b) -> Maybe a -> b
 
+exports.Nothing = _Maybe.Nothing;
+exports.Just = _Maybe.Just;
+exports.maybe = _Maybe.maybe;
+
 // data Either a b
 // = Left a
 // | Right b
 // either :: (a -> c) -> (b -> c) -> Either a b -> c
+
+exports.Left = _Either.Left;
+exports.Right = _Either.Right;
+exports.either = _Either.either;
 
 // data Ordering :: *
 // = LT
@@ -71,6 +85,7 @@ exports.notEq = _Eq.notEq;
 // (>) :: a -> a -> Bool
 // (>=) :: a -> a -> Bool
 
+exports.compare = _Ord.compare;
 exports.lt = _Ord.lt;
 exports.le = _Ord.le;
 exports.gt = _Ord.gt;
@@ -97,6 +112,7 @@ exports.min = _Ord.min;
 // class Fractional a => Floating a where
 // class (Real a, Fractional a) => RealFrac a where
 // class (RealFrac a, Floating a) => RealFloat a where
+
 // subtract :: Num a => a -> a -> a
 // even :: Integral a => a -> Bool
 // odd :: Integral a => a -> Bool
@@ -106,14 +122,17 @@ exports.min = _Ord.min;
 // (^^) :: (Fractional a, Integral b) => a -> b -> a
 // fromIntegral :: (Integral a, Num b) => a -> b
 // realToFrac :: (Real a, Fractional b) => a -> b
+
 // class Monoid a where
 // class Functor f where
 // (<$>) :: Functor f => (a -> b) -> f a -> f b
+
 // class Functor f => Applicative f where
 // class Applicative m => Monad m where
 // mapM_ :: (Foldable t, Monad m) => (a -> m b) -> t a -> m ()
 // sequence_ :: (Foldable t, Monad m) => t (m a) -> m ()
 // (=<<) :: Monad m => (a -> m b) -> m a -> m b
+
 // class Foldable t where
 // class (Functor t, Foldable t) => Traversable t where
 // id :: a -> a
@@ -202,3 +221,7 @@ exports.min = _Ord.min;
 // type IOError = IOException
 // ioError :: IOError -> IO a
 // userError :: String -> IOError
+
+exports.map = _List.map;
+exports.filter = _List.filter;
+exports.foldl = _List.foldl;

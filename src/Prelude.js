@@ -1,28 +1,10 @@
-import {
-  map,
-  filter,
-  foldl
-} from './Data/List';
-
-import {
-  LT, EQ, GT,
-  lt, le, gt, ge,
-  max, min
-} from './Data/Ord';
-
-import {
-  eq, notEq
-} from './Data/Eq';
-
-import {
-  fst, snd
-} from './Data/Tuple';
-
-export {
-  map,
-  filter,
-  foldl
-};
+import { and, or, not, otherwise } from './Data/Bool';
+import { LT, EQ, GT, lt, le, gt, ge, max, min, compare } from './Data/Ord';
+import { eq, notEq } from './Data/Eq';
+import { fst, snd } from './Data/Tuple';
+import { Nothing, Just, maybe } from './Data/Maybe';
+import { Left, Right, either } from './Data/Either';
+import { map, filter, foldl } from './Data/List';
 
 // data Bool :: *
 // = False
@@ -31,24 +13,25 @@ export {
 // (||) :: Bool -> Bool -> Bool
 // not :: Bool -> Bool
 // otherwise :: Bool
+export { and, or, not, otherwise };
 
 // data Maybe a
 // = Nothing
 // | Just a
 // maybe :: b -> (a -> b) -> Maybe a -> b
+export { Nothing, Just, maybe };
 
 // data Either a b
 // = Left a
 // | Right b
 // either :: (a -> c) -> (b -> c) -> Either a b -> c
+export { Left, Right, either };
 
 // data Ordering :: *
 // = LT
 // | EQ
 // | GT
-export {
-  LT, EQ, GT
-};
+export { LT, EQ, GT };
 
 // data Char :: *
 
@@ -56,9 +39,7 @@ export {
 
 // fst :: (a, b) -> a
 // snd :: (a, b) -> b
-export {
-  fst, snd
-};
+export { fst, snd };
 
 // curry :: ((a, b) -> c) -> a -> b -> c
 // uncurry :: (a -> b -> c) -> (a, b) -> c
@@ -66,9 +47,7 @@ export {
 // class Eq a where
 // (==) :: a -> a -> Bool
 // (/=) :: a -> a -> Bool
-export {
-  eq, notEq
-};
+export { eq, notEq };
 
 // class Eq a => Ord a where
 // compare :: a -> a -> Ordering
@@ -76,14 +55,10 @@ export {
 // (<=) :: a -> a -> Bool
 // (>) :: a -> a -> Bool
 // (>=) :: a -> a -> Bool
-export {
-  lt, le, gt, ge
-};
+export { compare, lt, le, gt, ge };
 // max :: a -> a -> a
 // min :: a -> a -> a
-export {
-  max, min
-};
+export { max, min };
 
 // class Enum a where
 
@@ -101,6 +76,7 @@ export {
 // class Fractional a => Floating a where
 // class (Real a, Fractional a) => RealFrac a where
 // class (RealFrac a, Floating a) => RealFloat a where
+
 // subtract :: Num a => a -> a -> a
 // even :: Integral a => a -> Bool
 // odd :: Integral a => a -> Bool
@@ -110,14 +86,17 @@ export {
 // (^^) :: (Fractional a, Integral b) => a -> b -> a
 // fromIntegral :: (Integral a, Num b) => a -> b
 // realToFrac :: (Real a, Fractional b) => a -> b
+
 // class Monoid a where
 // class Functor f where
 // (<$>) :: Functor f => (a -> b) -> f a -> f b
+
 // class Functor f => Applicative f where
 // class Applicative m => Monad m where
 // mapM_ :: (Foldable t, Monad m) => (a -> m b) -> t a -> m ()
 // sequence_ :: (Foldable t, Monad m) => t (m a) -> m ()
 // (=<<) :: Monad m => (a -> m b) -> m a -> m b
+
 // class Foldable t where
 // class (Functor t, Foldable t) => Traversable t where
 // id :: a -> a
@@ -206,3 +185,4 @@ export {
 // type IOError = IOException
 // ioError :: IOError -> IO a
 // userError :: String -> IOError
+export { map, filter, foldl };
