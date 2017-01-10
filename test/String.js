@@ -1,7 +1,7 @@
 import { Data } from '.';
 const { String } = Data;
 
-xdescribe('String .', () => {
+describe('String .', () => {
   describe('isString.', () => {
     describe('("string")', () => {
       it('== true', () => {
@@ -10,7 +10,7 @@ xdescribe('String .', () => {
     });
     describe('(["s", "t", "r", "i", "n", "g"])', () => {
       it('== false', () => {
-        String.isString(['s', 't', 'r', 'i', 'n', 'g']).should.be.eql(true);
+        String.isString(['s', 't', 'r', 'i', 'n', 'g']).should.be.eql(false);
       });
     });
   });
