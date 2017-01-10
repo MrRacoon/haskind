@@ -1,4 +1,3 @@
-
 import { _curry } from '../util';
 
 // eq :: a -> a -> Bool

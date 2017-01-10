@@ -3,11 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.util = exports.Data = undefined;
+exports.Prelude = exports.util = exports.Data = undefined;
 
 var _Data2 = require('./Data');
 
 var _Data = _interopRequireWildcard(_Data2);
+
+var _Prelude2 = require('./Prelude');
+
+var _Prelude = _interopRequireWildcard(_Prelude2);
 
 var _util2 = require('./util');
 
@@ -17,3 +21,4 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 exports.Data = _Data;
 exports.util = _util;
+exports.Prelude = _Prelude;
