@@ -2,48 +2,57 @@ import { type, _notUndefined, error, _lazy, _curry } from '../util';
 
 // Basic functions
 
+// (++) :: [a] -> [a] -> [a]
+export const append = undefined;
+
+// head :: [a] -> a
 export const head: Function =
   (ls: any[]): any =>
     _notUndefined(ls[0], _lazy(error, ['List.head: empty list']));
 
+// last :: [a] -> a
 export const last: Function =
   (ls: any[]): any =>
     _notUndefined(ls.slice(-1)[0], _lazy(error, ['List.last: empty list']));
     // ^ I'm no longer a fan of this.
     //   just write it out.
 
+// tail :: [a] -> [a]
 export const tail: Function =
   ([, ...xs]): any[] => xs;
 
+// init :: [a] -> [a]
 export const init: Function =
   (ls: any[]): any[] => {
     if (!ls.length) error('List.init: empty list');
     return ls.slice(0, -1);
   };
 
-const _lengthArray : Function =
-  (ls: any[]) => ls.length;
+// uncons :: [a] -> Maybe (a, [a])
+export const uncons = undefined;
 
-const _lengthObject: Function =
-  (ls: {}): number => Object.keys(ls).length;
+// null :: Foldable t => t a -> Bool
+export const null_ = undefined;
 
+// length :: Foldable t => t a -> Int
 export const length: Function =
   function _length(ls: any): (number | void) {
     switch (type(ls)) {
-      case 'Object': return _lengthObject(ls);
-      case 'Array' : return _lengthArray(ls);
+      case 'Object': return Object.keys(ls).length;
+      case 'Array' : return ls.length;
       default      : return undefined;
     }
   };
 
 // List transformations
 
+// map :: (a -> b) -> [a] -> [b]
 export const map: Function = _curry(
   (fn: Function, ls: any[]): any[] =>
     ls.map(fn)
 );
 
-
+// reverse :: [a] -> [a]
 export const reverse: Function =
   (ls: any[] | string): any[] | string => {
     switch (type(ls)) {

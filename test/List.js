@@ -12,6 +12,28 @@ const isEven = x => x % 2 === 0;
 
 describe('List .', () => {
   describe('Basic Functions', () => {
+    xdescribe('append', () => {
+      describe('([], [])', () => {
+        it('== []', () => {
+          List.append([], []).should.be.eql([]);
+        });
+      });
+      describe('([], [3,4])', () => {
+        it('== [3,4]', () => {
+          List.append([], [3,4]).should.be.eql([3,4]);
+        });
+      });
+      describe('([1,2], [])', () => {
+        it('== [1,2]', () => {
+          List.append([1,2], []).should.be.eql([1,2]);
+        });
+      });
+      describe('([1,2], [3,4])', () => {
+        it('== [1,2,3,4]', () => {
+          List.append([1,2], [3,4]).should.be.eql([1,2,3,4]);
+        });
+      });
+    });
     describe('head', () => {
       describe('([])', () => {
         it('errors: haskind.List.head: empty list', () => {
@@ -100,6 +122,50 @@ describe('List .', () => {
         });
       });
     });
+    xdescribe('uncons', () => {
+      describe('([])', () => {
+        it('== Nothing()', () => {
+          List.uncons([]).should.be.eql(Nothing());
+        });
+      });
+      describe('([1])', () => {
+        it('== Just([1, []])', () => {
+          List.uncons([1]).should.be.eql(Just([1, []]));
+        });
+      });
+      describe('([1,2])', () => {
+        it('== Just([1, [2]])', () => {
+          List.uncons([1,2]).should.be.eql(Nothing([1, [2]]));
+        });
+      });
+      describe('([1,2,3])', () => {
+        it('== Just([1, [2,3]])', () => {
+          List.uncons([1,2,3]).should.be.eql(Nothing([1, [2,3]]));
+        });
+      });
+    });
+    xdescribe('null_', () => {
+      describe('([])', () => {
+        it('== true', () => {
+          List.null_([]).should.be.eql(true);
+        });
+      });
+      describe('([1])', () => {
+        it('== false', () => {
+          List.null_([1]).should.be.eql(false);
+        });
+      });
+      describe('("")', () => {
+        it('== true', () => {
+          List.null_('').should.be.eql(true);
+        });
+      });
+      describe('("a")', () => {
+        it('== false', () => {
+          List.null_('a').should.be.eql(false);
+        });
+      });
+    });
     describe('length', () => {
       describe('([])', () => {
         it('== 0', () => {
@@ -138,7 +204,7 @@ describe('List .', () => {
       });
     });
   });
-  describe('List.st transformations', () => {
+  describe('List transformations', () => {
     describe('map', () => {
       describe('(id, [1,2,3])', () => {
         it('== [1,2,3]]', () => {

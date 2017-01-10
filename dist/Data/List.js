@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.init = exports.tail = exports.last = exports.head = undefined;
+exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.null_ = exports.uncons = exports.init = exports.tail = exports.last = exports.head = exports.append = undefined;
 
 var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
@@ -23,16 +23,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Basic functions
 
+// (++) :: [a] -> [a] -> [a]
+var append = exports.append = undefined;
+
+// head :: [a] -> a
 var head = exports.head = function head(ls) {
   return (0, _util._notUndefined)(ls[0], (0, _util._lazy)(_util.error, ['List.head: empty list']));
 };
 
+// last :: [a] -> a
 var last = exports.last = function last(ls) {
   return (0, _util._notUndefined)(ls.slice(-1)[0], (0, _util._lazy)(_util.error, ['List.last: empty list']));
 };
 // ^ I'm no longer a fan of this.
 //   just write it out.
 
+// tail :: [a] -> [a]
 var tail = exports.tail = function tail(_ref) {
   var _ref2 = (0, _toArray3.default)(_ref),
       xs = _ref2.slice(1);
@@ -40,25 +46,25 @@ var tail = exports.tail = function tail(_ref) {
   return xs;
 };
 
+// init :: [a] -> [a]
 var init = exports.init = function init(ls) {
   if (!ls.length) (0, _util.error)('List.init: empty list');
   return ls.slice(0, -1);
 };
 
-var _lengthArray = function _lengthArray(ls) {
-  return ls.length;
-};
+// uncons :: [a] -> Maybe (a, [a])
+var uncons = exports.uncons = undefined;
 
-var _lengthObject = function _lengthObject(ls) {
-  return (0, _keys2.default)(ls).length;
-};
+// null :: Foldable t => t a -> Bool
+var null_ = exports.null_ = undefined;
 
+// length :: Foldable t => t a -> Int
 var length = exports.length = function _length(ls) {
   switch ((0, _util.type)(ls)) {
     case 'Object':
-      return _lengthObject(ls);
+      return (0, _keys2.default)(ls).length;
     case 'Array':
-      return _lengthArray(ls);
+      return ls.length;
     default:
       return undefined;
   }
@@ -66,10 +72,12 @@ var length = exports.length = function _length(ls) {
 
 // List transformations
 
+// map :: (a -> b) -> [a] -> [b]
 var map = exports.map = (0, _util._curry)(function (fn, ls) {
   return ls.map(fn);
 });
 
+// reverse :: [a] -> [a]
 var reverse = exports.reverse = function reverse(ls) {
   switch ((0, _util.type)(ls)) {
     case 'String':

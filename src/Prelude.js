@@ -4,7 +4,11 @@ import { eq, notEq } from './Data/Eq';
 import { fst, snd } from './Data/Tuple';
 import { Nothing, Just, maybe } from './Data/Maybe';
 import { Left, Right, either } from './Data/Either';
-import { map, filter, foldl } from './Data/List';
+import { id, const_, comp, compose, pipe, flip, apply } from './Data/Function';
+import {
+  head, tail, last, init,
+  map, filter
+} from './Data/List';
 
 // data Bool :: *
 // = False
@@ -56,6 +60,7 @@ export { eq, notEq };
 // (>) :: a -> a -> Bool
 // (>=) :: a -> a -> Bool
 export { compare, lt, le, gt, ge };
+
 // max :: a -> a -> a
 // min :: a -> a -> a
 export { max, min };
@@ -99,25 +104,37 @@ export { max, min };
 
 // class Foldable t where
 // class (Functor t, Foldable t) => Traversable t where
+
 // id :: a -> a
 // const :: a -> b -> a
 // (.) :: (b -> c) -> (a -> b) -> a -> c
 // flip :: (a -> b -> c) -> b -> a -> c
 // ($) :: (a -> b) -> a -> b
+export { id, const_, comp, compose, pipe, flip, apply };
+
 // until :: (a -> Bool) -> (a -> a) -> a -> a
 // asTypeOf :: a -> a -> a
 // error :: forall r. forall a. HasCallStack => [Char] -> a
 // errorWithoutStackTrace :: forall r. forall a. [Char] -> a
 // undefined :: forall r. forall a. HasCallStack => a
+export { undefined };
+
 // seq :: a -> b -> b
 // ($!) :: (a -> b) -> a -> b
 // map :: (a -> b) -> [a] -> [b]
+export { map };
+
 // (++) :: [a] -> [a] -> [a]
+
 // filter :: (a -> Bool) -> [a] -> [a]
+export { filter };
+
 // head :: [a] -> a
 // last :: [a] -> a
 // tail :: [a] -> [a]
 // init :: [a] -> [a]
+export { head, last, tail, init };
+
 // null :: Foldable t => t a -> Bool
 // length :: Foldable t => t a -> Int
 // (!!) :: [a] -> Int -> a
@@ -185,4 +202,3 @@ export { max, min };
 // type IOError = IOException
 // ioError :: IOError -> IO a
 // userError :: String -> IOError
-export { map, filter, foldl };

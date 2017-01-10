@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.foldl = exports.filter = exports.map = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.either = exports.Right = exports.Left = exports.maybe = exports.Just = exports.Nothing = exports.otherwise = exports.not = exports.or = exports.and = undefined;
+exports.init = exports.tail = exports.last = exports.head = exports.filter = exports.map = exports.undefined = exports.apply = exports.flip = exports.pipe = exports.compose = exports.comp = exports.const_ = exports.id = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.either = exports.Right = exports.Left = exports.maybe = exports.Just = exports.Nothing = exports.otherwise = exports.not = exports.or = exports.and = undefined;
 
 var _Bool = require('./Data/Bool');
 
@@ -16,6 +16,8 @@ var _Tuple = require('./Data/Tuple');
 var _Maybe = require('./Data/Maybe');
 
 var _Either = require('./Data/Either');
+
+var _Function = require('./Data/Function');
 
 var _List = require('./Data/List');
 
@@ -90,6 +92,7 @@ exports.lt = _Ord.lt;
 exports.le = _Ord.le;
 exports.gt = _Ord.gt;
 exports.ge = _Ord.ge;
+
 // max :: a -> a -> a
 // min :: a -> a -> a
 
@@ -135,25 +138,51 @@ exports.min = _Ord.min;
 
 // class Foldable t where
 // class (Functor t, Foldable t) => Traversable t where
+
 // id :: a -> a
 // const :: a -> b -> a
 // (.) :: (b -> c) -> (a -> b) -> a -> c
 // flip :: (a -> b -> c) -> b -> a -> c
 // ($) :: (a -> b) -> a -> b
+
+exports.id = _Function.id;
+exports.const_ = _Function.const_;
+exports.comp = _Function.comp;
+exports.compose = _Function.compose;
+exports.pipe = _Function.pipe;
+exports.flip = _Function.flip;
+exports.apply = _Function.apply;
+
 // until :: (a -> Bool) -> (a -> a) -> a -> a
 // asTypeOf :: a -> a -> a
 // error :: forall r. forall a. HasCallStack => [Char] -> a
 // errorWithoutStackTrace :: forall r. forall a. [Char] -> a
 // undefined :: forall r. forall a. HasCallStack => a
+
+exports.undefined = undefined;
+
 // seq :: a -> b -> b
 // ($!) :: (a -> b) -> a -> b
 // map :: (a -> b) -> [a] -> [b]
+
+exports.map = _List.map;
+
 // (++) :: [a] -> [a] -> [a]
+
 // filter :: (a -> Bool) -> [a] -> [a]
+
+exports.filter = _List.filter;
+
 // head :: [a] -> a
 // last :: [a] -> a
 // tail :: [a] -> [a]
 // init :: [a] -> [a]
+
+exports.head = _List.head;
+exports.last = _List.last;
+exports.tail = _List.tail;
+exports.init = _List.init;
+
 // null :: Foldable t => t a -> Bool
 // length :: Foldable t => t a -> Int
 // (!!) :: [a] -> Int -> a
@@ -221,7 +250,3 @@ exports.min = _Ord.min;
 // type IOError = IOException
 // ioError :: IOError -> IO a
 // userError :: String -> IOError
-
-exports.map = _List.map;
-exports.filter = _List.filter;
-exports.foldl = _List.foldl;
