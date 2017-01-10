@@ -1,25 +1,21 @@
 {
   "name": "haskind",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Good ol' Haskell functions for use in Javascript",
   "main": "index.js",
   "scripts": {
     "deps": "npm install",
     "lint": "eslint ./{src,test}/**/*.js --fix",
-
     "clean:deps": "rm -rf node_modules",
     "clean:prod": "rm -rf dist",
     "clean": "run-p clean:prod",
-
     "build:prod": "NODE_ENV=production babel --out-dir=dist src",
     "build:dev": "# babel --out-dir=dist/Typed src",
     "build": "run-p build:*",
-
     "test:src": "NODE_PATH=$PWD/src mocha test/**/*.js",
     "test:prod": "NODE_PATH=$PWD/dist mocha test/**/*.js",
     "test:dev": "# NODE_PATH=$PWD/dist/Typed mocha test/**/*.js",
     "test": "run-p test:*",
-
     "repl": "hkci -c"
   },
   "repository": {
