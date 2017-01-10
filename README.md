@@ -30,10 +30,10 @@ npm install --save haskind
 
 ### Usage
 
-Currently all functions are required through a single entry point (not quite ready for `import` tricks).
+Require your favorite Haskell modules through import.
 
 ```javascript
-const Data = require('haskind');
+import { Data } from 'haskind';
 
 const { Just, Noting, catMaybes } = Data.Maybe;
 const { reverse } = Data.List
@@ -51,6 +51,13 @@ This lib is still in heavy development. Some functions/tricks are definitely mis
 
 Luckily, it's super easy to contribute. I can't say no to anything that is provably available in Haskell. Submit a PR with the example case you want to cover in the tests, along with your solution, (or not, you can make the test pending and I'll eventually get around to it), and we'll sort it out.
 
+I see three jobs available to budding contributers. (In order of importance)
+
+* Definerer: defines expectations, writing tests, and verifying that the functionality provided aligns with haskell/ghci.
+
+* Implementerers: Actually go through and create functions to fulfill expectations set forth by the definerers.
+
+* Innovatorers: Go through existing implementations, and make them beterer in one way or anotherer.
 
 ## License
 
