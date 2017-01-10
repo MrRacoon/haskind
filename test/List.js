@@ -631,25 +631,25 @@ describe('List .', () => {
         });
       });
     });
-    xdescribe('dropWhile', () => {
-      describe('(lt(3), [1,2,3,4,5])', () => {
+    describe('dropWhile', () => {
+      describe('(gt(3), [1,2,3,4,5])', () => {
         it('== [3,4,5]', () => {
-          List.dropWhile(lt(3), [1,2,3,4,5]).should.be.eql([3,4,5]);
+          List.dropWhile(gt(3), [1,2,3,4,5]).should.be.eql([3,4,5]);
         });
       });
-      describe('(lt(3))([1,2,3,4,5])', () => {
+      describe('(gt(3))([1,2,3,4,5])', () => {
         it('== [3,4,5]', () => {
-          List.dropWhile(lt(3))([1,2,3,4,5]).should.be.eql([3,4,5]);
+          List.dropWhile(gt(3))([1,2,3,4,5]).should.be.eql([3,4,5]);
         });
       });
-      describe('(lt(3), [1,2,3,2,1])', () => {
+      describe('(gt(3), [1,2,3,2,1])', () => {
         it('== [3,2,1]', () => {
-          List.dropWhile(lt(3), [1,2,3,2,1]).should.be.eql([3,2,1]);
+          List.dropWhile(gt(3), [1,2,3,2,1]).should.be.eql([3,2,1]);
         });
       });
-      describe('(lt(3), [1,2,2,1])', () => {
+      describe('(gt(3), [1,2,2,1])', () => {
         it('== []', () => {
-          List.dropWhile(lt(3), [1,2,2,1]).should.be.eql([]);
+          List.dropWhile(gt(3), [1,2,2,1]).should.be.eql([]);
         });
       });
     });

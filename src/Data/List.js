@@ -198,7 +198,18 @@ export const takeWhile = _curry(
 );
 
 // dropWhile :: (a -> Bool) -> [a] -> [a]
-export const dropWhile = undefined;
+export const dropWhile = _curry(
+  (pred, xs) => {
+    let res = [];
+    let acc = true;
+    for (let x of xs) {
+      acc = acc && pred(x);
+      if (acc) continue;
+      else res.push(x);
+    }
+    return res;
+  }
+);
 
 // dropWhileEnd :: (a -> Bool) -> [a] -> [a]
 export const dropWhileEnd = undefined;
