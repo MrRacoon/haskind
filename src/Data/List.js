@@ -162,7 +162,16 @@ export const drop = _curry((n: number, xs: any[]): any[] =>
 );
 
 // splitAt :: Int -> [a] -> ([a], [a])
-export const splitAt = undefined;
+export const splitAt =
+  (idx, xs) => {
+    let as = [];
+    let bs = [];
+    xs.forEach((x, i) => {
+      if (i < idx) as.push(x);
+      else bs.push(x);
+    });
+    return [as, bs];
+  };
 
 // splitOn :: a -> [a] -> [[a]]
 export const splitOn = _curry(

@@ -198,7 +198,14 @@ var drop = exports.drop = (0, _util._curry)(function (n, xs) {
 });
 
 // splitAt :: Int -> [a] -> ([a], [a])
-var splitAt = exports.splitAt = undefined;
+var splitAt = exports.splitAt = function splitAt(idx, xs) {
+  var as = [];
+  var bs = [];
+  xs.forEach(function (x, i) {
+    if (i < idx) as.push(x);else bs.push(x);
+  });
+  return [as, bs];
+};
 
 // splitOn :: a -> [a] -> [[a]]
 var splitOn = exports.splitOn = (0, _util._curry)(function (x, xs) {
