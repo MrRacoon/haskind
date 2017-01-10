@@ -186,7 +186,16 @@ export const splitOn = _curry(
 );
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
-export const takeWhile = undefined;
+export const takeWhile = _curry(
+  (pred, xs) => {
+    let res = [];
+    for (let x of xs) {
+      if (pred(x)) res.push(x);
+      else break;
+    }
+    return res;
+  }
+);
 
 // dropWhile :: (a -> Bool) -> [a] -> [a]
 export const dropWhile = undefined;

@@ -4,7 +4,7 @@ import { Data, util } from '.';
 
 const { id } = util;
 const { List, Ord, Maybe, Eq } = Data;
-const { lt, compare } = Ord;
+const { lt, gt, compare } = Ord;
 const { Just, Nothing } = Maybe;
 const { eq } = Eq;
 
@@ -604,30 +604,30 @@ describe('List .', () => {
         });
       });
     });
-    xdescribe('takeWhile', () => {
-      describe('(lt(3), [1,2,3,4,5])', () => {
+    describe.only('takeWhile', () => {
+      describe('(gt(3), [1,2,3,4,5])', () => {
         it('== [1,2]', () => {
-          List.takeWhile(lt(3), [1,2,3,4,5]).should.be.eql([1,2]);
+          List.takeWhile(gt(3), [1,2,3,4,5]).should.be.eql([1,2]);
         });
       });
-      describe('(lt(3))([1,2,3,4,5])', () => {
+      describe('(gt(3))([1,2,3,4,5])', () => {
         it('== [1,2]', () => {
-          List.takeWhile(lt(3))([1,2,3,4,5]).should.be.eql([1,2]);
+          List.takeWhile(gt(3))([1,2,3,4,5]).should.be.eql([1,2]);
         });
       });
-      describe('(lt(3), [1,2,3,2,1])', () => {
+      describe('(gt(3), [1,2,3,2,1])', () => {
         it('== [1,2]', () => {
-          List.takeWhile(lt(3), [1,2,3,2,1]).should.be.eql([1,2]);
+          List.takeWhile(gt(3), [1,2,3,2,1]).should.be.eql([1,2]);
         });
       });
-      describe('(lt(3), [5,1,2,3,2,1])', () => {
+      describe('(gt(3), [5,1,2,3,2,1])', () => {
         it('== []', () => {
-          List.takeWhile(lt(3), [5,1,2,3,2,1]).should.be.eql([]);
+          List.takeWhile(gt(3), [5,1,2,3,2,1]).should.be.eql([]);
         });
       });
-      describe('(lt(3), [,1,2,2,1])', () => {
+      describe('(gt(3), [1,2,2,1])', () => {
         it('== [1,2,2,1]', () => {
-          List.takeWhile(lt(3), [1,2,2,1]).should.be.eql([1,2,2,1]);
+          List.takeWhile(gt(3), [1,2,2,1]).should.be.eql([1,2,2,1]);
         });
       });
     });

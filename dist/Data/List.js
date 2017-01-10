@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.init = exports.tail = exports.last = exports.head = undefined;
 
+var _getIterator2 = require('babel-runtime/core-js/get-iterator');
+
+var _getIterator3 = _interopRequireDefault(_getIterator2);
+
 var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
@@ -219,7 +223,35 @@ var splitOn = exports.splitOn = (0, _util._curry)(function (x, xs) {
 });
 
 // takeWhile :: (a -> Bool) -> [a] -> [a]
-var takeWhile = exports.takeWhile = undefined;
+var takeWhile = exports.takeWhile = (0, _util._curry)(function (pred, xs) {
+  var res = [];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = (0, _getIterator3.default)(xs), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var x = _step.value;
+
+      if (pred(x)) res.push(x);else break;
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return res;
+});
 
 // dropWhile :: (a -> Bool) -> [a] -> [a]
 var dropWhile = exports.dropWhile = undefined;
