@@ -1,13 +1,25 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.insertWith = exports.insert = exports.singleton = exports.empty = exports.lookupGE = exports.lookupLE = exports.lookupGT = exports.lookupLT = exports.findWithDefault = exports.lookup = exports.notMember = exports.member = exports.size = exports.null_ = undefined;
 
-var _keys = require("babel-runtime/core-js/object/keys");
+var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _assign = require('babel-runtime/core-js/object/assign');
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
+
+var _util = require('../util');
+
+var _Maybe = require('./Maybe');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,16 +38,24 @@ var size = exports.size = function size(m) {
 };
 
 // member :: Ord k => k -> Map k a -> Bool
-var member = exports.member = undefined;
+var member = exports.member = (0, _util._curry)(function (x, obj) {
+  return typeof obj[x] !== 'undefined';
+});
 
 // notMember :: Ord k => k -> Map k a -> Bool
-var notMember = exports.notMember = undefined;
+var notMember = exports.notMember = (0, _util._curry)(function (x, obj) {
+  return typeof obj[x] === 'undefined';
+});
 
 // lookup :: Ord k => k -> Map k a -> Maybe a
-var lookup = exports.lookup = undefined;
+var lookup = exports.lookup = (0, _util._curry)(function (key, obj) {
+  return member(key, obj) ? (0, _Maybe.Just)(obj[key]) : (0, _Maybe.Nothing)();
+});
 
 // findWithDefault :: Ord k => a -> k -> Map k a -> a
-var findWithDefault = exports.findWithDefault = undefined;
+var findWithDefault = exports.findWithDefault = (0, _util._curry)(function (def, key, obj) {
+  return member(key, obj) ? obj[key] : def;
+});
 
 // lookupLT :: Ord k => k -> Map k v -> Maybe (k, v)
 var lookupLT = exports.lookupLT = undefined;
@@ -50,16 +70,28 @@ var lookupLE = exports.lookupLE = undefined;
 var lookupGE = exports.lookupGE = undefined;
 
 // empty :: Map k a
-var empty = exports.empty = undefined;
+var empty = exports.empty = {};
 
 // singleton :: k -> a -> Map k a
-var singleton = exports.singleton = undefined;
+var singleton = exports.singleton = (0, _util._curry)(function (key, value) {
+  return (0, _assign2.default)({}, (0, _defineProperty3.default)({}, key, value));
+});
 
 // insert :: Ord k => k -> a -> Map k a -> Map k a
-var insert = exports.insert = undefined;
+var insert = exports.insert = (0, _util._curry)(function (key, value, obj) {
+  return (0, _assign2.default)({}, obj, (0, _defineProperty3.default)({}, key, value));
+});
 
 // insertWith :: Ord k => (a -> a -> a) -> k -> a -> Map k a -> Map k a
-var insertWith = exports.insertWith = undefined;
+var insertWith = exports.insertWith = (0, _util._curry)(function (fn, key, val, mp) {
+  var res = (0, _assign2.default)({}, mp);
+  if (res[key]) {
+    res[key] = fn(val, mp[key]);
+  } else {
+    res[key] = val;
+  }
+  return res;
+});
 
 // insertWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> Map k a
 // insertLookupWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> (Maybe a, Map k a)

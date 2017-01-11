@@ -24,7 +24,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Basic functions
 
 // (++) :: [a] -> [a] -> [a]
-var append = exports.append = undefined;
+var append = exports.append = (0, _util._curry)(function (as, bs) {
+  return as.concat(bs);
+});
 
 // head :: [a] -> a
 var head = exports.head = function head(ls) {

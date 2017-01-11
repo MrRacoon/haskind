@@ -3,7 +3,7 @@ const { Map, Maybe, List } = Data;
 const { Just, Nothing } = Maybe;
 const { append } = List;
 
-xdescribe('Map .', () => {
+describe('Map .', () => {
   // null :: Map k a -> Bool
   describe('null', () => {
     describe('({})', () => {
@@ -96,6 +96,21 @@ xdescribe('Map .', () => {
         Map.findWithDefault(42, 'a', { a:1 }).should.be.eql(1);
       });
     });
+    describe('(42)("a", { a:1 })', () => {
+      it('== 1', () => {
+        Map.findWithDefault(42)('a', { a:1 }).should.be.eql(1);
+      });
+    });
+    describe('(42, "a")({ a:1 })', () => {
+      it('== 1', () => {
+        Map.findWithDefault(42, 'a')({ a:1 }).should.be.eql(1);
+      });
+    });
+    describe('(42)("a")({ a:1 })', () => {
+      it('== 1', () => {
+        Map.findWithDefault(42)('a')({ a:1 }).should.be.eql(1);
+      });
+    });
     describe('(42, "x", { a:1 })', () => {
       it('== 42', () => {
         Map.findWithDefault(42, 'x', { a:1 }).should.be.eql(42);
@@ -103,7 +118,7 @@ xdescribe('Map .', () => {
     });
   });
   // lookupLT :: Ord k => k -> Map k v -> Maybe (k, v)
-  describe('lookupLT', () => {
+  xdescribe('lookupLT', () => {
     describe('(2, { 1:0 })', () => {
       it('== Just([1, 0])', () => {
         Map.lookupLT(2, { 1:0 }).should.be.eql(Just([1, 0]));
@@ -121,7 +136,7 @@ xdescribe('Map .', () => {
     });
   });
   // lookupGT :: Ord k => k -> Map k v -> Maybe (k, v)
-  describe('lookupGT', () => {
+  xdescribe('lookupGT', () => {
     describe('(0, { 1:0 })', () => {
       it('== Just([1, 0])', () => {
         Map.lookupGT(0, { 1:0 }).should.be.eql(Just([1, 0]));
@@ -139,7 +154,7 @@ xdescribe('Map .', () => {
     });
   });
   // lookupLE :: Ord k => k -> Map k v -> Maybe (k, v)
-  describe('lookupLE', () => {
+  xdescribe('lookupLE', () => {
     describe('(2, { 1:0 })', () => {
       it('== Just([1, 0])', () => {
         Map.lookupLE(0, { 1:0 }).should.be.eql(Just([1, 0]));
@@ -157,7 +172,7 @@ xdescribe('Map .', () => {
     });
   });
   // lookupGE :: Ord k => k -> Map k v -> Maybe (k, v)
-  describe('lookupGE', () => {
+  xdescribe('lookupGE', () => {
     describe('(0, { 1:0 })', () => {
       it('== Just([1, 0])', () => {
         Map.lookupGE(0, { 1:0 }).should.be.eql(Just([1, 0]));

@@ -1,4 +1,5 @@
-
+import { _curry } from '../util';
+import { Just, Nothing } from './Maybe';
 
 // (!) :: Ord k => Map k a -> k -> a
 // (!?) :: Ord k => Map k a -> k -> Maybe a
@@ -13,16 +14,32 @@ export const size =
   (m) => Object.keys(m).length;
 
 // member :: Ord k => k -> Map k a -> Bool
-export const member = undefined;
+export const member = _curry(
+  (x: any, obj: {}): boolean =>
+    typeof(obj[x]) !== 'undefined'
+);
 
 // notMember :: Ord k => k -> Map k a -> Bool
-export const notMember = undefined;
+export const notMember = _curry(
+  (x: any, obj: {}): boolean =>
+    typeof(obj[x]) === 'undefined'
+);
 
 // lookup :: Ord k => k -> Map k a -> Maybe a
-export const lookup = undefined;
+export const lookup = _curry(
+  (key: any, obj: {}) =>
+    member(key, obj)
+      ? Just(obj[key])
+      : Nothing()
+);
 
 // findWithDefault :: Ord k => a -> k -> Map k a -> a
-export const findWithDefault = undefined;
+export const findWithDefault = _curry(
+  (def, key, obj) =>
+    member(key, obj)
+      ? obj[key]
+      : def
+);
 
 // lookupLT :: Ord k => k -> Map k v -> Maybe (k, v)
 export const lookupLT = undefined;
@@ -37,16 +54,32 @@ export const lookupLE = undefined;
 export const lookupGE = undefined;
 
 // empty :: Map k a
-export const empty = undefined;
+export const empty = {};
 
 // singleton :: k -> a -> Map k a
-export const singleton = undefined;
+export const singleton = _curry(
+  (key, value) =>
+    Object.assign({}, { [key]: value })
+);
 
 // insert :: Ord k => k -> a -> Map k a -> Map k a
-export const insert = undefined;
+export const insert = _curry(
+  (key, value, obj) =>
+    Object.assign({}, obj, { [key]: value })
+);
 
 // insertWith :: Ord k => (a -> a -> a) -> k -> a -> Map k a -> Map k a
-export const insertWith = undefined;
+export const insertWith = _curry(
+  (fn: Function, key: any, val: any, mp: {}) => {
+    let res = Object.assign({}, mp);
+    if (res[key]) {
+      res[key] = fn(val, mp[key]);
+    } else {
+      res[key] = val;
+    }
+    return res;
+  }
+);
 
 // insertWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> Map k a
 // insertLookupWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> (Maybe a, Map k a)

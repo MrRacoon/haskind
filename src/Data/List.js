@@ -3,7 +3,9 @@ import { type, _notUndefined, error, _lazy, _curry } from '../util';
 // Basic functions
 
 // (++) :: [a] -> [a] -> [a]
-export const append = undefined;
+export const append = _curry(
+  (as, bs) => as.concat(bs)
+);
 
 // head :: [a] -> a
 export const head: Function =

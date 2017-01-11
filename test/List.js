@@ -13,7 +13,7 @@ const isEven = x => x % 2 === 0;
 describe('List .', () => {
   describe('Basic Functions', () => {
     // (++) :: [a] -> [a] -> [a]
-    xdescribe('append', () => {
+    describe('append', () => {
       describe('([], [])', () => {
         it('== []', () => {
           List.append([], []).should.be.eql([]);
@@ -32,6 +32,11 @@ describe('List .', () => {
       describe('([1,2], [3,4])', () => {
         it('== [1,2,3,4]', () => {
           List.append([1,2], [3,4]).should.be.eql([1,2,3,4]);
+        });
+      });
+      describe('([1,2])([3,4])', () => {
+        it('== [1,2,3,4]', () => {
+          List.append([1,2])([3,4]).should.be.eql([1,2,3,4]);
         });
       });
     });
