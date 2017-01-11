@@ -12,6 +12,7 @@ const isEven = x => x % 2 === 0;
 
 describe('List .', () => {
   describe('Basic Functions', () => {
+    // (++) :: [a] -> [a] -> [a]
     xdescribe('append', () => {
       describe('([], [])', () => {
         it('== []', () => {
@@ -34,6 +35,7 @@ describe('List .', () => {
         });
       });
     });
+    // head :: [a] -> a
     describe('head', () => {
       describe('([])', () => {
         it('errors: haskind.List.head: empty list', () => {
@@ -56,6 +58,7 @@ describe('List .', () => {
         });
       });
     });
+    // last :: [a] -> a
     describe('last', () => {
       describe('([])', () => {
         it('errors: haskind.List.last: empty list', () => {
@@ -78,6 +81,7 @@ describe('List .', () => {
         });
       });
     });
+    // tail :: [a] -> [a]
     describe('tail', () => {
       describe('([])', () => {
         it('== []', () => {
@@ -100,6 +104,7 @@ describe('List .', () => {
         });
       });
     });
+    // init :: [a] -> [a]
     describe('init', () => {
       describe('([])', () => {
         it('errors: haskind.List.init: empty list', () => {
@@ -122,6 +127,7 @@ describe('List .', () => {
         });
       });
     });
+    // uncons :: [a] -> Maybe (a, [a])
     xdescribe('uncons', () => {
       describe('([])', () => {
         it('== Nothing()', () => {
@@ -144,6 +150,7 @@ describe('List .', () => {
         });
       });
     });
+    // null :: Foldable t => t a -> Bool
     xdescribe('null_', () => {
       describe('([])', () => {
         it('== true', () => {
@@ -166,6 +173,7 @@ describe('List .', () => {
         });
       });
     });
+    // length :: Foldable t => t a -> Int
     describe('length', () => {
       describe('([])', () => {
         it('== 0', () => {
@@ -205,6 +213,7 @@ describe('List .', () => {
     });
   });
   describe('List transformations', () => {
+    // map :: (a -> b) -> [a] -> [b]
     describe('map', () => {
       describe('(id, [1,2,3])', () => {
         it('== [1,2,3]]', () => {
@@ -224,6 +233,7 @@ describe('List .', () => {
         });
       });
     });
+    // reverse :: [a] -> [a]
     describe('reverse', () => {
       describe('([])', () => {
         it('== []', () => {
@@ -256,6 +266,7 @@ describe('List .', () => {
         });
       });
     });
+    // intersperse :: a -> [a] -> [a]
     describe('intersperse', () => {
       describe('(",", "000")', () => {
         it('== "0,0,0"', () => {
@@ -280,6 +291,7 @@ describe('List .', () => {
     });
   });
   describe('Reducing lists (folds)', () => {
+    // foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
     describe('foldl', () => {
       describe('(id, 0, [1,2,3])', () => {
         it('== 0', () => {
@@ -311,8 +323,14 @@ describe('List .', () => {
         });
       });
     });
+    // foldl' :: Foldable t => (b -> a -> b) -> b -> t a -> b
+    // foldl1 :: Foldable t => (a -> a -> a) -> t a -> a
+    // foldl1' :: (a -> a -> a) -> [a] -> a
+    // foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
+    // foldr1 :: Foldable t => (a -> a -> a) -> t a -> a
   });
   describe('Special folds', () => {
+    // concat :: Foldable t => t [a] -> [a]
     describe('concat', () => {
       describe('([[1], [2,3], [], [[1], []]])', () => {
         it('== [1,2,3,[1],[]]', () => {
@@ -320,6 +338,11 @@ describe('List .', () => {
         });
       });
     });
+    // concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
+    describe('concatMap', () => {
+
+    });
+    // and :: Foldable t => t Bool -> Bool
     describe('and', () => {
       describe('([])', () => {
         it('== true', () => {
@@ -352,6 +375,7 @@ describe('List .', () => {
         });
       });
     });
+    // or :: Foldable t => t Bool -> Bool
     describe('or', () => {
       describe('([])', () => {
         it('== false', () => {
@@ -384,6 +408,7 @@ describe('List .', () => {
         });
       });
     });
+    // any :: Foldable t => (a -> Bool) -> t a -> Bool
     describe('any', () => {
       describe('(id, [])', () => {
         it('== false', () => {
@@ -421,6 +446,7 @@ describe('List .', () => {
         });
       });
     });
+    // all :: Foldable t => (a -> Bool) -> t a -> Bool
     describe('all', () => {
       describe('(id, [])', () => {
         it('== true', () => {
@@ -458,6 +484,7 @@ describe('List .', () => {
         });
       });
     });
+    // sum :: (Foldable t, Num a) => t a -> a
     describe('sum', () => {
       describe('([1,1,1])', () => {
         it('== 3', () => {
@@ -475,6 +502,7 @@ describe('List .', () => {
         });
       });
     });
+    // product :: (Foldable t, Num a) => t a -> a
     describe('product', () => {
       describe('([1,1,1])', () => {
         it('== 1', () => {
@@ -492,6 +520,7 @@ describe('List .', () => {
         });
       });
     });
+    // maximum :: forall a. (Foldable t, Ord a) => t a -> a
     describe('maximum', () => {
       describe('([1,1,1])', () => {
         it('== 1', () => {
@@ -514,6 +543,7 @@ describe('List .', () => {
         });
       });
     });
+    // minimum :: forall a. (Foldable t, Ord a) => t a -> a
     describe('minimum', () => {
       describe('([1,1,1])', () => {
         it('== 1', () => {
@@ -538,23 +568,72 @@ describe('List .', () => {
     });
   });
   describe('Scans', () => {
+    // scanl :: (b -> a -> b) -> b -> [a] -> [b]
     describe('scanl', () => {
     });
+    // scanl' :: (b -> a -> b) -> b -> [a] -> [b]
+    // scanl1 :: (a -> a -> a) -> [a] -> [a]
+    // scanr :: (a -> b -> b) -> b -> [a] -> [b]
+    // scanr1 :: (a -> a -> a) -> [a] -> [a]
   });
   describe('Accumulating Maps', () => {
+    // mapAccumL :: (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
     describe('mapAccumL', () => {
     });
+    // mapAccumR :: (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
     describe('mapAccumR', () => {
     });
   });
-  describe('Infinite Lists', () => {
+  xdescribe('Infinite Lists', () => {
+    // iterate :: (a -> a) -> a -> [a]
     describe('iterate', () => {
+      describe('(inc, 0)', () => {
+        it('== [0,1,2,3,4...]', () => {
+        });
+      });
     });
+    // repeat :: a -> [a]
     describe('repeat', () => {
+      describe('(1)', () => {
+        it('== [1,1,1,1...]', () => {
+        });
+      });
     });
+    // replicate :: Int -> a -> [a]
     describe('replicate', () => {
+      describe('(0,1)', () => {
+        it('== []', () => {
+          List.replicate(3,1).should.be.eql([]);
+        });
+      });
+      describe('(0)(1)', () => {
+        it('== []', () => {
+          List.replicate(3)(1).should.be.eql([]);
+        });
+      });
+      describe('(3,1)', () => {
+        it('== [1,1,1]', () => {
+          List.replicate(3,1).should.be.eql([1,1,1]);
+        });
+      });
+      describe('(3)(1)', () => {
+        it('== [1,1,1]', () => {
+          List.replicate(3)(1).should.be.eql([1,1,1]);
+        });
+      });
+      describe('(3,"a")', () => {
+        it('== ["a", "a", "a"]', () => {
+          List.replicate(3,1).should.be.eql(['a', 'a', 'a']);
+        });
+      });
     });
+    // cycle :: [a] -> [a]
     describe('cycle', () => {
+      describe('([1,2,3])', () => {
+        it('== [1,2,3,1,2,3....]', () => {
+
+        });
+      });
     });
   });
   describe('Unfolding', () => {

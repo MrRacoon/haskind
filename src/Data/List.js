@@ -67,6 +67,7 @@ export const reverse: Function =
 
 export type strOrList = (string | any[])
 
+// intersperse :: a -> [a] -> [a]
 export const intersperse: Function = _curry(
   (ch: any, ls: strOrList): strOrList => {
     switch (type(ls)) {
@@ -89,47 +90,74 @@ export const intersperse: Function = _curry(
 
 // Reducing lists (folds)
 
+// foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
 export const foldl: Function = _curry(
   (fn: Function, init: any, ls: any[]): any =>
     ls.reduce(fn, init)
 );
 
+// foldl' :: Foldable t => (b -> a -> b) -> b -> t a -> b
+export const foldl_ = undefined;
+
+// foldl1 :: Foldable t => (a -> a -> a) -> t a -> a
+export const foldl1 = undefined;
+
+// foldl1' :: (a -> a -> a) -> [a] -> a
+export const foldl1_ = undefined;
+
+// foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
+export const foldr = undefined;
+
+// foldr1 :: Foldable t => (a -> a -> a) -> t a -> a
+export const foldr1 = undefined;
+
 // Special folds
 
+// concat :: Foldable t => t [a] -> [a]
 export const concat: Function =
   (ls: any[][]): any[] =>
     ls.reduce((acc, x) => acc.concat(x), []);
 
+// concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
+
+// and :: Foldable t => t Bool -> Bool
 export const and: Function =
   (ls: any[]): boolean =>
     ls.reduce((acc, x) => acc && x, true);
 
+// or :: Foldable t => t Bool -> Bool
 export const or: Function =
   (ls: any[]): boolean =>
     ls.reduce((acc, x) => acc || x, false);
 
+// any :: Foldable t => (a -> Bool) -> t a -> Bool
 export const any: Function = _curry(
   (fn: Function, ls: any[]): boolean =>
     ls.reduce((acc, x) => acc || !!fn(x), false)
 );
 
+// all :: Foldable t => (a -> Bool) -> t a -> Bool
 export const all: Function = _curry(
   (fn: Function, ls: any[]): boolean =>
     ls.reduce((acc, x) => acc && !!fn(x), true)
 );
 
+// sum :: (Foldable t, Num a) => t a -> a
 export const sum: Function =
   (ls: number[]): number =>
     ls.reduce((acc, x) => acc + x, 0);
 
+// product :: (Foldable t, Num a) => t a -> a
 export const product: Function =
   (ls: number[]): number =>
     ls.reduce((acc, x) => acc * x, 1);
 
+// maximum :: forall a. (Foldable t, Ord a) => t a -> a
 export const maximum: Function =
   (ls: number[]): number =>
     ls.reduce((acc, x) => acc <= x ? x : acc, -Infinity);
 
+// minimum :: forall a. (Foldable t, Ord a) => t a -> a
 export const minimum: Function =
   (ls: number[]): number =>
     ls.reduce((acc, x) => x <= acc ? x : acc, Infinity);

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.null_ = exports.uncons = exports.init = exports.tail = exports.last = exports.head = exports.append = undefined;
+exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldr1 = exports.foldr = exports.foldl1_ = exports.foldl1 = exports.foldl_ = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.null_ = exports.uncons = exports.init = exports.tail = exports.last = exports.head = exports.append = undefined;
 
 var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
@@ -91,6 +91,7 @@ var reverse = exports.reverse = function reverse(ls) {
   }
 };
 
+// intersperse :: a -> [a] -> [a]
 var intersperse = exports.intersperse = (0, _util._curry)(function (ch, ls) {
   switch ((0, _util.type)(ls)) {
 
@@ -111,60 +112,87 @@ var intersperse = exports.intersperse = (0, _util._curry)(function (ch, ls) {
 
 // Reducing lists (folds)
 
+// foldl :: Foldable t => (b -> a -> b) -> b -> t a -> b
 var foldl = exports.foldl = (0, _util._curry)(function (fn, init, ls) {
   return ls.reduce(fn, init);
 });
 
+// foldl' :: Foldable t => (b -> a -> b) -> b -> t a -> b
+var foldl_ = exports.foldl_ = undefined;
+
+// foldl1 :: Foldable t => (a -> a -> a) -> t a -> a
+var foldl1 = exports.foldl1 = undefined;
+
+// foldl1' :: (a -> a -> a) -> [a] -> a
+var foldl1_ = exports.foldl1_ = undefined;
+
+// foldr :: Foldable t => (a -> b -> b) -> b -> t a -> b
+var foldr = exports.foldr = undefined;
+
+// foldr1 :: Foldable t => (a -> a -> a) -> t a -> a
+var foldr1 = exports.foldr1 = undefined;
+
 // Special folds
 
+// concat :: Foldable t => t [a] -> [a]
 var concat = exports.concat = function concat(ls) {
   return ls.reduce(function (acc, x) {
     return acc.concat(x);
   }, []);
 };
 
+// concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
+
+// and :: Foldable t => t Bool -> Bool
 var and = exports.and = function and(ls) {
   return ls.reduce(function (acc, x) {
     return acc && x;
   }, true);
 };
 
+// or :: Foldable t => t Bool -> Bool
 var or = exports.or = function or(ls) {
   return ls.reduce(function (acc, x) {
     return acc || x;
   }, false);
 };
 
+// any :: Foldable t => (a -> Bool) -> t a -> Bool
 var any = exports.any = (0, _util._curry)(function (fn, ls) {
   return ls.reduce(function (acc, x) {
     return acc || !!fn(x);
   }, false);
 });
 
+// all :: Foldable t => (a -> Bool) -> t a -> Bool
 var all = exports.all = (0, _util._curry)(function (fn, ls) {
   return ls.reduce(function (acc, x) {
     return acc && !!fn(x);
   }, true);
 });
 
+// sum :: (Foldable t, Num a) => t a -> a
 var sum = exports.sum = function sum(ls) {
   return ls.reduce(function (acc, x) {
     return acc + x;
   }, 0);
 };
 
+// product :: (Foldable t, Num a) => t a -> a
 var product = exports.product = function product(ls) {
   return ls.reduce(function (acc, x) {
     return acc * x;
   }, 1);
 };
 
+// maximum :: forall a. (Foldable t, Ord a) => t a -> a
 var maximum = exports.maximum = function maximum(ls) {
   return ls.reduce(function (acc, x) {
     return acc <= x ? x : acc;
   }, -Infinity);
 };
 
+// minimum :: forall a. (Foldable t, Ord a) => t a -> a
 var minimum = exports.minimum = function minimum(ls) {
   return ls.reduce(function (acc, x) {
     return x <= acc ? x : acc;
