@@ -5,23 +5,49 @@
 // (\\) :: Ord k => Map k a -> Map k b -> Map k a
 
 // null :: Map k a -> Bool
-export const null_ = (m) => Object.keys(m).length === 0;
+export const null_ =
+  (m) => Object.keys(m).length === 0;
 
 // size :: Map k a -> Int
-export const size = (m) => Object.keys(m).length;
+export const size =
+  (m) => Object.keys(m).length;
 
 // member :: Ord k => k -> Map k a -> Bool
+export const member = undefined;
+
 // notMember :: Ord k => k -> Map k a -> Bool
+export const notMember = undefined;
+
 // lookup :: Ord k => k -> Map k a -> Maybe a
+export const lookup = undefined;
+
 // findWithDefault :: Ord k => a -> k -> Map k a -> a
+export const findWithDefault = undefined;
+
 // lookupLT :: Ord k => k -> Map k v -> Maybe (k, v)
+export const lookupLT = undefined;
+
 // lookupGT :: Ord k => k -> Map k v -> Maybe (k, v)
+export const lookupGT = undefined;
+
 // lookupLE :: Ord k => k -> Map k v -> Maybe (k, v)
+export const lookupLE = undefined;
+
 // lookupGE :: Ord k => k -> Map k v -> Maybe (k, v)
+export const lookupGE = undefined;
+
 // empty :: Map k a
+export const empty = undefined;
+
 // singleton :: k -> a -> Map k a
+export const singleton = undefined;
+
 // insert :: Ord k => k -> a -> Map k a -> Map k a
+export const insert = undefined;
+
 // insertWith :: Ord k => (a -> a -> a) -> k -> a -> Map k a -> Map k a
+export const insertWith = undefined;
+
 // insertWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> Map k a
 // insertLookupWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> (Maybe a, Map k a)
 // delete :: Ord k => k -> Map k a -> Map k a

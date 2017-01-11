@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.size = exports.null_ = undefined;
+exports.insertWith = exports.insert = exports.singleton = exports.empty = exports.lookupGE = exports.lookupLE = exports.lookupGT = exports.lookupLT = exports.findWithDefault = exports.lookup = exports.notMember = exports.member = exports.size = exports.null_ = undefined;
 
 var _keys = require("babel-runtime/core-js/object/keys");
 
@@ -26,17 +26,41 @@ var size = exports.size = function size(m) {
 };
 
 // member :: Ord k => k -> Map k a -> Bool
+var member = exports.member = undefined;
+
 // notMember :: Ord k => k -> Map k a -> Bool
+var notMember = exports.notMember = undefined;
+
 // lookup :: Ord k => k -> Map k a -> Maybe a
+var lookup = exports.lookup = undefined;
+
 // findWithDefault :: Ord k => a -> k -> Map k a -> a
+var findWithDefault = exports.findWithDefault = undefined;
+
 // lookupLT :: Ord k => k -> Map k v -> Maybe (k, v)
+var lookupLT = exports.lookupLT = undefined;
+
 // lookupGT :: Ord k => k -> Map k v -> Maybe (k, v)
+var lookupGT = exports.lookupGT = undefined;
+
 // lookupLE :: Ord k => k -> Map k v -> Maybe (k, v)
+var lookupLE = exports.lookupLE = undefined;
+
 // lookupGE :: Ord k => k -> Map k v -> Maybe (k, v)
+var lookupGE = exports.lookupGE = undefined;
+
 // empty :: Map k a
+var empty = exports.empty = undefined;
+
 // singleton :: k -> a -> Map k a
+var singleton = exports.singleton = undefined;
+
 // insert :: Ord k => k -> a -> Map k a -> Map k a
+var insert = exports.insert = undefined;
+
 // insertWith :: Ord k => (a -> a -> a) -> k -> a -> Map k a -> Map k a
+var insertWith = exports.insertWith = undefined;
+
 // insertWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> Map k a
 // insertLookupWithKey :: Ord k => (k -> a -> a -> a) -> k -> a -> Map k a -> (Maybe a, Map k a)
 // delete :: Ord k => k -> Map k a -> Map k a
