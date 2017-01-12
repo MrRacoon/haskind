@@ -2,7 +2,7 @@ import { Data } from '.';
 
 const { Enum } = Data;
 
-describe('Enum .', () => {
+describe('Enum', () => {
   // succ :: a -> a
   describe('succ', () => {
     describe('(0)', () => {

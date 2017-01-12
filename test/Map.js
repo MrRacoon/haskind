@@ -3,7 +3,7 @@ const { Map, Maybe, List } = Data;
 const { Just, Nothing } = Maybe;
 const { append } = List;
 
-describe('Map .', () => {
+describe('Map', () => {
   // null :: Map k a -> Bool
   describe('null', () => {
     describe('({})', () => {

@@ -1,7 +1,7 @@
 import { Data } from '.';
 const { String } = Data;
 
-describe('String .', () => {
+describe('String', () => {
   describe('isString.', () => {
     describe('("string")', () => {
       it('== true', () => {

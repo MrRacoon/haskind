@@ -2,7 +2,7 @@ import { Data, util } from '.';
 const { Bool } = Data;
 const { error } = util;
 
-describe('Bool .', () => {
+describe('Bool', () => {
   describe('and', () => {
     describe('(true, true)', () => {
       it('== true', () => {

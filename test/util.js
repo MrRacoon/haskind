@@ -4,7 +4,7 @@ import { fibs } from './helpers';
 import { util as U } from '.';
 
 
-describe('util .', () => {
+describe('util', () => {
   describe('id', () => {
     describe('(1)', () => {
       it('== 1', () => {

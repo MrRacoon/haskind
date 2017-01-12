@@ -6,7 +6,7 @@ const inc = x => x + 1;
 const add = (a,b) => a + b;
 const mult = (a,b) => a * b;
 
-describe('Function .', () => {
+describe('Function', () => {
   describe('id', () => {
     describe('(1)', () => {
       it('== 1', () => {
