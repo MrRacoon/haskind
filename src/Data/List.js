@@ -270,8 +270,22 @@ export const span = _curry(
   }
 );
 
-// break :: (a -> Bool) -> [a] -> ([a], [a])
-export const break_ = undefined;
+// break_ :: (a -> Bool) -> [a] -> ([a], [a])
+export const break_ = _curry(
+  (fn, xs) => {
+    let f = [];
+    let s = [];
+    let bl = false;
+    for (let x of xs) {
+      if ((bl = bl || fn(x))) {
+        s.push(x);
+      } else {
+        f.push(x);
+      }
+    }
+    return [f, s];
+  }
+);
 
 // stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
 export const stripPrefix = undefined;

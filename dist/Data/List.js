@@ -364,8 +364,42 @@ var span = exports.span = (0, _util._curry)(function (fn, xs) {
   return [f, s];
 });
 
-// break :: (a -> Bool) -> [a] -> ([a], [a])
-var break_ = exports.break_ = undefined;
+// break_ :: (a -> Bool) -> [a] -> ([a], [a])
+var break_ = exports.break_ = (0, _util._curry)(function (fn, xs) {
+  var f = [];
+  var s = [];
+  var bl = false;
+  var _iteratorNormalCompletion4 = true;
+  var _didIteratorError4 = false;
+  var _iteratorError4 = undefined;
+
+  try {
+    for (var _iterator4 = (0, _getIterator3.default)(xs), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+      var x = _step4.value;
+
+      if (bl = bl || fn(x)) {
+        s.push(x);
+      } else {
+        f.push(x);
+      }
+    }
+  } catch (err) {
+    _didIteratorError4 = true;
+    _iteratorError4 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion4 && _iterator4.return) {
+        _iterator4.return();
+      }
+    } finally {
+      if (_didIteratorError4) {
+        throw _iteratorError4;
+      }
+    }
+  }
+
+  return [f, s];
+});
 
 // stripPrefix :: Eq a => [a] -> [a] -> Maybe [a]
 var stripPrefix = exports.stripPrefix = undefined;
