@@ -1,19 +1,31 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.lcm = exports.gcd = exports.odd = exports.even = exports.subtract = exports.add = undefined;
+
+var _util = require('../util');
+
 // add :: Num a => a -> a -> a
-var add = exports.add = undefined;
+var add = exports.add = (0, _util._curry)(function (x, y) {
+  return x + y;
+});
 
 // subtract :: Num a => a -> a -> a
-var subtract = exports.subtract = undefined;
+var subtract = exports.subtract = (0, _util._curry)(function (x, y) {
+  return y - x;
+});
 
 // even :: Integral a => a -> Bool
-var even = exports.even = undefined;
+var even = exports.even = function even(x) {
+  return x % 2 === 0;
+};
 
 // odd :: Integral a => a -> Bool
-var odd = exports.odd = undefined;
+var odd = exports.odd = function odd(x) {
+  return x % 2 !== 0;
+};
 
 // gcd :: Integral a => a -> a -> a
 var gcd = exports.gcd = undefined;

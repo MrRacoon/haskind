@@ -3,10 +3,10 @@ const { Num } = Data;
 
 describe('Num', () => {
   // subtract :: Num a => a -> a -> a
-  xdescribe('add', () => {
+  describe('add', () => {
     describe('(1, 0)', () => {
       it('== 1', () => {
-        Num.add(1, 0).should.be.eql(-1);
+        Num.add(1, 0).should.be.eql(1);
       });
     });
     describe('(1, 1)', () => {
@@ -25,7 +25,7 @@ describe('Num', () => {
       });
     });
   });
-  xdescribe('subtract', () => {
+  describe('subtract', () => {
     describe('(1, 0)', () => {
       it('== -1', () => {
         Num.subtract(1, 0).should.be.eql(-1);
@@ -48,7 +48,7 @@ describe('Num', () => {
     });
   });
   // even :: Integral a => a -> Bool
-  xdescribe('even', () => {
+  describe('even', () => {
     describe('(0)', () => {
       it('== true', () => {
         Num.even(0).should.be.eql(true);
@@ -71,15 +71,15 @@ describe('Num', () => {
     });
   });
   // odd :: Integral a => a -> Bool
-  xdescribe('odd', () => {
+  describe('odd', () => {
     describe('(0)', () => {
       it('== false', () => {
         Num.odd(0).should.be.eql(false);
       });
     });
     describe('(1)', () => {
-      it('== false', () => {
-        Num.odd(1).should.be.eql(false);
+      it('== true', () => {
+        Num.odd(1).should.be.eql(true);
       });
     });
     describe('(2)', () => {
