@@ -406,12 +406,25 @@ export const zip = _curry((xs, ys) => {
   }
   return ret;
 });
+
 // zip3 :: [a] -> [b] -> [c] -> [(a, b, c)]
 // zip4 :: [a] -> [b] -> [c] -> [d] -> [(a, b, c, d)]
 // zip5 :: [a] -> [b] -> [c] -> [d] -> [e] -> [(a, b, c, d, e)]
 // zip6 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [(a, b, c, d, e, f)]
 // zip7 :: [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [(a, b, c, d, e, f, g)]
+
 // zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+export const zipWith = _curry(
+  (fn, xs, ys) => {
+    let res = [];
+    let len = xs.length < ys.length ? xs.length : ys.length;
+    for (let i = 0; i < len; i+=1) {
+      res.push(fn(xs[i], ys[i]));
+    }
+    return res;
+  }
+);
+
 // zipWith3 :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
 // zipWith4 :: (a -> b -> c -> d -> e) -> [a] -> [b] -> [c] -> [d] -> [e]
 // zipWith5 :: (a -> b -> c -> d -> e -> f) -> [a] -> [b] -> [c] -> [d] -> [e] -> [f]

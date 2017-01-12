@@ -9,6 +9,7 @@ const { Just, Nothing } = Maybe;
 const { eq } = Eq;
 
 const isEven = x => x % 2 === 0;
+const add = (x,y) => x + y;
 
 describe('List .', () => {
   describe('Basic Functions', () => {
@@ -1404,6 +1405,20 @@ describe('List .', () => {
         });
       });
     });
+    xdescribe('zipWith', () => {
+      describe('(add, [1,1,2,3,5], [1,2,3,5,8])', () => {
+        List.zipWith(add, [1,1,2,3,5], [1,2,3,5,8]).should.be.eql([2,3,5,8,13]);
+      });
+      describe('(add)([1,1,2,3,5], [1,2,3,5,8])', () => {
+        List.zipWith(add)([1,1,2,3,5], [1,2,3,5,8]).should.be.eql([2,3,5,8,13]);
+      });
+      describe('(add, [1,1,2,3,5])([1,2,3,5,8])', () => {
+        List.zipWith(add, [1,1,2,3,5])([1,2,3,5,8]).should.be.eql([2,3,5,8,13]);
+      });
+      describe('(add)([1,1,2,3,5])([1,2,3,5,8])', () => {
+        List.zipWith(add)([1,1,2,3,5])([1,2,3,5,8]).should.be.eql([2,3,5,8,13]);
+      });
+    });
   });
   xdescribe('Functions on strings', () => {
     describe('lines', () => {
@@ -1602,7 +1617,7 @@ describe('List .', () => {
       });
     });
   });
-  xdescribe('Ordered List.sts', () => {
+  xdescribe('Ordered List', () => {
     describe('sort', () => {
       describe('([4,2,3,1])', () => {
         it('== [1,2,3,4]', () => {
