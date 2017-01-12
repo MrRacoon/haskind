@@ -1,5 +1,5 @@
 import should from 'should';
-import { fibs } from './helpers';
+import { fibs } from '../helpers';
 import { Data, util } from '.';
 
 const { id } = util;
