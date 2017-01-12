@@ -153,7 +153,6 @@ var concatMap = exports.concatMap = (0, _util._curry)(function (fn, xs) {
   try {
     for (var _iterator = (0, _getIterator3.default)(xs), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
       var x = _step.value;
-
       res = res.concat(fn(x));
     }
   } catch (err) {

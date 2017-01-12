@@ -126,9 +126,7 @@ export const concat: Function =
 export const concatMap = _curry(
   (fn: Function, xs: any[]): any[] => {
     let res = [];
-    for (let x of xs) {
-      res = res.concat(fn(x));
-    }
+    for (let x of xs) { res = res.concat(fn(x)); }
     return res;
   }
 );

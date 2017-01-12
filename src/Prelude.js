@@ -1,3 +1,4 @@
+import { error } from './util';
 import { and, or, not, otherwise } from './Data/Bool';
 import { LT, EQ, GT, lt, le, gt, ge, max, min, compare } from './Data/Ord';
 import { eq, notEq } from './Data/Eq';
@@ -6,7 +7,7 @@ import { lookup } from './Data/Map';
 import { Nothing, Just, maybe } from './Data/Maybe';
 import { Left, Right, either } from './Data/Either';
 import { succ, pred } from './Data/Enum';
-import { id, const_, comp, compose, pipe, flip, apply, error } from './Data/Function';
+import { id, const_, comp, compose, pipe, flip, apply } from './Data/Function';
 import {
   all, any, append, break_, concat, concatMap, drop, dropWhile, elem, filter,
   head, index, init, last, length, lines, map, notElem, reverse, span, splitAt,
