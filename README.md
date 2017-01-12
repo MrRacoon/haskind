@@ -49,15 +49,8 @@ This lib is still in heavy development. Some functions/tricks are definitely mis
 
 ### Contributing
 
-Luckily, it's super easy to contribute. I can't say no to anything that is provably available in Haskell. Submit a PR with the example case you want to cover in the tests, along with your solution, (or not, you can make the test pending and I'll eventually get around to it), and we'll sort it out.
-
-I see three jobs available to budding contributers. (In order of importance)
-
-* Definerer: Defines expectations, writing tests, and verifying that the functionality provided aligns with haskell/ghci.
-
-* Implementerer: Creates functions to fulfill expectations set forth by the definerers.
-
-* Innovatorer: Audit existing implementations, and make them beterer in one way or anotherer.
+If you see something you want to fill in, or think is off, feel free to submit a
+PR.
 
 ## Alternatives
 
