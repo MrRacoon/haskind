@@ -13,6 +13,7 @@ import {
   head, index, init, last, length, lines, map, notElem, reverse, span, splitAt,
   tail, take, takeWhile, unlines, unwords, unzip, words, zip, zipWith,
 } from './Data/List';
+import { add, subtract, even, odd, gcd, lcm } from './Data/Num';
 
 // data Bool :: *
 // = False
@@ -96,6 +97,7 @@ export { succ, pred };
 // (^^) :: (Fractional a, Integral b) => a -> b -> a
 // fromIntegral :: (Integral a, Num b) => a -> b
 // realToFrac :: (Real a, Fractional b) => a -> b
+export { add, subtract, even, odd, gcd, lcm };
 
 // class Monoid a where
 // class Functor f where

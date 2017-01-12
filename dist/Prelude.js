@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.lookup = exports.notElem = exports.elem = exports.break_ = exports.span = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.concatMap = exports.concat = exports.all = exports.any = exports.reverse = exports.index = exports.length = exports.init = exports.tail = exports.last = exports.head = exports.filter = exports.append = exports.map = exports.undefined = exports.error = exports.apply = exports.flip = exports.pipe = exports.compose = exports.comp = exports.const_ = exports.id = exports.pred = exports.succ = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.either = exports.Right = exports.Left = exports.maybe = exports.Just = exports.Nothing = exports.otherwise = exports.not = exports.or = exports.and = undefined;
+exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.lookup = exports.notElem = exports.elem = exports.break_ = exports.span = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.concatMap = exports.concat = exports.all = exports.any = exports.reverse = exports.index = exports.length = exports.init = exports.tail = exports.last = exports.head = exports.filter = exports.append = exports.map = exports.undefined = exports.error = exports.apply = exports.flip = exports.pipe = exports.compose = exports.comp = exports.const_ = exports.id = exports.lcm = exports.gcd = exports.odd = exports.even = exports.subtract = exports.add = exports.pred = exports.succ = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.either = exports.Right = exports.Left = exports.maybe = exports.Just = exports.Nothing = exports.otherwise = exports.not = exports.or = exports.and = undefined;
 
 var _util = require('./util');
 
@@ -26,6 +26,8 @@ var _Enum = require('./Data/Enum');
 var _Function = require('./Data/Function');
 
 var _List = require('./Data/List');
+
+var _Num = require('./Data/Num');
 
 // data Bool :: *
 // = False
@@ -134,6 +136,13 @@ exports.pred = _Enum.pred;
 // (^^) :: (Fractional a, Integral b) => a -> b -> a
 // fromIntegral :: (Integral a, Num b) => a -> b
 // realToFrac :: (Real a, Fractional b) => a -> b
+
+exports.add = _Num.add;
+exports.subtract = _Num.subtract;
+exports.even = _Num.even;
+exports.odd = _Num.odd;
+exports.gcd = _Num.gcd;
+exports.lcm = _Num.lcm;
 
 // class Monoid a where
 // class Functor f where

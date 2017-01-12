@@ -123,13 +123,28 @@ describe('Prelude', () => {
     // class (Real a, Fractional a) => RealFrac a where
     // class (RealFrac a, Floating a) => RealFloat a where
     // subtract :: Num a => a -> a -> a
-    it('min', () => {
-      Prelude.min.should.exist;
+    xit('add', () => {
+      Prelude.add.should.exist;
+    });
+    xit('subtract', () => {
+      Prelude.subtract.should.exist;
     });
     // even :: Integral a => a -> Bool
+    xit('even', () => {
+      Prelude.even.should.exist;
+    });
     // odd :: Integral a => a -> Bool
+    xit('odd', () => {
+      Prelude.odd.should.exist;
+    });
     // gcd :: Integral a => a -> a -> a
+    xit('gcd', () => {
+      Prelude.gcd.should.exist;
+    });
     // lcm :: Integral a => a -> a -> a
+    xit('lcm', () => {
+      Prelude.lcm.should.exist;
+    });
     // (^) :: (Num a, Integral b) => a -> b -> a
     // (^^) :: (Fractional a, Integral b) => a -> b -> a
     // fromIntegral :: (Integral a, Num b) => a -> b
