@@ -1,6 +1,6 @@
 {
   "name": "haskind",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Good ol' Haskell functions for use in Javascript",
   "main": "index.js",
   "scripts": {
