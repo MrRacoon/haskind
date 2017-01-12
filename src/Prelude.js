@@ -2,12 +2,15 @@ import { and, or, not, otherwise } from './Data/Bool';
 import { LT, EQ, GT, lt, le, gt, ge, max, min, compare } from './Data/Ord';
 import { eq, notEq } from './Data/Eq';
 import { fst, snd } from './Data/Tuple';
+import { lookup } from './Data/Map';
 import { Nothing, Just, maybe } from './Data/Maybe';
 import { Left, Right, either } from './Data/Either';
-import { id, const_, comp, compose, pipe, flip, apply } from './Data/Function';
+import { succ, pred } from './Data/Enum';
+import { id, const_, comp, compose, pipe, flip, apply, error } from './Data/Function';
 import {
-  head, tail, last, init,
-  map, filter
+  any, all, concat, concatMap, head, tail, last, init, map, filter, length,
+  reverse, index, take, drop, splitAt, takeWhile, dropWhile, span, break_,
+  zip, zipWith, unzip, lines, words, unlines, unwords, elem, notElem
 } from './Data/List';
 
 // data Bool :: *
@@ -66,6 +69,7 @@ export { compare, lt, le, gt, ge };
 export { max, min };
 
 // class Enum a where
+export { succ, pred };
 
 // class Bounded a where
 // data Int :: *
@@ -117,7 +121,7 @@ export { id, const_, comp, compose, pipe, flip, apply };
 // error :: forall r. forall a. HasCallStack => [Char] -> a
 // errorWithoutStackTrace :: forall r. forall a. [Char] -> a
 // undefined :: forall r. forall a. HasCallStack => a
-export { undefined };
+export { error, undefined };
 
 // seq :: a -> b -> b
 // ($!) :: (a -> b) -> a -> b
@@ -139,20 +143,26 @@ export { head, last, tail, init };
 // length :: Foldable t => t a -> Int
 // (!!) :: [a] -> Int -> a
 // reverse :: [a] -> [a]
+export { length, index, reverse };
+
 // and :: Foldable t => t Bool -> Bool
 // or :: Foldable t => t Bool -> Bool
 // any :: Foldable t => (a -> Bool) -> t a -> Bool
 // all :: Foldable t => (a -> Bool) -> t a -> Bool
 // concat :: Foldable t => t [a] -> [a]
 // concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
+export { any, all, concat, concatMap };
+
 // scanl :: (b -> a -> b) -> b -> [a] -> [b]
 // scanl1 :: (a -> a -> a) -> [a] -> [a]
 // scanr :: (a -> b -> b) -> b -> [a] -> [b]
 // scanr1 :: (a -> a -> a) -> [a] -> [a]
+
 // iterate :: (a -> a) -> a -> [a]
 // repeat :: a -> [a]
 // replicate :: Int -> a -> [a]
 // cycle :: [a] -> [a]
+
 // take :: Int -> [a] -> [a]
 // drop :: Int -> [a] -> [a]
 // splitAt :: Int -> [a] -> ([a], [a])
@@ -160,8 +170,12 @@ export { head, last, tail, init };
 // dropWhile :: (a -> Bool) -> [a] -> [a]
 // span :: (a -> Bool) -> [a] -> ([a], [a])
 // break :: (a -> Bool) -> [a] -> ([a], [a])
+export { take, drop, splitAt, takeWhile, dropWhile, span, break_ };
+
 // notElem :: (Foldable t, Eq a) => a -> t a -> Bool
 // lookup :: Eq a => a -> [(a, b)] -> Maybe b
+export { elem, notElem, lookup };
+
 // zip :: [a] -> [b] -> [(a, b)]
 // zip3 :: [a] -> [b] -> [c] -> [(a, b, c)]
 // zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
@@ -172,6 +186,8 @@ export { head, last, tail, init };
 // words :: String -> [String]
 // unlines :: [String] -> String
 // unwords :: [String] -> String
+export { zip, zipWith, unzip, lines, words, unlines, unwords };
+
 // type ShowS = String -> String
 // class Show a where
 // shows :: Show a => a -> ShowS
