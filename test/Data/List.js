@@ -1201,7 +1201,8 @@ describe('List', () => {
       });
     });
   });
-  xdescribe('partition', () => {
+  // partition :: (a -> Bool) -> [a] -> ([a], [a])
+  describe('partition', () => {
     describe('(isEven, [])', () => {
       it('== [[], []]', () => {
         List.partition(isEven, []).should.be.eql([[], []]);

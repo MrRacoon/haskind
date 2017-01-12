@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldr1 = exports.foldr = exports.foldl1_ = exports.foldl1 = exports.foldl_ = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.null_ = exports.uncons = exports.init = exports.tail = exports.last = exports.head = exports.append = undefined;
+exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.partition = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldr1 = exports.foldr = exports.foldl1_ = exports.foldl1 = exports.foldl_ = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.null_ = exports.uncons = exports.init = exports.tail = exports.last = exports.head = exports.append = undefined;
 
 var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
@@ -441,6 +441,20 @@ var notElem = exports.notElem = (0, _util._curry)(function (x, xs) {
 
 var filter = exports.filter = (0, _util._curry)(function (fn, ls) {
   return ls.filter(fn);
+});
+
+// partition :: (a -> Bool) -> [a] -> ([a], [a])
+var partition = exports.partition = (0, _util._curry)(function (pred, xs) {
+  var as = [];
+  var bs = [];
+  xs.forEach(function (x) {
+    if (pred(x)) {
+      as.push(x);
+    } else {
+      bs.push(x);
+    }
+  });
+  return [as, bs];
 });
 
 // Indexing lists

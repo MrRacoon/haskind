@@ -329,6 +329,22 @@ export const filter: Function = _curry(
   (fn: Function, ls: any[]): any[] => ls.filter(fn)
 );
 
+// partition :: (a -> Bool) -> [a] -> ([a], [a])
+export const partition: Function = _curry(
+  (pred: Function, xs: any[]): any[] => {
+    let as = [];
+    let bs = [];
+    xs.forEach((x) => {
+      if (pred(x)) {
+        as.push(x);
+      } else {
+        bs.push(x);
+      }
+    });
+    return [as, bs];
+  }
+);
+
 // Indexing lists
 
 // (!!) :: [a] -> Int -> a

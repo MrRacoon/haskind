@@ -8,9 +8,9 @@ import { Left, Right, either } from './Data/Either';
 import { succ, pred } from './Data/Enum';
 import { id, const_, comp, compose, pipe, flip, apply, error } from './Data/Function';
 import {
-  any, all, concat, concatMap, head, tail, last, init, map, filter, length,
-  reverse, index, take, drop, splitAt, takeWhile, dropWhile, span, break_,
-  zip, zipWith, unzip, lines, words, unlines, unwords, elem, notElem
+  all, any, append, break_, concat, concatMap, drop, dropWhile, elem, filter,
+  head, index, init, last, length, lines, map, notElem, reverse, span, splitAt,
+  tail, take, takeWhile, unlines, unwords, unzip, words, zip, zipWith,
 } from './Data/List';
 
 // data Bool :: *
@@ -129,6 +129,7 @@ export { error, undefined };
 export { map };
 
 // (++) :: [a] -> [a] -> [a]
+export { append };
 
 // filter :: (a -> Bool) -> [a] -> [a]
 export { filter };

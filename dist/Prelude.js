@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.lookup = exports.notElem = exports.elem = exports.break_ = exports.span = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.concatMap = exports.concat = exports.all = exports.any = exports.reverse = exports.index = exports.length = exports.init = exports.tail = exports.last = exports.head = exports.filter = exports.map = exports.undefined = exports.error = exports.apply = exports.flip = exports.pipe = exports.compose = exports.comp = exports.const_ = exports.id = exports.pred = exports.succ = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.either = exports.Right = exports.Left = exports.maybe = exports.Just = exports.Nothing = exports.otherwise = exports.not = exports.or = exports.and = undefined;
+exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.lookup = exports.notElem = exports.elem = exports.break_ = exports.span = exports.dropWhile = exports.takeWhile = exports.splitAt = exports.drop = exports.take = exports.concatMap = exports.concat = exports.all = exports.any = exports.reverse = exports.index = exports.length = exports.init = exports.tail = exports.last = exports.head = exports.filter = exports.append = exports.map = exports.undefined = exports.error = exports.apply = exports.flip = exports.pipe = exports.compose = exports.comp = exports.const_ = exports.id = exports.pred = exports.succ = exports.min = exports.max = exports.ge = exports.gt = exports.le = exports.lt = exports.compare = exports.notEq = exports.eq = exports.snd = exports.fst = exports.GT = exports.EQ = exports.LT = exports.either = exports.Right = exports.Left = exports.maybe = exports.Just = exports.Nothing = exports.otherwise = exports.not = exports.or = exports.and = undefined;
 
 var _Bool = require('./Data/Bool');
 
@@ -176,6 +176,8 @@ exports.undefined = undefined;
 exports.map = _List.map;
 
 // (++) :: [a] -> [a] -> [a]
+
+exports.append = _List.append;
 
 // filter :: (a -> Bool) -> [a] -> [a]
 
