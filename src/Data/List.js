@@ -254,7 +254,21 @@ export const dropWhile = _curry(
 export const dropWhileEnd = undefined;
 
 // span :: (a -> Bool) -> [a] -> ([a], [a])
-export const span = undefined;
+export const span = _curry(
+  (fn, xs) => {
+    let f = [];
+    let s = [];
+    let bl = true;
+    for (let x of xs) {
+      if ((bl = bl && fn(x))) {
+        f.push(x);
+      } else {
+        s.push(x);
+      }
+    }
+    return [f, s];
+  }
+);
 
 // break :: (a -> Bool) -> [a] -> ([a], [a])
 export const break_ = undefined;

@@ -328,7 +328,41 @@ var dropWhile = exports.dropWhile = (0, _util._curry)(function (pred, xs) {
 var dropWhileEnd = exports.dropWhileEnd = undefined;
 
 // span :: (a -> Bool) -> [a] -> ([a], [a])
-var span = exports.span = undefined;
+var span = exports.span = (0, _util._curry)(function (fn, xs) {
+  var f = [];
+  var s = [];
+  var bl = true;
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = (0, _getIterator3.default)(xs), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var x = _step3.value;
+
+      if (bl = bl && fn(x)) {
+        f.push(x);
+      } else {
+        s.push(x);
+      }
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  return [f, s];
+});
 
 // break :: (a -> Bool) -> [a] -> ([a], [a])
 var break_ = exports.break_ = undefined;

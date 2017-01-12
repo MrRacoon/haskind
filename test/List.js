@@ -827,7 +827,7 @@ describe('List .', () => {
       });
     });
     // span :: (a -> Bool) -> [a] -> ([a], [a])
-    xdescribe('span', () => {
+    describe('span', () => {
       describe('(gt(3), [1,2,3,4,5])', () => {
         it('== [[1,2], [3,4,5]]', () => {
           List.span(gt(3), [1,2,3,4,5]).should.be.eql([[1,2], [3,4,5]]);
