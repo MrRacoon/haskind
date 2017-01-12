@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.propExists = exports.cond = exports.checkKind = exports.twoKind = exports.emptyKind = exports.newKind = exports.constant = exports._curry = exports._notUndefined = exports._lazy = exports.error = exports.False = exports.True = exports.id = undefined;
+exports.propExists = exports.cond = exports.checkKind = exports.twoKind = exports.emptyKind = exports.newKind = exports.constant = exports._curry = exports.error = exports.False = exports.True = exports.id = undefined;
 
 var _set = require('babel-runtime/core-js/set');
 
@@ -46,16 +46,6 @@ var error = exports.error = function error(str) {
 };
 
 // =============================================================================
-
-var _lazy = exports._lazy = function _lazy(fn, args) {
-  return function () {
-    return fn.apply(undefined, args);
-  };
-};
-
-var _notUndefined = exports._notUndefined = function _notUndefined(x, fn) {
-  return type(x) === 'undefined' ? fn() : x;
-};
 
 var _curry = exports._curry = function _curry(fn) {
   return function () {

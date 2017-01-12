@@ -10,14 +10,6 @@ export const error = (str: string): void => {
 
 // =============================================================================
 
-export const _lazy: Function =
-  (fn: Function, args: any[]): any => () =>
-    fn.apply(this, args);
-
-export const _notUndefined =
-  (x: ?any, fn: Function): any =>
-    type(x) === 'undefined' ? fn() : x;
-
 export const _curry: Function =
   (fn: Function): Function =>
     (...args: any[]): any => {

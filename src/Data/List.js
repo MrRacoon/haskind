@@ -1,23 +1,25 @@
-import { type, _notUndefined, error, _lazy, _curry } from '../util';
+import { type, error, _curry } from '../util';
 
 // Basic functions
 
 // (++) :: [a] -> [a] -> [a]
 export const append = _curry(
-  (as, bs) => as.concat(bs)
+  (as: Iterable, bs: Iterable): Iterable => as.concat(bs)
 );
 
 // head :: [a] -> a
 export const head: Function =
-  (ls: any[]): any =>
-    _notUndefined(ls[0], _lazy(error, ['List.head: empty list']));
+  (xs: any[]): any => {
+    let x = xs[0];
+    return x ? x : error('List.head: empty list');
+  };
 
 // last :: [a] -> a
 export const last: Function =
-  (ls: any[]): any =>
-    _notUndefined(ls.slice(-1)[0], _lazy(error, ['List.last: empty list']));
-    // ^ I'm no longer a fan of this.
-    //   just write it out.
+  (xs: any[]): any => {
+    let x = xs.slice(-1)[0];
+    return x ? x : error('List.last: empty list');
+  };
 
 // tail :: [a] -> [a]
 export const tail: Function =

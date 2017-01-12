@@ -29,16 +29,16 @@ var append = exports.append = (0, _util._curry)(function (as, bs) {
 });
 
 // head :: [a] -> a
-var head = exports.head = function head(ls) {
-  return (0, _util._notUndefined)(ls[0], (0, _util._lazy)(_util.error, ['List.head: empty list']));
+var head = exports.head = function head(xs) {
+  var x = xs[0];
+  return x ? x : (0, _util.error)('List.head: empty list');
 };
 
 // last :: [a] -> a
-var last = exports.last = function last(ls) {
-  return (0, _util._notUndefined)(ls.slice(-1)[0], (0, _util._lazy)(_util.error, ['List.last: empty list']));
+var last = exports.last = function last(xs) {
+  var x = xs.slice(-1)[0];
+  return x ? x : (0, _util.error)('List.last: empty list');
 };
-// ^ I'm no longer a fan of this.
-//   just write it out.
 
 // tail :: [a] -> [a]
 var tail = exports.tail = function tail(_ref) {
