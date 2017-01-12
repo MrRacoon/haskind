@@ -1,4 +1,5 @@
 --require babel-core/register
 --require should
 --reporter list
+--recursive
 --ui bdd
