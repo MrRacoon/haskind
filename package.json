@@ -14,7 +14,7 @@
     "build": "run-s clean:dist build:dist",
     "test:src": "NODE_PATH=$PWD/src mocha test/",
     "test:dist": "NODE_PATH=$PWD/dist mocha test/",
-    "test:watch": "NODE_PATH=$PWD/src mocha test/",
+    "test:watch": "NODE_PATH=$PWD/src mocha test/ --watch",
     "test": "run-s lint test:src build:dist test:dist",
     "repl": "hkci -c",
     "dev": "run-s lint clean:dist build:typed test:dist repl",

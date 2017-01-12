@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.partition = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concat = exports.foldr1 = exports.foldr = exports.foldl1_ = exports.foldl1 = exports.foldl_ = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.null_ = exports.uncons = exports.init = exports.tail = exports.last = exports.head = exports.append = undefined;
+exports.minimumBy = exports.maximumBy = exports.insertBy = exports.sortBy = exports.groupBy = exports.intersectBy = exports.unionBy = exports.deleteFirstsBy = exports.deleteBy = exports.nubBy = exports.insert = exports.sortOn = exports.sort = exports.intersect = exports.union = exports.difference = exports.delete_ = exports.nub = exports.unwords = exports.unlines = exports.words = exports.lines = exports.unzip = exports.zipWith = exports.zip = exports.findIndices = exports.findIndex = exports.elemIndices = exports.elemIndex = exports.index = exports.partition = exports.filter = exports.notElem = exports.elem = exports.isSubsequenceOf = exports.isInfixOf = exports.isSuffixOf = exports.isPrefixOf = exports.tails = exports.inits = exports.group = exports.stripPrefix = exports.break_ = exports.span = exports.dropWhileEnd = exports.dropWhile = exports.takeWhile = exports.splitOn = exports.splitAt = exports.drop = exports.take = exports.minimum = exports.maximum = exports.product = exports.sum = exports.all = exports.any = exports.or = exports.and = exports.concatMap = exports.concat = exports.foldr1 = exports.foldr = exports.foldl1_ = exports.foldl1 = exports.foldl_ = exports.foldl = exports.intersperse = exports.reverse = exports.map = exports.length = exports.null_ = exports.uncons = exports.init = exports.tail = exports.last = exports.head = exports.append = undefined;
 
 var _getIterator2 = require('babel-runtime/core-js/get-iterator');
 
@@ -144,6 +144,35 @@ var concat = exports.concat = function concat(ls) {
 };
 
 // concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
+var concatMap = exports.concatMap = (0, _util._curry)(function (fn, xs) {
+  var res = [];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = (0, _getIterator3.default)(xs), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var x = _step.value;
+
+      res = res.concat(fn(x));
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return res;
+});
 
 // and :: Foldable t => t Bool -> Bool
 var and = exports.and = function and(ls) {
@@ -263,38 +292,6 @@ var splitOn = exports.splitOn = (0, _util._curry)(function (x, xs) {
 // takeWhile :: (a -> Bool) -> [a] -> [a]
 var takeWhile = exports.takeWhile = (0, _util._curry)(function (pred, xs) {
   var res = [];
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = (0, _getIterator3.default)(xs), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var x = _step.value;
-
-      if (pred(x)) res.push(x);else break;
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
-
-  return res;
-});
-
-// dropWhile :: (a -> Bool) -> [a] -> [a]
-var dropWhile = exports.dropWhile = (0, _util._curry)(function (pred, xs) {
-  var res = [];
-  var acc = true;
   var _iteratorNormalCompletion2 = true;
   var _didIteratorError2 = false;
   var _iteratorError2 = undefined;
@@ -303,8 +300,7 @@ var dropWhile = exports.dropWhile = (0, _util._curry)(function (pred, xs) {
     for (var _iterator2 = (0, _getIterator3.default)(xs), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
       var x = _step2.value;
 
-      acc = acc && pred(x);
-      if (acc) continue;else res.push(x);
+      if (pred(x)) res.push(x);else break;
     }
   } catch (err) {
     _didIteratorError2 = true;
@@ -324,14 +320,10 @@ var dropWhile = exports.dropWhile = (0, _util._curry)(function (pred, xs) {
   return res;
 });
 
-// dropWhileEnd :: (a -> Bool) -> [a] -> [a]
-var dropWhileEnd = exports.dropWhileEnd = undefined;
-
-// span :: (a -> Bool) -> [a] -> ([a], [a])
-var span = exports.span = (0, _util._curry)(function (fn, xs) {
-  var f = [];
-  var s = [];
-  var bl = true;
+// dropWhile :: (a -> Bool) -> [a] -> [a]
+var dropWhile = exports.dropWhile = (0, _util._curry)(function (pred, xs) {
+  var res = [];
+  var acc = true;
   var _iteratorNormalCompletion3 = true;
   var _didIteratorError3 = false;
   var _iteratorError3 = undefined;
@@ -340,11 +332,8 @@ var span = exports.span = (0, _util._curry)(function (fn, xs) {
     for (var _iterator3 = (0, _getIterator3.default)(xs), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
       var x = _step3.value;
 
-      if (bl = bl && fn(x)) {
-        f.push(x);
-      } else {
-        s.push(x);
-      }
+      acc = acc && pred(x);
+      if (acc) continue;else res.push(x);
     }
   } catch (err) {
     _didIteratorError3 = true;
@@ -361,14 +350,19 @@ var span = exports.span = (0, _util._curry)(function (fn, xs) {
     }
   }
 
-  return [f, s];
+  return res;
 });
 
-// break_ :: (a -> Bool) -> [a] -> ([a], [a])
-var break_ = exports.break_ = (0, _util._curry)(function (fn, xs) {
+// dropWhileEnd :: (a -> Bool) -> [a] -> [a]
+var dropWhileEnd = exports.dropWhileEnd = (0, _util._curry)(function (pred, xs) {
+  return reverse(dropWhile(pred, reverse(xs)));
+});
+
+// span :: (a -> Bool) -> [a] -> ([a], [a])
+var span = exports.span = (0, _util._curry)(function (fn, xs) {
   var f = [];
   var s = [];
-  var bl = false;
+  var bl = true;
   var _iteratorNormalCompletion4 = true;
   var _didIteratorError4 = false;
   var _iteratorError4 = undefined;
@@ -377,10 +371,10 @@ var break_ = exports.break_ = (0, _util._curry)(function (fn, xs) {
     for (var _iterator4 = (0, _getIterator3.default)(xs), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
       var x = _step4.value;
 
-      if (bl = bl || fn(x)) {
-        s.push(x);
-      } else {
+      if (bl = bl && fn(x)) {
         f.push(x);
+      } else {
+        s.push(x);
       }
     }
   } catch (err) {
@@ -394,6 +388,43 @@ var break_ = exports.break_ = (0, _util._curry)(function (fn, xs) {
     } finally {
       if (_didIteratorError4) {
         throw _iteratorError4;
+      }
+    }
+  }
+
+  return [f, s];
+});
+
+// break_ :: (a -> Bool) -> [a] -> ([a], [a])
+var break_ = exports.break_ = (0, _util._curry)(function (fn, xs) {
+  var f = [];
+  var s = [];
+  var bl = false;
+  var _iteratorNormalCompletion5 = true;
+  var _didIteratorError5 = false;
+  var _iteratorError5 = undefined;
+
+  try {
+    for (var _iterator5 = (0, _getIterator3.default)(xs), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+      var x = _step5.value;
+
+      if (bl = bl || fn(x)) {
+        s.push(x);
+      } else {
+        f.push(x);
+      }
+    }
+  } catch (err) {
+    _didIteratorError5 = true;
+    _iteratorError5 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion5 && _iterator5.return) {
+        _iterator5.return();
+      }
+    } finally {
+      if (_didIteratorError5) {
+        throw _iteratorError5;
       }
     }
   }

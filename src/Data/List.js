@@ -123,6 +123,15 @@ export const concat: Function =
     ls.reduce((acc, x) => acc.concat(x), []);
 
 // concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
+export const concatMap = _curry(
+  (fn: Function, xs: any[]): any[] => {
+    let res = [];
+    for (let x of xs) {
+      res = res.concat(fn(x));
+    }
+    return res;
+  }
+);
 
 // and :: Foldable t => t Bool -> Bool
 export const and: Function =
@@ -253,7 +262,10 @@ export const dropWhile = _curry(
 );
 
 // dropWhileEnd :: (a -> Bool) -> [a] -> [a]
-export const dropWhileEnd = undefined;
+export const dropWhileEnd = _curry(
+  (pred: Function, xs: any[]): any[] =>
+    reverse(dropWhile(pred, reverse(xs)))
+);
 
 // span :: (a -> Bool) -> [a] -> ([a], [a])
 export const span = _curry(

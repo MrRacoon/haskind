@@ -339,7 +339,22 @@ describe('List', () => {
   });
   // concatMap :: Foldable t => (a -> [b]) -> t a -> [b]
   describe('concatMap', () => {
-
+    const singleton = x => [x];
+    describe('(singleton, [])', () => {
+      it('== []', () => {
+        List.concatMap(singleton, []).should.be.eql([]);
+      });
+    });
+    describe('(singleton, [1,2,3])', () => {
+      it('== [1,2,3]', () => {
+        List.concatMap(singleton, [1,2,3]).should.be.eql([1,2,3]);
+      });
+    });
+    describe('(singleton)([1,2,3])', () => {
+      it('== [1,2,3]', () => {
+        List.concatMap(singleton)([1,2,3]).should.be.eql([1,2,3]);
+      });
+    });
   });
   // and :: Foldable t => t Bool -> Bool
   describe('and', () => {
@@ -788,7 +803,7 @@ describe('List', () => {
     });
   });
   // dropWhileEnd :: (a -> Bool) -> [a] -> [a]
-  xdescribe('dropWhileEnd', () => {
+  describe('dropWhileEnd', () => {
     describe('(gt(3), [1,2,3,4,5])', () => {
       it('== [1,2,3,4,5]', () => {
         List.dropWhileEnd(gt(3), [1,2,3,4,5]).should.be.eql([1,2,3,4,5]);
