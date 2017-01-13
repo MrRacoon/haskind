@@ -35,10 +35,10 @@ Require your favorite Haskell modules through import.
 ```javascript
 import { Data } from 'haskind';
 
-const { Just, Noting, catMaybes } = Data.Maybe;
+const { Just, Nothing, catMaybes } = Data.Maybe;
 const { reverse } = Data.List
 
-const maybes = [ Just(3), Noting(), Just(5) ]
+const maybes = [ Just(3), Nothing(), Just(5) ]
 
 console.log(reverse(catMaybes(maybes))); // [ 5, 3 ]
 ```
