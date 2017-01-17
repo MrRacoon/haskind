@@ -13,18 +13,13 @@ var _util = require('../util');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// id :: a -> a
 var id = exports.id = function id(x) {
   return x;
 };
 
-// const_ :: a -> b -> a
 var const_ = exports.const_ = (0, _util._curry)(function (a, b) {
   return a;
-}); // eslint-disable-line
-
-// pipe :: [(a -> b)] -> [a] -> b
-var pipe = exports.pipe = (0, _util._curry)(function (fns, args) {
+});var pipe = exports.pipe = (0, _util._curry)(function (fns, args) {
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
@@ -53,12 +48,10 @@ var pipe = exports.pipe = (0, _util._curry)(function (fns, args) {
   return args[0];
 });
 
-// comp :: [(a -> *)] -> a -> *
 var comp = exports.comp = (0, _util._curry)(function (fns, args) {
   return pipe(fns.reverse(), args);
 });
 
-// (.) | compose :: (b -> c) -> (a -> b) -> a -> c
 var compose = exports.compose = (0, _util._curry)(function () {
   for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
@@ -73,20 +66,16 @@ var compose = exports.compose = (0, _util._curry)(function () {
   };
 });
 
-// flip :: (a -> b -> c) -> b -> a -> c
 var flip = exports.flip = (0, _util._curry)(function (f, a, b) {
   return f(b, a);
 });
 
-// (&) | apply :: a -> (a -> b) -> b
 var apply = exports.apply = (0, _util._curry)(function (arg, fn) {
   return fn(arg);
 });
 
-// fix :: (a -> a) -> a
 var fix = exports.fix = undefined;
 
-// on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 var on = exports.on = (0, _util._curry)(function (g, f, a, b) {
   return g(f(a), f(b));
 });

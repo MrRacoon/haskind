@@ -13,42 +13,34 @@ var GT = exports.GT = 1;
 
 var Ordering = exports.Ordering = { LT: LT, EQ: EQ, GT: GT };
 
-// compare :: a -> a -> Ordering
 var compare = exports.compare = (0, _util._curry)(function (a, b) {
   return a < b ? LT : a === b ? EQ : GT;
 });
 
-// (<) :: a -> a -> Bool
 var lt = exports.lt = (0, _util._curry)(function (a, b) {
   return a < b;
 });
 
-// (<=) :: a -> a -> Bool
 var le = exports.le = (0, _util._curry)(function (a, b) {
   return a <= b;
 });
 
-// (>) :: a -> a -> Bool
 var gt = exports.gt = (0, _util._curry)(function (a, b) {
   return a > b;
 });
 
-// (>=) :: a -> a -> Bool
 var ge = exports.ge = (0, _util._curry)(function (a, b) {
   return a >= b;
 });
 
-// max :: a -> a -> a
 var max = exports.max = (0, _util._curry)(function (a, b) {
   return a < b ? b : a;
 });
 
-// min :: a -> a -> a
 var min = exports.min = (0, _util._curry)(function (a, b) {
   return a < b ? a : b;
 });
 
-// comparing :: Ord a => (b -> a) -> b -> b -> Ordering
 var comparing = exports.comparing = (0, _util._curry)(function (fn, a, b) {
   return compare(fn(a), fn(b));
 });

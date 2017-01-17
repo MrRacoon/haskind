@@ -29,7 +29,6 @@ exports.type = type;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// NOTE: moving to Data.Function
 var id = exports.id = function id(a) {
   return a;
 };
@@ -45,8 +44,6 @@ var error = exports.error = function error(str) {
   throw new Error('haskind.' + str);
 };
 
-// =============================================================================
-
 var _curry = exports._curry = function _curry(fn) {
   return function () {
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
@@ -59,13 +56,9 @@ var _curry = exports._curry = function _curry(fn) {
   };
 };
 
-// NOTE: Moving to Data.Function
-// eslint-disable-next-line
 var constant = exports.constant = _curry(function (a, b) {
   return a;
 });
-
-// =============================================================================
 
 var newKind = exports.newKind = function newKind(name) {
   return function (value) {
@@ -76,8 +69,7 @@ var emptyKind = exports.emptyKind = function emptyKind(name) {
   return function (arbit) {
     return (0, _defineProperty3.default)({}, name, null);
   };
-}; // eslint-disable-line
-var twoKind = exports.twoKind = function twoKind(n1, n2) {
+};var twoKind = exports.twoKind = function twoKind(n1, n2) {
   return function (v1, v2) {
     var _ref3;
 
@@ -89,17 +81,13 @@ var checkKind = exports.checkKind = _curry(function (name, a) {
   return !!a[name];
 });
 
-// =============================================================================
-
 var condCheck = function condCheck() {
   for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
     args[_key2] = arguments[_key2];
   }
 
   return function (pair) {
-    return (// eslint-disable-line
-      pair[0].apply(pair, args)
-    );
+    return pair[0].apply(pair, args);
   };
 };
 
@@ -108,8 +96,7 @@ var condApply = function condApply() {
     args[_key3] = arguments[_key3];
   }
 
-  return function (pair // eslint-disable-line
-  ) {
+  return function (pair) {
     return pair[1].apply(pair, (0, _toConsumableArray3.default)(args));
   };
 };

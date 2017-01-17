@@ -17,7 +17,6 @@ var _util = require('../util');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// range :: (a, a) -> [a]
 var range = exports.range = function range(_ref) {
   var _ref2 = (0, _slicedToArray3.default)(_ref, 2),
       a = _ref2[0],
@@ -28,7 +27,6 @@ var range = exports.range = function range(_ref) {
   });
 };
 
-// inRange :: (a, a) -> a -> Bool
 var inRange = exports.inRange = (0, _util._curry)(function (_ref3, i) {
   var _ref4 = (0, _slicedToArray3.default)(_ref3, 2),
       a = _ref4[0],
@@ -37,7 +35,6 @@ var inRange = exports.inRange = (0, _util._curry)(function (_ref3, i) {
   return a <= i && i <= b;
 });
 
-// index :: (a, a) -> a -> Int
 var index = exports.index = (0, _util._curry)(function (_ref5, i) {
   var _ref6 = (0, _slicedToArray3.default)(_ref5, 2),
       a = _ref6[0],
@@ -46,7 +43,6 @@ var index = exports.index = (0, _util._curry)(function (_ref5, i) {
   return inRange([a, b], i) ? i - a : (0, _util.error)('Ix.index: index out of range');
 });
 
-// rangeSize :: (a, a) -> Int
 var rangeSize = exports.rangeSize = function rangeSize(_ref7) {
   var _ref8 = (0, _slicedToArray3.default)(_ref7, 2),
       a = _ref8[0],
