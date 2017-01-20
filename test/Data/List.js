@@ -156,7 +156,7 @@ describe('List', () => {
     });
   });
   // null :: Foldable t => t a -> Bool
-  xdescribe('null_', () => {
+  describe('null_', () => {
     describe('([])', () => {
       it('== true', () => {
         List.null_([]).should.be.eql(true);

@@ -53,7 +53,9 @@ var uncons = exports.uncons = function uncons(xs) {
   return xs.length > 0 ? (0, _Maybe.Just)([head(xs), tail(xs)]) : (0, _Maybe.Nothing)();
 };
 
-var null_ = exports.null_ = undefined;
+var null_ = exports.null_ = function null_(xs) {
+  return xs.length === 0;
+};
 
 var length = exports.length = function _length(ls) {
   switch ((0, _util.type)(ls)) {

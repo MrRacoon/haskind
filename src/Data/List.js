@@ -40,7 +40,8 @@ export const uncons = xs =>
     : Nothing();
 
 // null :: Foldable t => t a -> Bool
-export const null_ = undefined;
+export const null_ = xs =>
+  xs.length === 0;
 
 // length :: Foldable t => t a -> Int
 export const length: Function =
