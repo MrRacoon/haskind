@@ -1,4 +1,5 @@
 import { type, error, _curry } from '../util';
+import { Just, Nothing } from './Maybe';
 
 // Basic functions
 
@@ -33,7 +34,10 @@ export const init: Function =
   };
 
 // uncons :: [a] -> Maybe (a, [a])
-export const uncons = undefined;
+export const uncons = xs =>
+  xs.length > 0
+    ? Just([head(xs), tail(xs)])
+    : Nothing();
 
 // null :: Foldable t => t a -> Bool
 export const null_ = undefined;

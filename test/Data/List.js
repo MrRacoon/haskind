@@ -133,7 +133,7 @@ describe('List', () => {
     });
   });
   // uncons :: [a] -> Maybe (a, [a])
-  xdescribe('uncons', () => {
+  describe('uncons', () => {
     describe('([])', () => {
       it('== Nothing()', () => {
         List.uncons([]).should.be.eql(Nothing());
@@ -146,12 +146,12 @@ describe('List', () => {
     });
     describe('([1,2])', () => {
       it('== Just([1, [2]])', () => {
-        List.uncons([1,2]).should.be.eql(Nothing([1, [2]]));
+        List.uncons([1,2]).should.be.eql(Just([1, [2]]));
       });
     });
     describe('([1,2,3])', () => {
       it('== Just([1, [2,3]])', () => {
-        List.uncons([1,2,3]).should.be.eql(Nothing([1, [2,3]]));
+        List.uncons([1,2,3]).should.be.eql(Just([1, [2,3]]));
       });
     });
   });

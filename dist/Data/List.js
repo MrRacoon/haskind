@@ -19,6 +19,8 @@ var _toArray3 = _interopRequireDefault(_toArray2);
 
 var _util = require('../util');
 
+var _Maybe = require('./Maybe');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var append = exports.append = (0, _util._curry)(function (as, bs) {
@@ -47,7 +49,9 @@ var init = exports.init = function init(ls) {
   return ls.slice(0, -1);
 };
 
-var uncons = exports.uncons = undefined;
+var uncons = exports.uncons = function uncons(xs) {
+  return xs.length > 0 ? (0, _Maybe.Just)([head(xs), tail(xs)]) : (0, _Maybe.Nothing)();
+};
 
 var null_ = exports.null_ = undefined;
 
