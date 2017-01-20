@@ -14,7 +14,6 @@ var _util = require('../util');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Left = exports.Left = (0, _util.newKind)('left');
-
 var Right = exports.Right = (0, _util.newKind)('right');
 
 var either = exports.either = (0, _util._curry)(function (lfn, rfn, ethr) {

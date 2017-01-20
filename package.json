@@ -41,7 +41,6 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
-    "babel-plugin-remove-comments": "^2.0.0",
     "babel-plugin-transform-flow-strip-types": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-plugin-typecheck": "^3.9.0",
@@ -61,8 +60,8 @@
         {}
       ]
     ],
+    "comments" : false,
     "plugins": [
-      "remove-comments",
       "transform-flow-strip-types",
       "transform-runtime",
       [

@@ -26,11 +26,13 @@ var append = exports.append = (0, _util._curry)(function (as, bs) {
 });
 
 var head = exports.head = function head(xs) {
-  return xs[0] || (0, _util.error)('List.head: empty list');
+  var x = xs[0];
+  return x ? x : (0, _util.error)('List.head: empty list');
 };
 
 var last = exports.last = function last(xs) {
-  return xs.slice(-1)[0] || (0, _util.error)('List.last: empty list');
+  var x = xs.slice(-1)[0];
+  return x ? x : (0, _util.error)('List.last: empty list');
 };
 
 var tail = exports.tail = function tail(_ref) {
