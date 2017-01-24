@@ -16,8 +16,6 @@ haskind
 
 This project uses [Flow types](https://flowtype.org/) and some functional magic to provide a set of functions closely mimicking the libraries provided by Haskell.
 
-I keep track of weird compatibility issues in [my notes](/notes.md).
-
 ### Get Started
 
 If you wanna get started as soon as possible, try [hkci](https://www.npmjs.com/package/hkci), a preloaded repl!
