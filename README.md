@@ -52,11 +52,11 @@ This lib is still in heavy development. Some functions/tricks are definitely mis
 If you see something you want to fill in, or think is off, feel free to submit a
 PR.
 
-## Alternatives
+### Inspiration
 
 Haskind was heavily inspired by [Ramda](http://ramdajs.com/), [Lodash](https://lodash.com/) and [Haskell.Base](http://hackage.haskell.org/package/base).
 
-## License
+### License
 
 [MIT License](http://opensource.org/licenses/MIT)
 
