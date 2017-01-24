@@ -1,7 +1,13 @@
 // pathSeparator :: Char
 export const pathSeparator = '/';
+
 // pathSeparators :: [Char]
+export const pathSeparators = ['/'];
+
 // isPathSeparator :: Char -> Bool
+export const isPathSeparator =
+  (c) => pathSeparators.indexOf(c) > -1;
+
 // searchPathSeparator :: Char
 // isSearchPathSeparator :: Char -> Bool
 // extSeparator :: Char

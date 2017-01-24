@@ -1,6 +1,7 @@
-import { System } from '.';
+import { System, Data } from '.';
 
 const Posix = System.FilePath.Posix;
+const { Just, Nothing } = Data.Maybe;
 
 describe('System.FilePath.Posix', () => {
   // pathSeparator :: Char
@@ -10,13 +11,13 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // pathSeparators :: [Char]
-  xdescribe('pathSeparators', () => {
+  describe('pathSeparators', () => {
     it('== ["/"]', () => {
-      Posix.pathSeparator.should.be.eql(['/']);
+      Posix.pathSeparators.should.be.eql(['/']);
     });
   });
   // isPathSeparator :: Char -> Bool
-  xdescribe('isPathSeparator', () => {
+  describe('isPathSeparator', () => {
     describe('("/")', () => {
       it('== true', () => {
         Posix.isPathSeparator('/').should.be.eql(true);
@@ -70,7 +71,7 @@ describe('System.FilePath.Posix', () => {
   // extSeparator :: Char
   xdescribe('extSeparator', () => {
     it('== "."', () => {
-
+      Posix.extSeparator.should.be.eql('.');
     });
   });
   // isExtSeparator :: Char -> Bool
@@ -245,17 +246,20 @@ describe('System.FilePath.Posix', () => {
   xdescribe('stripExtension', () => {
     describe('(".ext", "dir/file.ext")', () => {
       it('== Just("dir/file")', () => {
-        // Requires Data.Maybe
+        Posix.stripExtension('.ext', 'dir/file.ext')
+          .should.be.eql(Just('dir/file'));
       });
     });
     describe('(".none", "dir/file.ext")', () => {
       it('== Nothing()', () => {
-        // Requires Data.Maybe
+        Posix.stripExtension('.none', 'dir/file.ext')
+          .should.be.eql(Nothing());
       });
     });
     describe('(".ext")("dir/file.ext")', () => {
       it('== Just("dir/file")', () => {
-        // Requires Data.Maybe
+        Posix.stripExtension('.ext', 'dir/file.ext')
+          .should.be.eql(Just('dir/file'));
       });
     });
   });
