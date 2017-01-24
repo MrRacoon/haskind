@@ -1,4 +1,5 @@
 // pathSeparator :: Char
+export const pathSeparator = '/';
 // pathSeparators :: [Char]
 // isPathSeparator :: Char -> Bool
 // searchPathSeparator :: Char
