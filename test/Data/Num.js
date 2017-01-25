@@ -1,7 +1,7 @@
 import { Data } from '.';
 const { Num } = Data;
 
-describe('Num', () => {
+describe('Data.Num', () => {
   // subtract :: Num a => a -> a -> a
   describe('add', () => {
     describe('(1, 0)', () => {

@@ -1,7 +1,7 @@
 import { Data } from '.';
 const { Ix } = Data;
 
-describe('Ix', () => {
+describe('Data.Ix', () => {
   describe('range', () => {
     describe('([0, 0])', () => {
       it('== []', () => {

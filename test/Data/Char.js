@@ -1,7 +1,7 @@
 import { Data } from '.';
 const { Char } = Data;
 
-xdescribe('Char', () => {
+xdescribe('Data.Char', () => {
   describe('isControl', () => {
 
   });

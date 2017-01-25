@@ -4,7 +4,7 @@ const { id } = util;
 const { Maybe } = Data;
 const { Just, Nothing } = Maybe;
 
-describe('Maybe', () => {
+describe('Data.Maybe', () => {
   describe('maybe', () => {
     describe('(1, id, Just(4))', () => {
       it('== 4', () => {

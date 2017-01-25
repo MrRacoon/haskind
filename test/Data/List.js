@@ -11,7 +11,7 @@ const { eq } = Eq;
 const isEven = x => x % 2 === 0;
 const add = (x,y) => x + y;
 
-describe('List', () => {
+describe('Data.List', () => {
   // (++) :: [a] -> [a] -> [a]
   describe('append', () => {
     describe('([], [])', () => {
