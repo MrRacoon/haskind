@@ -105,21 +105,35 @@ describe('System.FilePath.Posix', () => {
           .should.be.eql(['one', 'two', 'three']);
       });
     });
+    describe('(":one:two::three:")', () => {
+      it('== [".", "one", "two", ".", "three", "."]', () => {
+        Posix.splitSearchPath(':one:two::three:')
+          .should.be.eql(['.', 'one', 'two', '.', 'three', '.']);
+      });
+    });
   });
   // getSearchPath :: IO [FilePath]
   xdescribe('getSearchPath', () => {
     describe('()', () => {
       it('== "your:search:path"', () => {
         // Huh..... I don't know how to test this...
+        // It returns an (IO [String]) and will be different for
+        // everyone.
       });
     });
   });
   // splitExtension :: FilePath -> (String, String)
   xdescribe('splitExtension', () => {
     describe('("dir/file.ext")', () => {
-      it('== ["dir/file", "ext"]', () => {
+      it('== ["dir/file", ".ext"]', () => {
         Posix.splitExtension('dir/file.ext')
-          .should.be.eql(['dir/file', 'ext']);
+          .should.be.eql(['dir/file', '.ext']);
+      });
+    });
+    describe('("dir/file.ext.other")', () => {
+      it('== ["dir/file.ext", ".other"]', () => {
+        Posix.splitExtension('dir/file.ext.other')
+          .should.be.eql(['dir/file.ext', '.other']);
       });
     });
   });
@@ -129,6 +143,12 @@ describe('System.FilePath.Posix', () => {
       it('== ".ext"', () => {
         Posix.takeExtension('dir/file.ext')
           .should.be.eql('.ext');
+      });
+    });
+    describe('("dir/file.ext.other")', () => {
+      it('== ".other"', () => {
+        Posix.takeExtension('dir/file.ext.other')
+          .should.be.eql('.other');
       });
     });
   });
@@ -154,6 +174,12 @@ describe('System.FilePath.Posix', () => {
       it('== "dir/file"', () => {
         Posix.dropExtension('dir/file.ext')
           .should.be.eql('dir/file');
+      });
+    });
+    describe('("dir/file.ext.other")', () => {
+      it('== "dir/file.ext"', () => {
+        Posix.dropExtension('dir/file.ext.other')
+          .should.be.eql('dir/file.ext');
       });
     });
   });
@@ -295,6 +321,12 @@ describe('System.FilePath.Posix', () => {
           .should.be.eql('dir/other');
       });
     });
+    describe('("dir/file.ext")("other")', () => {
+      it('== "dir/other"', () => {
+        Posix.replaceFileName('dir/file.ext')('other')
+          .should.be.eql('dir/other');
+      });
+    });
   });
   // dropFileName :: FilePath -> FilePath
   xdescribe('dropFileName', () => {
@@ -318,7 +350,13 @@ describe('System.FilePath.Posix', () => {
   xdescribe('replaceBaseName', () => {
     describe('("dir/file.ext", "other")', () => {
       it('== "dir/other.ext"', () => {
-        Posix.replaceBaseName('dir/file.ext')
+        Posix.replaceBaseName('dir/file.ext', 'other')
+          .should.be.eql('dir/other.ext');
+      });
+    });
+    describe('("dir/file.ext")("other")', () => {
+      it('== "dir/other.ext"', () => {
+        Posix.replaceBaseName('dir/file.ext')('other')
           .should.be.eql('dir/other.ext');
       });
     });
