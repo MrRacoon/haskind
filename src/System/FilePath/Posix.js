@@ -5,13 +5,26 @@ export const pathSeparator = '/';
 export const pathSeparators = ['/'];
 
 // isPathSeparator :: Char -> Bool
-export const isPathSeparator =
-  (c) => pathSeparators.indexOf(c) > -1;
+export function isPathSeparator (c) {
+  return pathSeparators.indexOf(c) > -1;
+}
 
 // searchPathSeparator :: Char
+export const searchPathSeparator = ':';
+
 // isSearchPathSeparator :: Char -> Bool
+export function isSearchPathSeparator (c) {
+  return c === searchPathSeparator;
+}
+
 // extSeparator :: Char
+export const extSeparator = '.';
+
 // isExtSeparator :: Char -> Bool
+export function isExtSeparator (c) {
+  return c === extSeparator;
+}
+
 // splitSearchPath :: String -> [FilePath]
 // getSearchPath :: IO [FilePath]
 // splitExtension :: FilePath -> (String, String)

@@ -40,13 +40,13 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // searchPathSeparator :: Char
-  xdescribe('searchPathSeparator', () => {
+  describe('searchPathSeparator', () => {
     it('== ":"', () => {
       Posix.searchPathSeparator.should.be.eql(':');
     });
   });
   // isSearchPathSeparator :: Char -> Bool
-  xdescribe('isSearchPathSeparator', () => {
+  describe('isSearchPathSeparator', () => {
     describe('("/")', () => {
       it('== false', () => {
         Posix.isSearchPathSeparator('/').should.be.eql(false);
@@ -69,13 +69,13 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // extSeparator :: Char
-  xdescribe('extSeparator', () => {
+  describe('extSeparator', () => {
     it('== "."', () => {
       Posix.extSeparator.should.be.eql('.');
     });
   });
   // isExtSeparator :: Char -> Bool
-  xdescribe('isExtSeparator', () => {
+  describe('isExtSeparator', () => {
     describe('("/")', () => {
       it('== false', () => {
         Posix.isExtSeparator('/').should.be.eql(false);
