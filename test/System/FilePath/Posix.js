@@ -397,17 +397,109 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // splitDrive :: FilePath -> (FilePath, FilePath)
+  xdescribe('splitDrive', () => {
+    describe('("dir/file.ext")', () => {
+      it('== ["", "dir/file.ext"]', () => {
+        Posix.splitDrive('dir/file.ext')
+          .should.be.eql(['', 'dir/file.ext']);
+      });
+    });
+    describe('("/dir/file.ext")', () => {
+      it('== ["/", "dir/file.ext"]', () => {
+        Posix.splitDrive('/dir/file.ext')
+          .should.be.eql(['/', 'dir/file.ext']);
+      });
+    });
+  });
   // joinDrive :: FilePath -> FilePath -> FilePath
+  xdescribe('joinDrive', () => {
+    describe('("/", "dir/file.ext")', () => {
+      it('== "/dir/file.ext"', () => {
+        Posix.joinDrive('/', 'dir/file.ext')
+          .should.be.eql('/dir/file.ext');
+      });
+    });
+    describe('("/")("dir/file.ext")', () => {
+      it('== "/dir/file.ext"', () => {
+        Posix.joinDrive('/')('dir/file.ext')
+          .should.be.eql('/dir/file.ext');
+      });
+    });
+  });
   // takeDrive :: FilePath -> FilePath
+  xdescribe('takeDrive', () => {
+    describe('("/dir/file.ext")', () => {
+      it('== "/"', () => {
+        Posix.takeDrive('/dir/file.ext')
+          .should.be.eql('/');
+      });
+    });
+    describe('("dir/file.ext")', () => {
+      it('== ""', () => {
+        Posix.takeDrive('dir/file.ext')
+          .should.be.eql('');
+      });
+    });
+  });
   // hasDrive :: FilePath -> Bool
+  xdescribe('hasDrive', () => {
+    describe('("/dir/file.ext")', () => {
+      it('== true', () => {
+        Posix.hasDrive('/dir/file.ext')
+          .should.be.eql(true);
+      });
+    });
+    describe('("dir/file.ext")', () => {
+      it('== false', () => {
+        Posix.hasDrive('dir/file.ext')
+          .should.be.eql(false);
+      });
+    });
+  });
   // dropDrive :: FilePath -> FilePath
+  xdescribe('dropDrive', () => {
+    describe('"/dir/file.ext"', () => {
+      it('== "dir/file.ext"', () => {
+        Posix.dropDrive('/dir/file.ext')
+          .should.be.eql('dir/file.ext');
+      });
+    });
+  });
   // isDrive :: FilePath -> Bool
+  xdescribe('isDrive', () => {
+    describe('("/")', () => {
+      it('== true', () => {
+        Posix.isDrive('/')
+          .should.be.eql(true);
+      });
+    });
+    describe('("/dir/file.ext")', () => {
+      it('== false', () => {
+        Posix.isDrive('/dir/file.ext')
+          .should.be.eql(false);
+      });
+    });
+  });
   // hasTrailingPathSeparator :: FilePath -> Bool
   // addTrailingPathSeparator :: FilePath -> FilePath
   // dropTrailingPathSeparator :: FilePath -> FilePath
   // normalise :: FilePath -> FilePath
   // equalFilePath :: FilePath -> FilePath -> Bool
   // makeRelative :: FilePath -> FilePath -> FilePath
+  xdescribe('makeRelative', () => {
+    describe('("/home", "/home/dir/file.ext")', () => {
+      it('== "dir/file.ext"', () => {
+        Posix.makeRelative('/home', '/home/dir/file.ext')
+          .should.be.eql('dir/file.ext');
+      });
+    });
+    describe('("/home")("/home/dir/file.ext")', () => {
+      it('== "dir/file.ext"', () => {
+        Posix.makeRelative('/home')('/home/dir/file.ext')
+          .should.be.eql('dir/file.ext');
+      });
+    });
+  });
   // isRelative :: FilePath -> Bool
   xdescribe('isRelative', () => {
     describe('("../dir/file.ext")', () => {
@@ -463,5 +555,11 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // isValid :: FilePath -> Bool
+  xdescribe('isValid', () => {
+
+  });
   // makeValid :: FilePath -> FilePath
+  xdescribe('makeValid', () => {
+
+  });
 });
