@@ -20,7 +20,9 @@
     "docs": "esdoc",
     "dev": "run-s lint clean:dist build:typed test:dist repl",
     "watch": "npm run test:watch",
-    "start": "run-s clean:dist build:dist test:dist repl"
+    "start": "run-s clean:dist build:dist test:dist repl",
+    "pulse": "./stats.sh"
+
   },
   "repository": {
     "type": "git",
