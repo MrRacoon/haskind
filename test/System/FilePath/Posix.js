@@ -341,20 +341,38 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // takeFileName :: FilePath -> FilePath
-  xdescribe('takeFileName', () => {
+  describe('takeFileName', () => {
+    describe('("file.ext")', () => {
+      it('== "file.ext"', () => {
+        Posix.takeFileName('file.ext')
+          .should.be.eql('file.ext');
+      });
+    });
     describe('("dir/file.ext")', () => {
       it('== "file.ext"', () => {
         Posix.takeFileName('dir/file.ext')
           .should.be.eql('file.ext');
       });
     });
+    describe('("dir/dir/file.ext")', () => {
+      it('== "file.ext"', () => {
+        Posix.takeFileName('dir/dir/file.ext')
+          .should.be.eql('file.ext');
+      });
+    });
   });
   // replaceFileName :: FilePath -> String -> FilePath
-  xdescribe('replaceFileName', () => {
+  describe('replaceFileName', () => {
     describe('("dir/file.ext", "other")', () => {
       it('== "dir/other"', () => {
         Posix.replaceFileName('dir/file.ext', 'other')
           .should.be.eql('dir/other');
+      });
+    });
+    describe('("dir/dir/file.ext", "other")', () => {
+      it('== "dir/other"', () => {
+        Posix.replaceFileName('dir/dir/file.ext', 'other')
+          .should.be.eql('dir/dir/other');
       });
     });
     describe('("dir/file.ext")("other")', () => {
@@ -365,11 +383,23 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // dropFileName :: FilePath -> FilePath
-  xdescribe('dropFileName', () => {
+  describe('dropFileName', () => {
+    describe('("file.ext")', () => {
+      it('== "./"', () => {
+        Posix.dropFileName('file.ext')
+          .should.be.eql('./');
+      });
+    });
     describe('("dir/file.ext")', () => {
       it('== "dir/"', () => {
         Posix.dropFileName('dir/file.ext')
           .should.be.eql('dir/');
+      });
+    });
+    describe('("dir/dir/file.ext")', () => {
+      it('== "dir/dir/"', () => {
+        Posix.dropFileName('dir/dir/file.ext')
+          .should.be.eql('dir/dir/');
       });
     });
   });

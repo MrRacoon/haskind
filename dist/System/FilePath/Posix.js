@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
+exports.dropFileName = exports.replaceFileName = exports.takeFileName = exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
 
@@ -144,4 +144,22 @@ var splitFileName = exports.splitFileName = function splitFileName(fp) {
 
   var len = xs.length;
   return ['' + (len === 1 ? '.' : '') + xs.slice(0, len - 1).join('/') + '/', xs.reverse()[0]];
+};
+
+var takeFileName = exports.takeFileName = function takeFileName(fp) {
+  var paths = fp.split('/');
+  var len = paths.length;
+  return paths[len - 1];
+};
+
+var replaceFileName = exports.replaceFileName = (0, _util._curry)(function replaceFileName(fp, s) {
+  var paths = fp.split('/');
+  var len = paths.length;
+  return paths.slice(0, len - 1).join('/') + '/' + s;
+});
+
+var dropFileName = exports.dropFileName = function dropFileName(fp) {
+  var paths = fp.split('/');
+  var len = paths.length;
+  return '' + (len === 1 ? '.' : '') + paths.slice(0, len - 1).join('/') + '/';
 };

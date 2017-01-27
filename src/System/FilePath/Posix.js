@@ -134,8 +134,28 @@ export const splitFileName = (fp) => {
 };
 
 // takeFileName :: FilePath -> FilePath
+export const takeFileName = (fp) => {
+  const paths = fp.split('/');
+  const len = paths.length;
+  return paths[len-1];
+};
+
 // replaceFileName :: FilePath -> String -> FilePath
+export const replaceFileName = _curry(
+  function replaceFileName(fp, s) {
+    const paths = fp.split('/');
+    const len = paths.length;
+    return `${paths.slice(0, len-1).join('/')}/${s}`;
+  }
+);
+
 // dropFileName :: FilePath -> FilePath
+export const dropFileName = (fp) => {
+  const paths = fp.split('/');
+  const len = paths.length;
+  return `${len === 1 ? '.' : ''}${paths.slice(0, len-1).join('/')}/`;
+};
+
 // takeBaseName :: FilePath -> String
 // replaceBaseName :: FilePath -> String -> FilePath
 // takeDirectory :: FilePath -> FilePath
