@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
+exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
 
@@ -136,3 +136,12 @@ var stripExtension = exports.stripExtension = (0, _util._curry)(function stripEx
   var idx = fp.indexOf(s);
   return idx === -1 ? Nothing() : Just(fp.slice(0, idx));
 });
+
+var splitFileName = exports.splitFileName = function splitFileName(fp) {
+  var _fp$split9 = fp.split('/'),
+      _fp$split10 = (0, _toArray3.default)(_fp$split9),
+      xs = _fp$split10;
+
+  var len = xs.length;
+  return ['' + (len === 1 ? '.' : '') + xs.slice(0, len - 1).join('/') + '/', xs.reverse()[0]];
+};

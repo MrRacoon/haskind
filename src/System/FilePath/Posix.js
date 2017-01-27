@@ -127,6 +127,12 @@ export const stripExtension = _curry(
 );
 
 // splitFileName :: FilePath -> (String, String)
+export const splitFileName = (fp) => {
+  const [...xs] = fp.split('/');
+  const len = xs.length;
+  return [`${len === 1 ? '.' : ''}${xs.slice(0, len-1).join('/')}/`, xs.reverse()[0]];
+};
+
 // takeFileName :: FilePath -> FilePath
 // replaceFileName :: FilePath -> String -> FilePath
 // dropFileName :: FilePath -> FilePath

@@ -320,7 +320,13 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // splitFileName :: FilePath -> (String, String)
-  xdescribe('splitFileName', () => {
+  describe('splitFileName', () => {
+    describe('("file.ext")', () => {
+      it('== ["./", "file.ext"]', () => {
+        Posix.splitFileName('file.ext')
+          .should.be.eql(['./', 'file.ext']);
+      });
+    });
     describe('("dir/file.ext")', () => {
       it('== ["dir/", "file.ext"]', () => {
         Posix.splitFileName('dir/file.ext')
