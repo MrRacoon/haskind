@@ -299,7 +299,7 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // stripExtension :: String -> FilePath -> Maybe FilePath
-  xdescribe('stripExtension', () => {
+  describe('stripExtension', () => {
     describe('(".ext", "dir/file.ext")', () => {
       it('== Just("dir/file")', () => {
         Posix.stripExtension('.ext', 'dir/file.ext')

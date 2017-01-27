@@ -1,4 +1,7 @@
 import { _curry } from '../../util';
+import { Maybe } from '../../Data';
+
+const { Just, Nothing } = Maybe;
 
 // pathSeparator :: Char
 export const pathSeparator = '/';
@@ -109,13 +112,20 @@ export const takeExtensions = (fp) => {
 
 // replaceExtensions :: FilePath -> String -> FilePath
 export const replaceExtensions = _curry(
-  function (fp, s) {
+  function replaceExtensions(fp, s) {
     const [x,] = fp.split(extSeparator);
     return `${x}.${s}`;
   }
 );
 
 // stripExtension :: String -> FilePath -> Maybe FilePath
+export const stripExtension = _curry(
+  function stripExtension(s, fp) {
+    const idx = fp.indexOf(s);
+    return idx === -1 ? Nothing() : Just(fp.slice(0,idx));
+  }
+);
+
 // splitFileName :: FilePath -> (String, String)
 // takeFileName :: FilePath -> FilePath
 // replaceFileName :: FilePath -> String -> FilePath

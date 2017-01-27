@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
+exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
 
@@ -23,8 +23,12 @@ exports.dropExtension = dropExtension;
 
 var _util = require('../../util');
 
+var _Data = require('../../Data');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var Just = _Data.Maybe.Just,
+    Nothing = _Data.Maybe.Nothing;
 var pathSeparator = exports.pathSeparator = '/';
 
 var pathSeparators = exports.pathSeparators = ['/'];
@@ -120,10 +124,15 @@ var takeExtensions = exports.takeExtensions = function takeExtensions(fp) {
   return '.' + xs.join(extSeparator);
 };
 
-var replaceExtensions = exports.replaceExtensions = (0, _util._curry)(function (fp, s) {
+var replaceExtensions = exports.replaceExtensions = (0, _util._curry)(function replaceExtensions(fp, s) {
   var _fp$split7 = fp.split(extSeparator),
       _fp$split8 = (0, _slicedToArray3.default)(_fp$split7, 1),
       x = _fp$split8[0];
 
   return x + '.' + s;
+});
+
+var stripExtension = exports.stripExtension = (0, _util._curry)(function stripExtension(s, fp) {
+  var idx = fp.indexOf(s);
+  return idx === -1 ? Nothing() : Just(fp.slice(0, idx));
 });
