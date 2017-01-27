@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.dropFileName = exports.replaceFileName = exports.takeFileName = exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
+exports.replaceBaseName = exports.takeBaseName = exports.dropFileName = exports.replaceFileName = exports.takeFileName = exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
 
@@ -163,3 +163,25 @@ var dropFileName = exports.dropFileName = function dropFileName(fp) {
   var len = paths.length;
   return '' + (len === 1 ? '.' : '') + paths.slice(0, len - 1).join('/') + '/';
 };
+
+var takeBaseName = exports.takeBaseName = function takeBaseName(fp) {
+  var paths = fp.split('/');
+  var len = paths.length;
+
+  var _paths$split = paths[len - 1].split('.'),
+      _paths$split2 = (0, _slicedToArray3.default)(_paths$split, 1),
+      file = _paths$split2[0];
+
+  return file;
+};
+
+var replaceBaseName = exports.replaceBaseName = (0, _util._curry)(function (fp, s) {
+  var paths = fp.split('/');
+  var len = paths.length;
+
+  var _paths$split3 = paths[len - 1].split('.'),
+      _paths$split4 = (0, _slicedToArray3.default)(_paths$split3, 2),
+      ext = _paths$split4[1];
+
+  return '' + (len > 1 ? paths.slice(0, len - 1).join('/') + '/' : '') + s + '.' + ext;
+});
