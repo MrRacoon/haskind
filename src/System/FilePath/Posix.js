@@ -145,7 +145,7 @@ export const replaceFileName = _curry(
   function replaceFileName(fp, s) {
     const paths = fp.split('/');
     const len = paths.length;
-    return `${paths.slice(0, len-1).join('/')}/${s}`;
+    return `${len > 1 ? `${paths.slice(0, len-1).join('/')}/` : ''}${s}`;
   }
 );
 
@@ -173,6 +173,7 @@ export const replaceBaseName = _curry(
     return `${len > 1 ? `${paths.slice(0, len-1).join('/')}/` : ''}${s}.${ext}`;
   }
 );
+
 // takeDirectory :: FilePath -> FilePath
 // replaceDirectory :: FilePath -> String -> FilePath
 // combine :: FilePath -> FilePath -> FilePath

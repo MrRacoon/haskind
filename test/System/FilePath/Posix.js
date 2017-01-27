@@ -363,6 +363,12 @@ describe('System.FilePath.Posix', () => {
   });
   // replaceFileName :: FilePath -> String -> FilePath
   describe('replaceFileName', () => {
+    describe('("file.ext", "other")', () => {
+      it('== "other"', () => {
+        Posix.replaceFileName('file.ext', 'other')
+          .should.be.eql('other');
+      });
+    });
     describe('("dir/file.ext", "other")', () => {
       it('== "dir/other"', () => {
         Posix.replaceFileName('dir/file.ext', 'other')

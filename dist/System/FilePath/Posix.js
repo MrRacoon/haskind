@@ -155,7 +155,7 @@ var takeFileName = exports.takeFileName = function takeFileName(fp) {
 var replaceFileName = exports.replaceFileName = (0, _util._curry)(function replaceFileName(fp, s) {
   var paths = fp.split('/');
   var len = paths.length;
-  return paths.slice(0, len - 1).join('/') + '/' + s;
+  return '' + (len > 1 ? paths.slice(0, len - 1).join('/') + '/' : '') + s;
 });
 
 var dropFileName = exports.dropFileName = function dropFileName(fp) {
