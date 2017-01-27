@@ -98,11 +98,23 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // splitSearchPath :: String -> [FilePath]
-  xdescribe('splitSearchPath', () => {
+  describe('splitSearchPath', () => {
     describe('("one:two:three")', () => {
       it('== ["one", "two", "three"]', () => {
         Posix.splitSearchPath('one:two:three')
           .should.be.eql(['one', 'two', 'three']);
+      });
+    });
+    describe('("one::two:three")', () => {
+      it('== ["one", ".", "two", "three"]', () => {
+        Posix.splitSearchPath('one::two:three')
+          .should.be.eql(['one', '.', 'two', 'three']);
+      });
+    });
+    describe('(":one:two:three")', () => {
+      it('== [".", "one", "two", "three"]', () => {
+        Posix.splitSearchPath(':one::two:three')
+          .should.be.eql(['.', 'one', '.', 'two', 'three']);
       });
     });
     describe('(":one:two::three:")', () => {
@@ -113,7 +125,7 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // getSearchPath :: IO [FilePath]
-  xdescribe('getSearchPath', () => {
+  describe('getSearchPath', () => {
     describe('()', () => {
       it('== "your:search:path"', () => {
         // Huh..... I don't know how to test this...
@@ -123,11 +135,17 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // splitExtension :: FilePath -> (String, String)
-  xdescribe('splitExtension', () => {
+  describe('splitExtension', () => {
     describe('("dir/file.ext")', () => {
       it('== ["dir/file", ".ext"]', () => {
         Posix.splitExtension('dir/file.ext')
           .should.be.eql(['dir/file', '.ext']);
+      });
+    });
+    describe('("dir/dir/file.ext")', () => {
+      it('== ["dir/dir/file", ".ext"]', () => {
+        Posix.splitExtension('dir/dir/file.ext')
+          .should.be.eql(['dir/dir/file', '.ext']);
       });
     });
     describe('("dir/file.ext.other")', () => {
@@ -136,9 +154,15 @@ describe('System.FilePath.Posix', () => {
           .should.be.eql(['dir/file.ext', '.other']);
       });
     });
+    describe('("dir/dir/file.ext.other")', () => {
+      it('== ["dir/dir/file.ext", ".other"]', () => {
+        Posix.splitExtension('dir/dir/file.ext.other')
+          .should.be.eql(['dir/dir/file.ext', '.other']);
+      });
+    });
   });
   // takeExtension :: FilePath -> String
-  xdescribe('takeExtension', () => {
+  describe('takeExtension', () => {
     describe('("dir/file.ext")', () => {
       it('== ".ext"', () => {
         Posix.takeExtension('dir/file.ext')

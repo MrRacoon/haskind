@@ -26,9 +26,34 @@ export function isExtSeparator (c) {
 }
 
 // splitSearchPath :: String -> [FilePath]
+export function splitSearchPath(str) {
+  return str.split(searchPathSeparator).map(x => x === '' ? '.' : x);
+}
 // getSearchPath :: IO [FilePath]
 // splitExtension :: FilePath -> (String, String)
+export function splitExtension(p) {
+  const path = p.split('');
+  const len = path.length;
+  for (let i = len; i >= 0; i-=1) {
+    if (isExtSeparator(path[i])) {
+      return [path.slice(0, i).join(''), path.slice(i, len).join('')];
+    }
+  }
+  return path;
+}
+
 // takeExtension :: FilePath -> String
+export function takeExtension(p) {
+  const path = p.split('');
+  const len = path.length;
+  for (let i = len; i >= 0; i-=1) {
+    if (isExtSeparator(path[i])) {
+      return path.slice(i, len).join('');
+    }
+  }
+  return path;
+}
+
 // replaceExtension :: FilePath -> String -> FilePath
 // (-<.>) :: FilePath -> String -> FilePath
 // dropExtension :: FilePath -> FilePath
