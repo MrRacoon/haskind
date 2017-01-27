@@ -177,7 +177,7 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // replaceExtension :: FilePath -> String -> FilePath
-  xdescribe('replaceExtension', () => {
+  describe('replaceExtension', () => {
     describe('("dir/file.ext", "other")', () => {
       it('== "dir/file.other"', () => {
         Posix.replaceExtension('dir/file.ext', 'other')
@@ -193,7 +193,7 @@ describe('System.FilePath.Posix', () => {
   });
   // (-<.>) :: FilePath -> String -> FilePath
   // dropExtension :: FilePath -> FilePath
-  xdescribe('dropExtension', () => {
+  describe('dropExtension', () => {
     describe('("dir/file.ext")', () => {
       it('== "dir/file"', () => {
         Posix.dropExtension('dir/file.ext')
@@ -208,7 +208,7 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // addExtension :: FilePath -> String -> FilePath
-  xdescribe('addExtension', () => {
+  describe('addExtension', () => {
     describe('("dir/file", "other")', () => {
       it('== "dir/file.other"', () => {
         Posix.addExtension('dir/file', 'other')
@@ -229,7 +229,7 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // hasExtension :: FilePath -> Bool
-  xdescribe('hasExtension', () => {
+  describe('hasExtension', () => {
     describe('("dir/file.ext")', () => {
       it('== true', () => {
         Posix.hasExtension('dir/file.ext')
@@ -245,7 +245,7 @@ describe('System.FilePath.Posix', () => {
   });
   // (<.>) :: FilePath -> String -> FilePath
   // splitExtensions :: FilePath -> (FilePath, String)
-  xdescribe('splitExtensions', () => {
+  describe('splitExtensions', () => {
     describe('("dir/file.ext")', () => {
       it('== ["dir/file", ".ext"]', () => {
         Posix.splitExtensions('dir/file.ext')
@@ -260,7 +260,7 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // dropExtensions :: FilePath -> FilePath
-  xdescribe('dropExtensions', () => {
+  describe('dropExtensions', () => {
     describe('("dir/file.ext.other")', () => {
       it('== "dir/file"', () => {
         Posix.dropExtensions('dir/file.ext.other')
@@ -269,16 +269,22 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // takeExtensions :: FilePath -> String
-  xdescribe('takeExtensions', () => {
+  describe('takeExtensions', () => {
     describe('("dir/file.ext.other")', () => {
       it('== ".ext.other"', () => {
         Posix.takeExtensions('dir/file.ext.other')
           .should.be.eql('.ext.other');
       });
     });
+    xdescribe('("dir/./file.ext.other")', () => {
+      it('== ".ext.other"', () => {
+        Posix.takeExtensions('dir/./file.ext.other')
+          .should.be.eql('.ext.other');
+      });
+    });
   });
   // replaceExtensions :: FilePath -> String -> FilePath
-  xdescribe('replaceExtensions', () => {
+  describe('replaceExtensions', () => {
     describe('("dir/file.ext.other", "words")', () => {
       it('== "dir/file.words"', () => {
         Posix.replaceExtensions('dir/file.ext.other', 'words')
@@ -617,11 +623,7 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // isValid :: FilePath -> Bool
-  xdescribe('isValid', () => {
-
-  });
+  xdescribe('isValid', () => { });
   // makeValid :: FilePath -> FilePath
-  xdescribe('makeValid', () => {
-
-  });
+  xdescribe('makeValid', () => { });
 });

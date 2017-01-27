@@ -3,12 +3,28 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
+
+var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
+var _toArray2 = require('babel-runtime/helpers/toArray');
+
+var _toArray3 = _interopRequireDefault(_toArray2);
+
 exports.isPathSeparator = isPathSeparator;
 exports.isSearchPathSeparator = isSearchPathSeparator;
 exports.isExtSeparator = isExtSeparator;
 exports.splitSearchPath = splitSearchPath;
 exports.splitExtension = splitExtension;
 exports.takeExtension = takeExtension;
+exports.dropExtension = dropExtension;
+
+var _util = require('../../util');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var pathSeparator = exports.pathSeparator = '/';
 
 var pathSeparators = exports.pathSeparators = ['/'];
@@ -55,3 +71,59 @@ function takeExtension(p) {
   }
   return path;
 }
+
+var replaceExtension = exports.replaceExtension = (0, _util._curry)(function replaceExtension(fp, s) {
+  return fp.replace(/[^.][\w]*$/, s);
+});
+
+function dropExtension(p) {
+  var path = p.split('');
+  var len = path.length;
+  for (var i = len; i >= 0; i -= 1) {
+    if (isExtSeparator(path[i])) {
+      return path.slice(0, i).join('');
+    }
+  }
+  return path;
+}
+
+var addExtension = exports.addExtension = (0, _util._curry)(function addExtension(fp, s) {
+  return '' + fp + extSeparator + s;
+});
+
+var hasExtension = exports.hasExtension = function hasExtension(fp) {
+  return fp.indexOf(extSeparator) > -1;
+};
+
+var splitExtensions = exports.splitExtensions = function splitExtensions(fp) {
+  var _fp$split = fp.split(extSeparator),
+      _fp$split2 = (0, _toArray3.default)(_fp$split),
+      x = _fp$split2[0],
+      xs = _fp$split2.slice(1);
+
+  return [x, '.' + xs.join(extSeparator)];
+};
+
+var dropExtensions = exports.dropExtensions = function dropExtensions(fp) {
+  var _fp$split3 = fp.split(extSeparator),
+      _fp$split4 = (0, _slicedToArray3.default)(_fp$split3, 1),
+      x = _fp$split4[0];
+
+  return x;
+};
+
+var takeExtensions = exports.takeExtensions = function takeExtensions(fp) {
+  var _fp$split5 = fp.split(extSeparator),
+      _fp$split6 = (0, _toArray3.default)(_fp$split5),
+      xs = _fp$split6.slice(1);
+
+  return '.' + xs.join(extSeparator);
+};
+
+var replaceExtensions = exports.replaceExtensions = (0, _util._curry)(function (fp, s) {
+  var _fp$split7 = fp.split(extSeparator),
+      _fp$split8 = (0, _slicedToArray3.default)(_fp$split7, 1),
+      x = _fp$split8[0];
+
+  return x + '.' + s;
+});
