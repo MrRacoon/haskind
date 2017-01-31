@@ -854,6 +854,36 @@ describe('System.FilePath.Posix', () => {
   });
   // replaceDirectory :: FilePath -> String -> FilePath
   xdescribe('replaceDirectory', () => {
+    describe('("", "")', () => {
+      it('== ""', () => {
+        Posix.replaceDirectory('', '')
+          .should.be.eql('');
+      });
+    });
+    describe('(".", "")', () => {
+      it('== "."', () => {
+        Posix.replaceDirectory('.', '')
+          .should.be.eql('.');
+      });
+    });
+    describe('("", ".")', () => {
+      it('== "."', () => {
+        Posix.replaceDirectory('', '.')
+          .should.be.eql('.');
+      });
+    });
+    describe('(".", ".")', () => {
+      it('== "."', () => {
+        Posix.replaceDirectory('.', '.')
+          .should.be.eql('./.');
+      });
+    });
+    describe('("./.", "dir")', () => {
+      it('== "dir/."', () => {
+        Posix.replaceDirectory('./.', 'dir')
+          .should.be.eql('dir/.');
+      });
+    });
     describe('("dir/file.ext", "other")', () => {
       it('== "other/file.ext"', () => {
         Posix.replaceDirectory('dir/file.ext', 'other')
@@ -869,6 +899,30 @@ describe('System.FilePath.Posix', () => {
   });
   // combine :: FilePath -> FilePath -> FilePath
   xdescribe('combine', () => {
+    describe('("", "")', () => {
+      it('== ""', () => {
+        Posix.combine('', '')
+          .should.be.eql('');
+      });
+    });
+    describe('(".", "")', () => {
+      it('== "."', () => {
+        Posix.combine('.', '')
+          .should.be.eql('.');
+      });
+    });
+    describe('("", ".")', () => {
+      it('== "."', () => {
+        Posix.combine('', '.')
+          .should.be.eql('.');
+      });
+    });
+    describe('(".", ".")', () => {
+      it('== "."', () => {
+        Posix.combine('.', '.')
+          .should.be.eql('./.');
+      });
+    });
     describe('("/etc", "network/interfaces")', () => {
       it('== "/etc/network/interfaces"', () => {
         Posix.combine('/etc', 'network/interfaces')
@@ -885,6 +939,48 @@ describe('System.FilePath.Posix', () => {
   // (</>) :: FilePath -> FilePath -> FilePath
   // splitPath :: FilePath -> [FilePath]
   xdescribe('splitPath', () => {
+    describe('("")', () => {
+      it('== []', () => {
+        Posix.splitPath('')
+          .should.be.eql([]);
+      });
+    });
+    describe('(".")', () => {
+      it('== ["."]', () => {
+        Posix.splitPath('.')
+          .should.be.eql(['.']);
+      });
+    });
+    describe('("file")', () => {
+      it('== ["file"]', () => {
+        Posix.splitPath('file')
+          .should.be.eql(['file']);
+      });
+    });
+    describe('("file.ext")', () => {
+      it('== ["file.ext"]', () => {
+        Posix.splitPath('file.ext')
+          .should.be.eql(['file.ext']);
+      });
+    });
+    describe('("./file.ext")', () => {
+      it('== [".", "file.ext"]', () => {
+        Posix.splitPath('./file.ext')
+          .should.be.eql(['.', 'file.ext']);
+      });
+    });
+    describe('("././file.ext")', () => {
+      it('== [".", ".", "file.ext"]', () => {
+        Posix.splitPath('././file.ext')
+          .should.be.eql(['.', '.', 'file.ext']);
+      });
+    });
+    describe('("/././file.ext")', () => {
+      it('== ["/", ".", ".", "file.ext"]', () => {
+        Posix.splitPath('/././file.ext')
+          .should.be.eql(['/', '.', '.', 'file.ext']);
+      });
+    });
     describe('("/etc/network/interfaces")', () => {
       it('== ["/", "etc/", "network/", "interfaces"]', () => {
         Posix.splitPath('/etc/network/interfaces')

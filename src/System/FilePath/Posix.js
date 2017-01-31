@@ -175,13 +175,9 @@ export const takeBaseName = (fp) => {
 export const replaceBaseName = _curry(
   function (fp, s) {
     const [dirs,, exts] = _split(fp);
-    return [
-      dirs
-        .concat([s])
-        .join(pathSeparator)
-    ]
-    .concat(exts)
-    .join(extSeparator);
+    return dirs.concat(
+      [s].concat(exts).join(extSeparator)
+    ).join(pathSeparator);
   }
 );
 
@@ -193,24 +189,67 @@ export const takeDirectory = (fp) => {
 };
 
 // replaceDirectory :: FilePath -> String -> FilePath
+export const replaceDirectory = undefined;
+
 // combine :: FilePath -> FilePath -> FilePath
+export const combine = undefined;
+
 // (</>) :: FilePath -> FilePath -> FilePath
+// export const  = undefined;
+
 // splitPath :: FilePath -> [FilePath]
+export const splitPath = undefined;
+
 // joinPath :: [FilePath] -> FilePath
+export const joinPath = undefined;
+
 // splitDirectories :: FilePath -> [FilePath]
+export const splitDirectories = undefined;
+
 // splitDrive :: FilePath -> (FilePath, FilePath)
+export const splitDrive = undefined;
+
 // joinDrive :: FilePath -> FilePath -> FilePath
+export const joinDrive = undefined;
+
 // takeDrive :: FilePath -> FilePath
+export const takeDrive = undefined;
+
 // hasDrive :: FilePath -> Bool
+export const hasDrive = undefined;
+
 // dropDrive :: FilePath -> FilePath
+export const dropDrive = undefined;
+
 // isDrive :: FilePath -> Bool
+export const isDrive = undefined;
+
 // hasTrailingPathSeparator :: FilePath -> Bool
+export const hasTrailingPathSeparator = undefined;
+
 // addTrailingPathSeparator :: FilePath -> FilePath
+export const addTrailingPathSeparator = undefined;
+
 // dropTrailingPathSeparator :: FilePath -> FilePath
+export const dropTrailingPathSeparator = undefined;
+
 // normalise :: FilePath -> FilePath
+export const normalise = undefined;
+
 // equalFilePath :: FilePath -> FilePath -> Bool
+export const equalFilePath = undefined;
+
 // makeRelative :: FilePath -> FilePath -> FilePath
+export const makeRelative = undefined;
+
 // isRelative :: FilePath -> Bool
+export const isRelative = undefined;
+
 // isAbsolute :: FilePath -> Bool
+export const isAbsolute = undefined;
+
 // isValid :: FilePath -> Bool
+export const isValid = undefined;
+
 // makeValid :: FilePath -> FilePath
+export const makeValid = undefined;

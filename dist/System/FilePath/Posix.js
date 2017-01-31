@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.takeDirectory = exports.replaceBaseName = exports.takeBaseName = exports.dropFileName = exports.replaceFileName = exports.takeFileName = exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
+exports.makeValid = exports.isValid = exports.isAbsolute = exports.isRelative = exports.makeRelative = exports.equalFilePath = exports.normalise = exports.dropTrailingPathSeparator = exports.addTrailingPathSeparator = exports.hasTrailingPathSeparator = exports.isDrive = exports.dropDrive = exports.hasDrive = exports.takeDrive = exports.joinDrive = exports.splitDrive = exports.splitDirectories = exports.joinPath = exports.splitPath = exports.combine = exports.replaceDirectory = exports.takeDirectory = exports.replaceBaseName = exports.takeBaseName = exports.dropFileName = exports.replaceFileName = exports.takeFileName = exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
 
@@ -194,7 +194,7 @@ var replaceBaseName = exports.replaceBaseName = (0, _util._curry)(function (fp, 
       dirs = _split11[0],
       exts = _split11[2];
 
-  return [dirs.concat([s]).join(pathSeparator)].concat(exts).join(extSeparator);
+  return dirs.concat([s].concat(exts).join(extSeparator)).join(pathSeparator);
 });
 
 var takeDirectory = exports.takeDirectory = function takeDirectory(fp) {
@@ -204,3 +204,45 @@ var takeDirectory = exports.takeDirectory = function takeDirectory(fp) {
 
   return (dirs.length ? dirs : ['.']).join(pathSeparator);
 };
+
+var replaceDirectory = exports.replaceDirectory = undefined;
+
+var combine = exports.combine = undefined;
+
+var splitPath = exports.splitPath = undefined;
+
+var joinPath = exports.joinPath = undefined;
+
+var splitDirectories = exports.splitDirectories = undefined;
+
+var splitDrive = exports.splitDrive = undefined;
+
+var joinDrive = exports.joinDrive = undefined;
+
+var takeDrive = exports.takeDrive = undefined;
+
+var hasDrive = exports.hasDrive = undefined;
+
+var dropDrive = exports.dropDrive = undefined;
+
+var isDrive = exports.isDrive = undefined;
+
+var hasTrailingPathSeparator = exports.hasTrailingPathSeparator = undefined;
+
+var addTrailingPathSeparator = exports.addTrailingPathSeparator = undefined;
+
+var dropTrailingPathSeparator = exports.dropTrailingPathSeparator = undefined;
+
+var normalise = exports.normalise = undefined;
+
+var equalFilePath = exports.equalFilePath = undefined;
+
+var makeRelative = exports.makeRelative = undefined;
+
+var isRelative = exports.isRelative = undefined;
+
+var isAbsolute = exports.isAbsolute = undefined;
+
+var isValid = exports.isValid = undefined;
+
+var makeValid = exports.makeValid = undefined;
