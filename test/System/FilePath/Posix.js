@@ -990,6 +990,48 @@ describe('System.FilePath.Posix', () => {
   });
   // joinPath :: [FilePath] -> FilePath
   xdescribe('joinPath', () => {
+    describe('([])', () => {
+      it('== ""', () => {
+        Posix.joinPath([])
+          .should.be.eql('');
+      });
+    });
+    describe('(["."])', () => {
+      it('== "."', () => {
+        Posix.joinPath(['.'])
+          .should.be.eql('.');
+      });
+    });
+    describe('([".", "."])', () => {
+      it('== "./."', () => {
+        Posix.joinPath(['.', '.'])
+          .should.be.eql('./.');
+      });
+    });
+    describe('(["./.", "...."])', () => {
+      it('== "./....."', () => {
+        Posix.joinPath(['./.', '....'])
+          .should.be.eql('./.....');
+      });
+    });
+    describe('(["./.", "/...."])', () => {
+      it('== "/...."', () => {
+        Posix.joinPath(['./.', '/....'])
+          .should.be.eql('/....');
+      });
+    });
+    describe('(["./.", "/....//", ".//"])', () => {
+      it('== "/....//.//"', () => {
+        Posix.joinPath(['./.', '/....//', './/'])
+          .should.be.eql('/....//.//');
+      });
+    });
+    describe('(["./.", "/....//", "/.//"])', () => {
+      it('== "/.//"', () => {
+        Posix.joinPath(['./.', '/....//', '/.//'])
+          .should.be.eql('/.//');
+      });
+    });
     describe('(["/", "etc/", "network/", "interfaces"])', () => {
       it('== "/etc/network/interfaces"', () => {
         Posix.joinPath(['/', 'etc/', 'network/', 'interfaces'])
@@ -999,6 +1041,42 @@ describe('System.FilePath.Posix', () => {
   });
   // splitDirectories :: FilePath -> [FilePath]
   xdescribe('splitDirectories', () => {
+    describe('("")', () => {
+      it('== []', () => {
+        Posix.splitDirectories('')
+          .should.be.eql([]);
+      });
+    });
+    describe('(".")', () => {
+      it('== ["."]', () => {
+        Posix.splitDirectories('.')
+          .should.be.eql(['.']);
+      });
+    });
+    describe('("./.")', () => {
+      it('== [".", "."]', () => {
+        Posix.splitDirectories('./.')
+          .should.be.eql(['.', '.']);
+      });
+    });
+    describe('("./..")', () => {
+      it('== [".", ".."]', () => {
+        Posix.splitDirectories('./..')
+          .should.be.eql(['.', '..']);
+      });
+    });
+    describe('("./../.")', () => {
+      it('== [".", "..", "."]', () => {
+        Posix.splitDirectories('./../.')
+          .should.be.eql(['.', '..', '.']);
+      });
+    });
+    describe('("./.././")', () => {
+      it('== [".", "..", "."]', () => {
+        Posix.splitDirectories('./.././')
+          .should.be.eql(['.', '..', '.']);
+      });
+    });
     describe('("dir/dir/file.ext")', () => {
       it('== ["dir", "dir", "file.ext"]', () => {
         Posix.splitDirectories('dir/dir/file.ext')
