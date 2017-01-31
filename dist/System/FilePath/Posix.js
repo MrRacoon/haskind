@@ -29,6 +29,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Just = _Data.Maybe.Just,
     Nothing = _Data.Maybe.Nothing;
+
+
+var _split = function _split(fp) {
+  if (!fp) return [[], '', []];
+  var dirs = [];
+  var dirSep = fp.lastIndexOf('/');
+  if (dirSep > -1) dirs = fp.slice(0, dirSep).split('/');
+  var filename = fp.slice(dirSep + 1);
+
+  var _filename$split = filename.split(extSeparator),
+      _filename$split2 = (0, _toArray3.default)(_filename$split),
+      f = _filename$split2[0],
+      es = _filename$split2.slice(1);
+
+  return [dirs, f, es];
+};
+
 var pathSeparator = exports.pathSeparator = '/';
 
 var pathSeparators = exports.pathSeparators = ['/'];
@@ -62,7 +79,7 @@ function splitExtension(p) {
       return [path.slice(0, i).join(''), path.slice(i, len).join('')];
     }
   }
-  return path;
+  return [p, ''];
 }
 
 function takeExtension(p) {
@@ -73,25 +90,25 @@ function takeExtension(p) {
       return path.slice(i, len).join('');
     }
   }
-  return path;
+  return '';
 }
 
 var replaceExtension = exports.replaceExtension = (0, _util._curry)(function replaceExtension(fp, s) {
-  return fp.replace(/[^.][\w]*$/, s);
+  var lastExtSep = fp.lastIndexOf(extSeparator);
+  if (lastExtSep === -1) return fp + '.' + s;
+  if (!s) return fp.slice(0, lastExtSep);
+  return fp.slice(0, lastExtSep) + '.' + s;
 });
 
 function dropExtension(p) {
-  var path = p.split('');
-  var len = path.length;
-  for (var i = len; i >= 0; i -= 1) {
-    if (isExtSeparator(path[i])) {
-      return path.slice(0, i).join('');
-    }
-  }
-  return path;
+  if (!p) return '';
+  var lastExtSep = p.lastIndexOf(extSeparator);
+  if (lastExtSep === -1) return p;
+  return p.slice(0, lastExtSep);
 }
 
 var addExtension = exports.addExtension = (0, _util._curry)(function addExtension(fp, s) {
+  if (!s) return fp;
   return '' + fp + extSeparator + s;
 });
 
@@ -100,36 +117,39 @@ var hasExtension = exports.hasExtension = function hasExtension(fp) {
 };
 
 var splitExtensions = exports.splitExtensions = function splitExtensions(fp) {
-  var _fp$split = fp.split(extSeparator),
-      _fp$split2 = (0, _toArray3.default)(_fp$split),
-      x = _fp$split2[0],
-      xs = _fp$split2.slice(1);
+  var _split2 = _split(fp),
+      _split3 = (0, _slicedToArray3.default)(_split2, 3),
+      dirs = _split3[0],
+      file = _split3[1],
+      exts = _split3[2];
 
-  return [x, '.' + xs.join(extSeparator)];
+  return [dirs.concat(file).join('/'), exts.length ? '.' + exts.join('.') : exts.join('.')];
 };
 
 var dropExtensions = exports.dropExtensions = function dropExtensions(fp) {
-  var _fp$split3 = fp.split(extSeparator),
-      _fp$split4 = (0, _slicedToArray3.default)(_fp$split3, 1),
-      x = _fp$split4[0];
+  var _split4 = _split(fp),
+      _split5 = (0, _slicedToArray3.default)(_split4, 2),
+      dirs = _split5[0],
+      file = _split5[1];
 
-  return x;
+  return dirs.concat([file]).join('/');
 };
 
 var takeExtensions = exports.takeExtensions = function takeExtensions(fp) {
-  var _fp$split5 = fp.split(extSeparator),
-      _fp$split6 = (0, _toArray3.default)(_fp$split5),
-      xs = _fp$split6.slice(1);
+  var _split6 = _split(fp),
+      _split7 = (0, _slicedToArray3.default)(_split6, 3),
+      exts = _split7[2];
 
-  return '.' + xs.join(extSeparator);
+  return exts.length ? '.' + exts.join('.') : '';
 };
 
 var replaceExtensions = exports.replaceExtensions = (0, _util._curry)(function replaceExtensions(fp, s) {
-  var _fp$split7 = fp.split(extSeparator),
-      _fp$split8 = (0, _slicedToArray3.default)(_fp$split7, 1),
-      x = _fp$split8[0];
+  var _split8 = _split(fp),
+      _split9 = (0, _slicedToArray3.default)(_split8, 2),
+      dirs = _split9[0],
+      file = _split9[1];
 
-  return x + '.' + s;
+  return dirs.concat([file]).join('/').concat('.' + s);
 });
 
 var stripExtension = exports.stripExtension = (0, _util._curry)(function stripExtension(s, fp) {
@@ -138,9 +158,9 @@ var stripExtension = exports.stripExtension = (0, _util._curry)(function stripEx
 });
 
 var splitFileName = exports.splitFileName = function splitFileName(fp) {
-  var _fp$split9 = fp.split('/'),
-      _fp$split10 = (0, _toArray3.default)(_fp$split9),
-      xs = _fp$split10;
+  var _fp$split = fp.split('/'),
+      _fp$split2 = (0, _toArray3.default)(_fp$split),
+      xs = _fp$split2;
 
   var len = xs.length;
   return ['' + (len === 1 ? '.' : '') + xs.slice(0, len - 1).join('/') + '/', xs.reverse()[0]];

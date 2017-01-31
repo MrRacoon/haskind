@@ -3,6 +3,16 @@ import { Maybe } from '../../Data';
 
 const { Just, Nothing } = Maybe;
 
+const _split = (fp) => {
+  if (!fp) return [[], '', []];
+  let dirs = [];
+  const dirSep = fp.lastIndexOf('/');
+  if (dirSep > -1) dirs = fp.slice(0, dirSep).split('/');
+  const filename = fp.slice(dirSep + 1);
+  const [f, ...es] = filename.split(extSeparator);
+  return [dirs, f, es];
+};
+
 // pathSeparator :: Char
 export const pathSeparator = '/';
 
@@ -44,7 +54,7 @@ export function splitExtension(p) {
       return [path.slice(0, i).join(''), path.slice(i, len).join('')];
     }
   }
-  return path;
+  return [p, ''];
 }
 
 // takeExtension :: FilePath -> String
@@ -56,32 +66,32 @@ export function takeExtension(p) {
       return path.slice(i, len).join('');
     }
   }
-  return path;
+  return '';
 }
 
 // replaceExtension :: FilePath -> String -> FilePath
 export const replaceExtension = _curry(
   function replaceExtension(fp, s) {
-    return fp.replace(/[^.][\w]*$/, s);
+    const lastExtSep = fp.lastIndexOf(extSeparator);
+    if (lastExtSep === -1) return `${fp}.${s}`;
+    if (!s) return fp.slice(0, lastExtSep);
+    return `${fp.slice(0, lastExtSep)}.${s}`;
   }
 );
 
 // (-<.>) :: FilePath -> String -> FilePath
 // dropExtension :: FilePath -> FilePath
 export function dropExtension(p) {
-  const path = p.split('');
-  const len = path.length;
-  for (let i = len; i >= 0; i-=1) {
-    if (isExtSeparator(path[i])) {
-      return path.slice(0, i).join('');
-    }
-  }
-  return path;
+  if (!p) return '';
+  const lastExtSep = p.lastIndexOf(extSeparator);
+  if (lastExtSep === -1) return p;
+  return p.slice(0, lastExtSep);
 }
 
 // addExtension :: FilePath -> String -> FilePath
 export const addExtension = _curry(
   function addExtension(fp, s) {
+    if (!s) return fp;
     return `${fp}${extSeparator}${s}`;
   }
 );
@@ -94,27 +104,27 @@ export const hasExtension =
 // (<.>) :: FilePath -> String -> FilePath
 // splitExtensions :: FilePath -> (FilePath, String)
 export const splitExtensions = (fp) => {
-  const [x, ...xs] = fp.split(extSeparator);
-  return [x, `.${xs.join(extSeparator)}`];
+  const [dirs, file, exts] = _split(fp);
+  return [dirs.concat(file).join('/'), exts.length ? ('.' + exts.join('.')) : exts.join('.')];
 };
 
 // dropExtensions :: FilePath -> FilePath
 export const dropExtensions = (fp) => {
-  const [x,] = fp.split(extSeparator);
-  return x;
+  const [dirs, file,] = _split(fp);
+  return dirs.concat([file]).join('/');
 };
 
 // takeExtensions :: FilePath -> String
 export const takeExtensions = (fp) => {
-  const [,...xs] = fp.split(extSeparator);
-  return `.${xs.join(extSeparator)}`;
+  const [,, exts] = _split(fp);
+  return exts.length ? `.${exts.join('.')}` : '';
 };
 
 // replaceExtensions :: FilePath -> String -> FilePath
 export const replaceExtensions = _curry(
   function replaceExtensions(fp, s) {
-    const [x,] = fp.split(extSeparator);
-    return `${x}.${s}`;
+    const [dirs, file] = _split(fp);
+    return dirs.concat([file]).join('/').concat('.' + s);
   }
 );
 
