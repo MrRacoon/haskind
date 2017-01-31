@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.replaceBaseName = exports.takeBaseName = exports.dropFileName = exports.replaceFileName = exports.takeFileName = exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
+exports.takeDirectory = exports.replaceBaseName = exports.takeBaseName = exports.dropFileName = exports.replaceFileName = exports.takeFileName = exports.splitFileName = exports.stripExtension = exports.replaceExtensions = exports.takeExtensions = exports.dropExtensions = exports.splitExtensions = exports.hasExtension = exports.addExtension = exports.replaceExtension = exports.extSeparator = exports.searchPathSeparator = exports.pathSeparators = exports.pathSeparator = undefined;
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
 
@@ -185,23 +185,22 @@ var dropFileName = exports.dropFileName = function dropFileName(fp) {
 };
 
 var takeBaseName = exports.takeBaseName = function takeBaseName(fp) {
-  var paths = fp.split('/');
-  var len = paths.length;
-
-  var _paths$split = paths[len - 1].split('.'),
-      _paths$split2 = (0, _slicedToArray3.default)(_paths$split, 1),
-      file = _paths$split2[0];
-
-  return file;
+  return _split(fp)[1];
 };
 
 var replaceBaseName = exports.replaceBaseName = (0, _util._curry)(function (fp, s) {
-  var paths = fp.split('/');
-  var len = paths.length;
+  var _split10 = _split(fp),
+      _split11 = (0, _slicedToArray3.default)(_split10, 3),
+      dirs = _split11[0],
+      exts = _split11[2];
 
-  var _paths$split3 = paths[len - 1].split('.'),
-      _paths$split4 = (0, _slicedToArray3.default)(_paths$split3, 2),
-      ext = _paths$split4[1];
-
-  return '' + (len > 1 ? paths.slice(0, len - 1).join('/') + '/' : '') + s + '.' + ext;
+  return [dirs.concat([s]).join(pathSeparator)].concat(exts).join(extSeparator);
 });
+
+var takeDirectory = exports.takeDirectory = function takeDirectory(fp) {
+  var _split12 = _split(fp),
+      _split13 = (0, _slicedToArray3.default)(_split12, 1),
+      dirs = _split13[0];
+
+  return (dirs.length ? dirs : ['.']).join(pathSeparator);
+};
