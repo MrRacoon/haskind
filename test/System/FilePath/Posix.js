@@ -563,6 +563,18 @@ describe('System.FilePath.Posix', () => {
   });
   // splitFileName :: FilePath -> (String, String)
   describe('splitFileName', () => {
+    describe('("")', () => {
+      it('== ["./", ""]', () => {
+        Posix.splitFileName('')
+          .should.be.eql(['./', '']);
+      });
+    });
+    describe('("file")', () => {
+      it('== ["./", "file"]', () => {
+        Posix.splitFileName('file')
+          .should.be.eql(['./', 'file']);
+      });
+    });
     describe('("file.ext")', () => {
       it('== ["./", "file.ext"]', () => {
         Posix.splitFileName('file.ext')
@@ -584,6 +596,18 @@ describe('System.FilePath.Posix', () => {
   });
   // takeFileName :: FilePath -> FilePath
   describe('takeFileName', () => {
+    describe('("")', () => {
+      it('== ""', () => {
+        Posix.takeFileName('')
+          .should.be.eql('');
+      });
+    });
+    describe('("file")', () => {
+      it('== "file"', () => {
+        Posix.takeFileName('file')
+          .should.be.eql('file');
+      });
+    });
     describe('("file.ext")', () => {
       it('== "file.ext"', () => {
         Posix.takeFileName('file.ext')
@@ -605,6 +629,24 @@ describe('System.FilePath.Posix', () => {
   });
   // replaceFileName :: FilePath -> String -> FilePath
   describe('replaceFileName', () => {
+    describe('("", "")', () => {
+      it('== ""', () => {
+        Posix.replaceFileName('', '')
+          .should.be.eql('');
+      });
+    });
+    describe('("file.ext", "")', () => {
+      it('== ""', () => {
+        Posix.replaceFileName('file.ext', '')
+          .should.be.eql('');
+      });
+    });
+    describe('("", "other")', () => {
+      it('== "other"', () => {
+        Posix.replaceFileName('', 'other')
+          .should.be.eql('other');
+      });
+    });
     describe('("file.ext", "other")', () => {
       it('== "other"', () => {
         Posix.replaceFileName('file.ext', 'other')
@@ -614,6 +656,12 @@ describe('System.FilePath.Posix', () => {
     describe('("dir/file.ext", "other")', () => {
       it('== "dir/other"', () => {
         Posix.replaceFileName('dir/file.ext', 'other')
+          .should.be.eql('dir/other');
+      });
+    });
+    describe('("dir/", "other")', () => {
+      it('== "dir/other"', () => {
+        Posix.replaceFileName('dir/', 'other')
           .should.be.eql('dir/other');
       });
     });
@@ -632,10 +680,28 @@ describe('System.FilePath.Posix', () => {
   });
   // dropFileName :: FilePath -> FilePath
   describe('dropFileName', () => {
+    describe('("")', () => {
+      it('== "./"', () => {
+        Posix.dropFileName('')
+          .should.be.eql('./');
+      });
+    });
+    describe('(".")', () => {
+      it('== "./"', () => {
+        Posix.dropFileName('.')
+          .should.be.eql('./');
+      });
+    });
     describe('("file.ext")', () => {
       it('== "./"', () => {
         Posix.dropFileName('file.ext')
           .should.be.eql('./');
+      });
+    });
+    describe('("dir/")', () => {
+      it('== "dir/"', () => {
+        Posix.dropFileName('dir/')
+          .should.be.eql('dir/');
       });
     });
     describe('("dir/file.ext")', () => {
@@ -653,6 +719,18 @@ describe('System.FilePath.Posix', () => {
   });
   // takeBaseName :: FilePath -> String
   describe('takeBaseName', () => {
+    describe('("")', () => {
+      it('== ""', () => {
+        Posix.takeBaseName('')
+          .should.be.eql('');
+      });
+    });
+    describe('("file")', () => {
+      it('== "file"', () => {
+        Posix.takeBaseName('file')
+          .should.be.eql('file');
+      });
+    });
     describe('("file.ext")', () => {
       it('== "file"', () => {
         Posix.takeBaseName('file.ext')
@@ -680,6 +758,30 @@ describe('System.FilePath.Posix', () => {
   });
   // replaceBaseName :: FilePath -> String -> FilePath
   describe('replaceBaseName', () => {
+    describe('("", "")', () => {
+      it('== ""', () => {
+        Posix.replaceBaseName('', '')
+          .should.be.eql('');
+      });
+    });
+    describe('("", "other")', () => {
+      it('== "other"', () => {
+        Posix.replaceBaseName('', 'other')
+          .should.be.eql('other');
+      });
+    });
+    describe('("file", "")', () => {
+      it('== ""', () => {
+        Posix.replaceBaseName('', '')
+          .should.be.eql('');
+      });
+    });
+    describe('("file.ext", "")', () => {
+      it('== ".ext"', () => {
+        Posix.replaceBaseName('file.ext', '')
+          .should.be.eql('.ext');
+      });
+    });
     describe('("file.ext", "other")', () => {
       it('== "other.ext"', () => {
         Posix.replaceBaseName('file.ext', 'other')
@@ -712,7 +814,37 @@ describe('System.FilePath.Posix', () => {
     });
   });
   // takeDirectory :: FilePath -> FilePath
-  xdescribe('takeDirectory', () => {
+  describe('takeDirectory', () => {
+    describe('("")', () => {
+      it('== "."', () => {
+        Posix.takeDirectory('')
+          .should.be.eql('.');
+      });
+    });
+    describe('(".")', () => {
+      it('== "."', () => {
+        Posix.takeDirectory('.')
+          .should.be.eql('.');
+      });
+    });
+    describe('("./")', () => {
+      it('== "."', () => {
+        Posix.takeDirectory('./')
+          .should.be.eql('.');
+      });
+    });
+    describe('("./file")', () => {
+      it('== "."', () => {
+        Posix.takeDirectory('./file')
+          .should.be.eql('.');
+      });
+    });
+    describe('("././file")', () => {
+      it('== "./."', () => {
+        Posix.takeDirectory('././file')
+          .should.be.eql('./.');
+      });
+    });
     describe('("dir/file.ext")', () => {
       it('== "dir/"', () => {
         Posix.takeDirectory('dir/file.ext')
