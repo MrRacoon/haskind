@@ -1,9 +1,46 @@
 import { Data, util } from '.';
+import jsc from 'jsverify';
 const { Bool } = Data;
 const { error } = util;
 
 describe('Data.Bool', () => {
   describe('and', () => {
+    describe('(true, a)', () => {
+      it('== a', () => {
+        jsc.assert(
+          jsc.forall('bool', (a) =>
+            Bool.and(true, a) === a
+          )
+        );
+      });
+    });
+    describe('(false, a)', () => {
+      it('== false', () => {
+        jsc.assert(
+          jsc.forall('bool', (a) =>
+            Bool.and(false, a) === false
+          )
+        );
+      });
+    });
+    describe('(a, true)', () => {
+      it('== a', () => {
+        jsc.assert(
+          jsc.forall('bool', (a) =>
+            Bool.and(a, true) === a
+          )
+        );
+      });
+    });
+    describe('(a, false)', () => {
+      it('== false', () => {
+        jsc.assert(
+          jsc.forall('bool', (a) =>
+            Bool.and(a, false) === false
+          )
+        );
+      });
+    });
     describe('(true, true)', () => {
       it('== true', () => {
         Bool.and(true, true).should.be.eql(true);
