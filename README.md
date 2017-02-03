@@ -62,6 +62,10 @@ still not been totally fleshed out.
 If you see something you want to fill in, or think is off, feel free to submit a
 PR.
 
+> [PROTIP]: If you are using [hkci][hkci], you can use `hkci -c` in a haskind repo, to
+load that repo's `dist/`. I use it so that I can get instant feedback as I play
+with haskind.
+
 Ultimately my goal with this project, is to bridge a gap. I've talked to a lot
 of talented developers who really enjoy Javascript, and have voiced curiosity
 about the world of Haskell. My hope is that this library will prime developers
@@ -86,7 +90,7 @@ Copyright &copy; 2016 Erik Sutherland. All rights reserved.
 [BUILD]: https://travis-ci.org/MrRacoon/haskind
 [BUILD_IMG]: https://travis-ci.org/MrRacoon/haskind.svg?branch=master
 
-[hkci]: https://www.npmjs.com/package/hkci
+[hkci]: https://github.com/MrRacoon/hkci
 [Ramda]: http://ramdajs.com/
 [Lodash]: https://lodash.com/
 [Haskell]: http://hackage.haskell.org/package/base
