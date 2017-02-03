@@ -74,7 +74,9 @@ var apply = exports.apply = (0, _util._curry)(function (arg, fn) {
   return fn(arg);
 });
 
-var fix = exports.fix = undefined;
+var fix = exports.fix = function fix(a) {
+  return a(fix(a));
+};
 
 var on = exports.on = (0, _util._curry)(function (g, f, a, b) {
   return g(f(a), f(b));

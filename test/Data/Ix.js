@@ -1,30 +1,70 @@
+import jsc from 'jsverify';
 import { Data } from '.';
 const { Ix } = Data;
 
 describe('Data.Ix', () => {
   describe('range', () => {
+    describe('([a, b]).length', () => {
+      jsc.property('== (a<=b ? b-a+1 : 0)', 'nat', 'nat', (a, b) =>
+        Ix.range([a, b]).length === (a <= b ? b - a + 1 : 0)
+      );
+    });
+    describe('when (a <= b) then ([a, b]).indexOf(a) > -1', () => {
+      jsc.property('== true', 'nat', 'nat', (a, b) =>
+        a <= b
+          ? Ix.range([a, b]).indexOf(a) > -1
+          : Ix.range([b, a]).indexOf(a) > -1
+      );
+    });
+    describe('when (a <= b) then ([a, b]).indexOf(b) > -1', () => {
+      jsc.property('== true', 'nat', 'nat', (a, b) =>
+        a <= b
+          ? Ix.range([a, b]).indexOf(b) > -1
+          : Ix.range([b, a]).indexOf(b) > -1
+      );
+    });
+    describe('when (a < b) then ([b, a])', () => {
+      jsc.property('== []', 'nat', 'nat', (a, b) =>
+        a === b
+          ? true
+          : Ix.range([a, b].sort((x, y) => y - x)).length === 0
+      );
+    });
     describe('([0, 0])', () => {
-      it('== []', () => {
-        Ix.range([0, 0]).should.be.eql([]);
+      it('== [0]', () => {
+        Ix.range([0, 0]).should.be.eql([0]);
       });
     });
     describe('([-1, 0])', () => {
-      it('== [-1]', () => {
-        Ix.range([-1, 0]).should.be.eql([-1]);
+      it('== [-1, 0]', () => {
+        Ix.range([-1, 0]).should.be.eql([-1, 0]);
       });
     });
     describe('([0, 10])', () => {
-      it('== [0,1,2,3,4,5,6,7,8,9]', () => {
-        Ix.range([0, 10]).should.be.eql([0,1,2,3,4,5,6,7,8,9]);
+      it('== [0,1,2,3,4,5,6,7,8,9,10]', () => {
+        Ix.range([0, 10]).should.be.eql([0,1,2,3,4,5,6,7,8,9,10]);
       });
     });
     describe('([3, 10])', () => {
-      it('== [3,4,5,6,7,8,9]', () => {
-        Ix.range([3, 10]).should.be.eql([3,4,5,6,7,8,9]);
+      it('== [3,4,5,6,7,8,9,10]', () => {
+        Ix.range([3, 10]).should.be.eql([3,4,5,6,7,8,9,10]);
+      });
+    });
+    describe('([10, 3])', () => {
+      it('== []', () => {
+        Ix.range([10, 3]).should.be.eql([]);
       });
     });
   });
   describe('index', () => {
+    describe('([a, b], c)', () => {
+      jsc.property('== c - a', 'nat', 'nat', 'nat', (a, b, c) => {
+        if (Ix.inRange([a, b], c)) {
+          return Ix.index([a, b], c) === c - a;
+        }
+        return true;
+      });
+    });
     describe('([0, 0], 0)', () => {
       it('== 0', () => {
         Ix.index([0,0], 0).should.be.eql(0);

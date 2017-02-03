@@ -38,7 +38,7 @@ export const flip = _curry(
 export const apply = _curry((arg, fn) => fn(arg));
 
 // fix :: (a -> a) -> a
-export const fix = undefined;
+export const fix = (a) => a(fix(a));
 
 // on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
 export const on = _curry((g, f, a, b) => g(f(a), f(b)));

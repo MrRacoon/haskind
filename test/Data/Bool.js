@@ -6,117 +6,66 @@ const { error } = util;
 describe('Data.Bool', () => {
   describe('and', () => {
     describe('(true, a)', () => {
-      it('== a', () => {
-        jsc.assert(
-          jsc.forall('bool', (a) =>
-            Bool.and(true, a) === a
-          )
-        );
-      });
+      jsc.property('== a', 'bool', (a) =>
+        Bool.and(true, a) === a
+      );
     });
     describe('(false, a)', () => {
-      it('== false', () => {
-        jsc.assert(
-          jsc.forall('bool', (a) =>
-            Bool.and(false, a) === false
-          )
-        );
-      });
+      jsc.property('== false', 'bool', (a) =>
+        Bool.and(false, a) === false
+      );
     });
     describe('(a, true)', () => {
-      it('== a', () => {
-        jsc.assert(
-          jsc.forall('bool', (a) =>
-            Bool.and(a, true) === a
-          )
-        );
-      });
+      jsc.property('== a', 'bool', (a) =>
+        Bool.and(a, true) === a
+      );
     });
     describe('(a, false)', () => {
-      it('== false', () => {
-        jsc.assert(
-          jsc.forall('bool', (a) =>
-            Bool.and(a, false) === false
-          )
-        );
-      });
+      jsc.property('== false', 'bool', (a) =>
+        Bool.and(a, false) === false
+      );
     });
-    describe('(true, true)', () => {
-      it('== true', () => {
-        Bool.and(true, true).should.be.eql(true);
-      });
-    });
-    describe('(true, false)', () => {
-      it('== false', () => {
-        Bool.and(true, false).should.be.eql(false);
-      });
-    });
-    describe('(false, true)', () => {
-      it('== false', () => {
-        Bool.and(false, true).should.be.eql(false);
-      });
-    });
-    describe('(false, false)', () => {
-      it('== false', () => {
-        Bool.and(false, false).should.be.eql(false);
-      });
+    describe('(a, b)', () => {
+      jsc.property('== (a)(b)', 'bool', 'bool', (a, b) =>
+        Bool.and(a, b) === Bool.and(a)(b)
+      );
     });
     xdescribe('(false, error("arb"))', () => {
       it('== false <- IMPOSSIBLE', () => {
         Bool.and(false, error('arb')).should.be.eql(false);
       });
     });
-    describe('(true)(false)', () => {
-      it('== false', () => {
-        Bool.and(true)(false).should.be.eql(false);
-      });
-    });
-    describe('(true)(true)', () => {
-      it('== true', () => {
-        Bool.and(true)(true).should.be.eql(true);
-      });
-    });
   });
   describe('or', () => {
-    describe('(true, true)', () => {
-      it('== true', () => {
-        Bool.or(true, true).should.be.eql(true);
-      });
+    describe('(true, a)', () => {
+      jsc.property('== true', 'bool', (a) =>
+        Bool.or(true, a) === true
+      );
     });
-    describe('(true, false)', () => {
-      it('== true', () => {
-        Bool.or(true, false).should.be.eql(true);
-      });
+    describe('(false, a)', () => {
+      jsc.property('== a', 'bool', (a) =>
+        Bool.or(false, a) === a
+      );
     });
-    describe('(false, true)', () => {
-      it('== true', () => {
-        Bool.or(false, true).should.be.eql(true);
-      });
+    describe('(a, true)', () => {
+      jsc.property('== true', 'bool', (a) =>
+        Bool.or(a, true) === true
+      );
     });
-    describe('(false, false)', () => {
-      it('== false', () => {
-        Bool.or(false, false).should.be.eql(false);
-      });
+    describe('(a, false)', () => {
+      jsc.property('== a', 'bool', (a) =>
+        Bool.or(a, false) === a
+      );
     });
-    xdescribe('(true, error("arb"))', () => {
-      it('== true <- IMPOSSIBLE', () => {
-        Bool.or(true, error('arb')).should.be.eql(true);
-      });
+    describe('(true, a)', () => {
+      jsc.property('== true', 'bool', (a) =>
+        Bool.or(true, a) === true
+      );
     });
-    describe('(false)(true)', () => {
-      it('== true', () => {
-        Bool.or(false)(true).should.be.eql(true);
-      });
-    });
-    describe('(true)(false)', () => {
-      it('== true', () => {
-        Bool.or(true)(false).should.be.eql(true);
-      });
-    });
-    describe('(false)(false)', () => {
-      it('== false', () => {
-        Bool.or(false)(false).should.be.eql(false);
-      });
+    describe('(a, b)', () => {
+      jsc.property('== (a)(b)', 'bool', 'bool', (a, b) =>
+        Bool.or(a, b) === Bool.or(a)(b)
+      );
     });
   });
   describe('not', () => {

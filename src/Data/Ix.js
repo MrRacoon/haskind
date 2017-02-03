@@ -2,12 +2,14 @@ import { _curry, error } from '../util';
 
 // range :: (a, a) -> [a]
 export const range = ([a: number, b: number]): number[] =>
-  [...Array(b-a).keys()].map(x => x + a);
+  a <= b
+    ? [...Array(b-a+1).keys()].map(x => x + a)
+    : [];
 
 // inRange :: (a, a) -> a -> Bool
 export const inRange = _curry(
   ([a: number, b: number], i: number): boolean =>
-    a <= i && i <= b
+    (a <= i) && (i <= b)
 );
 
 // index :: (a, a) -> a -> Int

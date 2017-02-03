@@ -22,9 +22,9 @@ var range = exports.range = function range(_ref) {
       a = _ref2[0],
       b = _ref2[1];
 
-  return [].concat((0, _toConsumableArray3.default)(Array(b - a).keys())).map(function (x) {
+  return a <= b ? [].concat((0, _toConsumableArray3.default)(Array(b - a + 1).keys())).map(function (x) {
     return x + a;
-  });
+  }) : [];
 };
 
 var inRange = exports.inRange = (0, _util._curry)(function (_ref3, i) {

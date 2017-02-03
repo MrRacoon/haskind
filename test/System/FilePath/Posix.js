@@ -1026,7 +1026,7 @@ describe('System.FilePath.Posix', () => {
           .should.be.eql('/..//.//');
       });
     });
-    describe('(["./.", "/..//", "/.//"])', () => {
+    describe('(["./.", "/...//", "/.//"])', () => {
       it('== "/.//"', () => {
         Posix.joinPath(['./.', '/..//', '/.//'])
           .should.be.eql('/.//');

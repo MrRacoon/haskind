@@ -1,4 +1,5 @@
 import should from 'should';
+import jsc from 'jsverify';
 import { Data } from '.';
 const { Function } = Data;
 
@@ -197,10 +198,10 @@ describe('Data.Function', () => {
     });
   });
   xdescribe('fix', () => {
-    describe('(const_(1))', () => {
-      it('== 1', () => {
-        Function.fix(Function.const_(1)).should.be.eql(1);
-      });
+    describe('(const_(a))', () => {
+      jsc.property('== a <-- IMPOSSIBLE: requires lazy evaluation', 'nat', (a) =>
+        Function.fix(Function.const_(a)) === a
+      );
     });
   });
   describe('on', () => {
