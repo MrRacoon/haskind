@@ -6,10 +6,10 @@ export const succ = (x: number): number => x + 1;
 export const pred = (x: number): number => x - 1;
 
 // toEnum :: Int -> a
-export const toEnum = undefined;
+export const toEnum = (c) => String.fromCharCode(c);
 
 // fromEnum :: a -> Int
-export const fromEnum = undefined;
+export const fromEnum = (c) => c.charCodeAt(0);
 
 // enumFrom :: a -> [a]
 export const enumFrom = undefined;
