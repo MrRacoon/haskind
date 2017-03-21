@@ -29,14 +29,13 @@ You can get the functions from npm using:
 
 `npm install --save haskind`
 
-Or, If you wanna get started as soon as possible, start with [hkci][hkci],
+Or, for a pre loaded interactive REPL, install [hkci][hkci], It comes with the
+latest release of Haskind built in.
 
 ```
 $> npm install --save hkci
 $> hkci
 ```
-
-It comes with the latest release of Haskind built in.
 
 ### Usage
 
@@ -53,25 +52,11 @@ const maybes = [ Just(3), Nothing(), Just(5) ]
 console.log(reverse(catMaybes(maybes))); // [ 5, 3 ]
 ```
 
-### Contributing
+### Note
 
 This library is still in heavy development. Some functions/tricks are definitely
 missing. Things like `fmap`, which can be applied across multiple types, has
 still not been totally fleshed out.
-
-If you see something you want to fill in, or think is off, feel free to submit a
-PR.
-
-> [PROTIP]: If you are using [hkci][hkci], you can use `hkci -c` in a haskind repo, to
-load that repo's `dist/`. I use it so that I can get instant feedback as I play
-with haskind.
-
-Ultimately my goal with this project, is to bridge a gap. I've talked to a lot
-of talented developers who really enjoy Javascript, and have voiced curiosity
-about the world of Haskell. My hope is that this library will prime developers
-with a peek into Haskell, in an environment that is already familiar to them.
-
-I'd love to hear your concerns, questions, reactions.
 
 ### Inspiration
 
