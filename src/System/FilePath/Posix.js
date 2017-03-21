@@ -44,7 +44,9 @@ export function isExtSeparator (c) {
 export function splitSearchPath(str) {
   return str.split(searchPathSeparator).map(x => x === '' ? '.' : x);
 }
+
 // getSearchPath :: IO [FilePath]
+
 // splitExtension :: FilePath -> (String, String)
 export function splitExtension(p) {
   const path = p.split('');
@@ -58,15 +60,10 @@ export function splitExtension(p) {
 }
 
 // takeExtension :: FilePath -> String
-export function takeExtension(p) {
-  const path = p.split('');
-  const len = path.length;
-  for (let i = len; i >= 0; i-=1) {
-    if (isExtSeparator(path[i])) {
-      return path.slice(i, len).join('');
-    }
-  }
-  return '';
+export function takeExtension(fp) {
+  const [,,exts] = _split(fp);
+  const len = exts.length;
+  return len ? extSeparator + exts.reverse()[0] : '';
 }
 
 // replaceExtension :: FilePath -> String -> FilePath

@@ -71,6 +71,7 @@ function splitSearchPath(str) {
     return x === '' ? '.' : x;
   });
 }
+
 function splitExtension(p) {
   var path = p.split('');
   var len = path.length;
@@ -82,15 +83,13 @@ function splitExtension(p) {
   return [p, ''];
 }
 
-function takeExtension(p) {
-  var path = p.split('');
-  var len = path.length;
-  for (var i = len; i >= 0; i -= 1) {
-    if (isExtSeparator(path[i])) {
-      return path.slice(i, len).join('');
-    }
-  }
-  return '';
+function takeExtension(fp) {
+  var _split2 = _split(fp),
+      _split3 = (0, _slicedToArray3.default)(_split2, 3),
+      exts = _split3[2];
+
+  var len = exts.length;
+  return len ? extSeparator + exts.reverse()[0] : '';
 }
 
 var replaceExtension = exports.replaceExtension = (0, _util._curry)(function replaceExtension(fp, s) {
@@ -117,37 +116,37 @@ var hasExtension = exports.hasExtension = function hasExtension(fp) {
 };
 
 var splitExtensions = exports.splitExtensions = function splitExtensions(fp) {
-  var _split2 = _split(fp),
-      _split3 = (0, _slicedToArray3.default)(_split2, 3),
-      dirs = _split3[0],
-      file = _split3[1],
-      exts = _split3[2];
+  var _split4 = _split(fp),
+      _split5 = (0, _slicedToArray3.default)(_split4, 3),
+      dirs = _split5[0],
+      file = _split5[1],
+      exts = _split5[2];
 
   return [dirs.concat(file).join('/'), exts.length ? '.' + exts.join('.') : exts.join('.')];
 };
 
 var dropExtensions = exports.dropExtensions = function dropExtensions(fp) {
-  var _split4 = _split(fp),
-      _split5 = (0, _slicedToArray3.default)(_split4, 2),
-      dirs = _split5[0],
-      file = _split5[1];
+  var _split6 = _split(fp),
+      _split7 = (0, _slicedToArray3.default)(_split6, 2),
+      dirs = _split7[0],
+      file = _split7[1];
 
   return dirs.concat([file]).join('/');
 };
 
 var takeExtensions = exports.takeExtensions = function takeExtensions(fp) {
-  var _split6 = _split(fp),
-      _split7 = (0, _slicedToArray3.default)(_split6, 3),
-      exts = _split7[2];
+  var _split8 = _split(fp),
+      _split9 = (0, _slicedToArray3.default)(_split8, 3),
+      exts = _split9[2];
 
   return exts.length ? '.' + exts.join('.') : '';
 };
 
 var replaceExtensions = exports.replaceExtensions = (0, _util._curry)(function replaceExtensions(fp, s) {
-  var _split8 = _split(fp),
-      _split9 = (0, _slicedToArray3.default)(_split8, 2),
-      dirs = _split9[0],
-      file = _split9[1];
+  var _split10 = _split(fp),
+      _split11 = (0, _slicedToArray3.default)(_split10, 2),
+      dirs = _split11[0],
+      file = _split11[1];
 
   return dirs.concat([file]).join('/').concat('.' + s);
 });
@@ -189,18 +188,18 @@ var takeBaseName = exports.takeBaseName = function takeBaseName(fp) {
 };
 
 var replaceBaseName = exports.replaceBaseName = (0, _util._curry)(function (fp, s) {
-  var _split10 = _split(fp),
-      _split11 = (0, _slicedToArray3.default)(_split10, 3),
-      dirs = _split11[0],
-      exts = _split11[2];
+  var _split12 = _split(fp),
+      _split13 = (0, _slicedToArray3.default)(_split12, 3),
+      dirs = _split13[0],
+      exts = _split13[2];
 
   return dirs.concat([s].concat(exts).join(extSeparator)).join(pathSeparator);
 });
 
 var takeDirectory = exports.takeDirectory = function takeDirectory(fp) {
-  var _split12 = _split(fp),
-      _split13 = (0, _slicedToArray3.default)(_split12, 1),
-      dirs = _split13[0];
+  var _split14 = _split(fp),
+      _split15 = (0, _slicedToArray3.default)(_split14, 1),
+      dirs = _split15[0];
 
   return (dirs.length ? dirs : ['.']).join(pathSeparator);
 };
