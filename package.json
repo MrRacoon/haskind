@@ -9,7 +9,7 @@
     "clean:deps": "rm -rf node_modules",
     "clean:dist": "rm -rf dist",
     "clean": "run-p clean:*",
-    "build:dist": "NODE_ENV=production babel --out-dir=dist src",
+    "build:dist": "NODE_ENV=production babel --out-dir=. src",
     "build:typed": "babel --out-dir=dist src",
     "build": "run-s clean:dist build:dist",
     "test:src": "NODE_PATH=$PWD/src mocha test/",
