@@ -21,7 +21,8 @@
     "dev": "run-s lint clean:dist build:typed test:dist repl",
     "watch": "npm run test:watch",
     "start": "run-s clean:dist build:dist test:dist repl",
-    "pulse": "./stats.sh"
+    "pulse": "./stats.sh",
+    "prepublish": "run-s test"
   },
   "repository": {
     "type": "git",
